@@ -51,40 +51,33 @@
             --spacing-element: 2rem;
         }
 
-       html {
+      html {
     scroll-behavior: smooth;
+    background: #000;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body::before {
+body {
     color: #FFFFFF;
     font-family: var(--font-sans);
-    content: "";
-    position: fixed;
-
-    top: -20px;
-    left: -20px;
-    right: -20px;
-    bottom: -20px;
 
     background:
         linear-gradient(
             rgba(0,0,0,0.50),
             rgba(0,0,0,0.50)
         ),
-        url('images/fondo.webp') center center / cover no-repeat;
+        url('images/fondo.webp') center center / cover no-repeat fixed;
 
-    opacity: 1;
-    z-index: -1;
+    background-color: #000;
+    min-height: 100vh;
 
-    transform: translateZ(0);
-    will-change: transform;
-    backface-visibility: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
         
         /* ==========================================
