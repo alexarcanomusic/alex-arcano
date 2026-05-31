@@ -142,7 +142,6 @@
         rgba(0,0,0,0.75) 0%,
         rgba(0,0,0,0.45) 70%,
         rgba(0,0,0,0) 100%
-    );
 }
 
     backdrop-filter: blur(12px);
@@ -177,7 +176,7 @@
             letter-spacing: 0.1em;
             cursor: pointer;
             text-transform: uppercase;
-         color: rgba(255,255,255,0.75);
+         color: rgba(40,40,40,0.85);
             position: relative;
         }
 
@@ -194,7 +193,7 @@
 
         nav a.active { color: #FFFFFF; }
         nav a.active::after { width: 100%; }
-        nav a:hover { color: #FFFFFF; }
+        nav a:hover { color: #000;; }
 
         .menu-toggle {
             display: none;
@@ -249,7 +248,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.60);
 .hero-subtitle,
 .note-title,
 .about-title {
-    color: rgba(255,255,255,0.95);
+    color: rgba(255,255,255,0.85);
     text-shadow: 0 8px 30px rgba(0,0,0,0.45);
 }
 
@@ -759,11 +758,11 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
             </div>
 
             <div class="social-nav reveal">
-                <a href="https://www.instagram.com/alex.arcano/" target="_blank" class="btn-link">Instagram</a>
-                <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank" class="btn-link">Facebook</a>
-                <a href="https://www.tiktok.com/@alex.arcano" target="_blank" class="btn-link">TikTok</a>
-                <a href="https://x.com/AlexArcano_" target="_blank" class="btn-link">X</a>
-                <a href="https://www.threads.com/@alex.arcano" target="_blank" class="btn-link">Threads</a>
+                <a href="https://www.instagram.com/alex.arcano/" target="_blank" rel="noopener noreferrer" class="btn-link">Instagram</a>
+                <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank" rel="noopener noreferrer" class="btn-link">Facebook</a>
+                <a href="https://www.tiktok.com/@alex.arcano" target="_blank" rel="noopener noreferrer" class="btn-link">TikTok</a>
+                <a href="https://x.com/AlexArcano_" target="_blank" rel="noopener noreferrer" class="btn-link">X</a>
+                <a href="https://www.threads.com/@alex.arcano" target="_blank" rel="noopener noreferrer" class="btn-link">Threads</a>
             </div>
         </section>
 
@@ -827,8 +826,9 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
                 <div class="social-nav" style="margin-top: 4rem; border-top: none;">
   <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano"
    class="btn-link">Contacto por Email</a>
-<a href="https://wa.me/+573183557890"
+<a href="https://wa.me/573183557890"
 target="_blank"
+ rel="noopener noreferrer"
 class="btn-link">
 WhatsApp
 </a>
@@ -1040,7 +1040,9 @@ if (
         document.getElementById('detail-story').textContent = song.story;
 
         document.querySelector('.song-header .cover-placeholder').innerHTML =
-            `<img src="${song.image}" class="cover-image">`;
+            `<img src="${song.image}"
+     class="cover-image"
+     alt="${song.title}">`;
 
         document.querySelector('.song-actions').innerHTML = `
             <a href="${song.spotify}" target="_blank" class="btn-link">Spotify</a>
