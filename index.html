@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://www.alexarcano.com/">
     <meta property="og:title" content="Alex Arcano | Galería Emocional">
     <meta property="og:description" content="Un archivo de recuerdos convertidos en canciones. Explora el minimalismo emocional de Alex Arcano.">
-    <meta property="og:image" content="https://www.alexarcano.com/og-image.jpg">
+   <meta property="og:image" content="https://alexarcanomusic.github.io/alex-arcano/images/og-image.jpg">
 
     <link rel="icon" type="image/png" href="favicon.png">
 
@@ -50,7 +50,7 @@
             box-sizing: border-box;
         }
 
-        body::before {
+      body::before {
     content: "";
     position: fixed;
     top: 0;
@@ -61,7 +61,7 @@
     opacity: 0.25;
     z-index: -1;
 }
-
+        
         /* ==========================================
            TIPOGRAFÍA Y EDITORIAL
            ========================================== */
@@ -113,23 +113,33 @@
            NAVEGACIÓN
            ========================================== */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 2.5rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(252,252,252,0.95) 70%, rgba(252,252,252,0) 100%);
-            z-index: 1000;
-            transition: padding 0.5s ease;
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(252,252,252,0.92) 0%,
+        rgba(252,252,252,0.85) 70%,
+        rgba(252,252,252,0) 100%
+    );
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    z-index: 1000;
+    transition: padding 0.5s ease;
+}
 
         header.scrolled {
-            padding: 1.5rem 4rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
+    padding: 1.5rem 4rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
 
         .logo {
             font-family: var(--font-sans);
@@ -265,7 +275,7 @@
         }
 
         .hero-featured .cover-placeholder {
-            max-width: 500px;
+            max-width: 450px;
             aspect-ratio: 1/1;
             margin-bottom: 3rem;
             cursor: pointer;
@@ -316,9 +326,10 @@
            MÚSICA (GALERÍA)
            ========================================== */
         .gallery-grid {
+    display: grid;
     grid-template-columns: repeat(3, 240px);
     justify-content: center;
-    gap: 5rem;
+    gap: 4rem 3rem;
 }
 
         .song-card {
@@ -575,9 +586,86 @@
             .about-title { font-size: 3rem; }
             .song-actions { flex-direction: column; align-items: center; gap: 2rem; }
         }
+
+/* BOTÓN SUBIR */
+#scrollTopBtn{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#181818;
+    color:white;
+    cursor:pointer;
+    font-size:22px;
+    z-index:9999;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* ATRÁS / ADELANTE */
+#historyNav{
+    position:fixed;
+    bottom:30px;
+    left:30px;
+    display:flex;
+    gap:10px;
+    z-index:9999;
+}
+
+#historyNav button{
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#181818;
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+.video-responsive {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+
+    body::before {
+        display: none;
+    }
+
+    body {
+        background:
+            linear-gradient(
+                rgba(252,252,252,0.75),
+                rgba(252,252,252,0.75)
+            ),
+            url('images/fondo.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+}
+
     </style>
 </head>
 <body>
+
+    <!-- BOTÓN SUBIR -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        ↑
+    </button>
+
+    <!-- BOTONES ATRÁS / ADELANTE -->
+    <div id="historyNav">
+        <button onclick="history.back()">←</button>
+        <button onclick="history.forward()">→</button>
+    </div>
 
     <header id="main-header">
         <div class="logo" onclick="app.navigate('inicio')">Alex Arcano</div>
@@ -600,11 +688,11 @@
             </div>
             
             <div class="hero-featured reveal">
-                <span class="featured-label">Video Oficial</span>
+                <span class="featured-label">Próximo Lanzamiento</span>
                 <div class="cover-placeholder" onclick="app.openSong('llevame')">
-                    <img src="images/llevame.webp" class="cover-image" alt="Llévame">
-                </div>
-                <h3 class="featured-title serif">Llévame</h3>
+    <img src="images/llevame.webp" class="cover-image" alt="Llévame">
+</div>
+                <h3 class="featured-title serif"> Escúchame en Spotify</h3>
                 
                 <div class="media-embeds">
 
@@ -622,18 +710,19 @@
 
     <!-- Video Oficial -->
     <iframe
-        width="100%"
-        height="500"
-        src="https://www.youtube.com/embed/cZwz0fXnt6E"
-        title="Alex Arcano - Video Oficial"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
+    class="video-responsive"
+    src="https://www.youtube.com/embed/cZwz0fXnt6E"
+    title="Alex Arcano - Video Oficial"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
 
 </div>
                 
-                <a onclick="app.openSong('llevame')" class="btn-link">Ver detalles de la canción</a>
+  <a onclick="app.openSong('donde')" class="btn-link">
+    Ver detalles de la canción
+</a>
             </div>
 
             <div class="social-nav reveal">
@@ -703,234 +792,256 @@
                 </div>
                 
                 <div class="social-nav" style="margin-top: 4rem; border-top: none;">
-                    <a href="mailto:alexarcano.musica@gmail.com" class="btn-link">Contacto Directo</a>
+  <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano"
+   class="btn-link">Contacto por Email</a>
+<a href="tel:+573183557890" class="btn-link">WhatsApp / Teléfono</a>
                     <a href="https://www.instagram.com/alex.arcano/" target="_blank" class="btn-link">Instagram</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <script>
-        // Catálogo Oficial
-        const songs = [
-            {
-            id:'cuentame-a',
-            title:'Cuéntame Parte A',
-            image:'images/cuentame-a.webp',
-            youtube:'https://youtu.be/qLFepwKCm54?si=6hJ85H81g0hszdvW',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'released',
-            year:'2024',
-            story:'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta. Una conversación imaginaria con alguien que ya no está, pero cuya ausencia sigue ocupando espacio en cada recuerdo.'
-            },
-            {
-            id:'cuentame-b',
-            title:'Cuéntame Parte B',
-            image:'images/cuentame-b.webp',
-            youtube:'https://youtu.be/bcxLLlF6ajs?si=ILdD9aJVIXWIK2BG',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'released',
-            year:'2025',
-            story:'El cierre emocional de una conversación pendiente. Una canción sobre aceptar el silencio, aprender a vivir con las respuestas que nunca llegaron y encontrar calma en medio de la incertidumbre.'
-            },
-            {
-            id:'donde',
-            title:'Dónde',
-            image:'images/donde.webp',
-            youtube:'https://youtu.be/I1DabSSVEyY?si=QJ4e4e3aPhoi57Pz',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'released',
-            year:'2025',
-            story:'Una búsqueda entre recuerdos, lugares y promesas rotas. La canción explora el vacío que queda cuando una historia termina y las preguntas permanecen abiertas.'
-            },
-            {
-            id:'reflejos',
-            title:'Reflejos',
-            image:'images/reflejos.webp',
-            youtube:'https://youtu.be/Fc8H_Aokxms?si=qnjLGCuOZOy5aMFy',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'released',
-            year:'2024',
-            story:'Una mirada hacia el pasado a través de los fragmentos que aún permanecen en la memoria. Reflejos habla de identidad, cambios y las huellas que dejan las personas que pasan por nuestra vida.'
-            },
-            {
-            id:'tan-solo',
-            title:'Tan Solo',
-            image:'images/tan-solo.webp',
-            youtube:'https://youtu.be/Dd0FsxpWJds?si=byVyfw_W4rkh92II',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'released',
-            year:'2024',
-            story:'Una canción nacida de la nostalgia y la distancia emocional. Habla de esas noches en las que los recuerdos parecen más fuertes que el paso del tiempo.'
-            },
-            {
-            id:'juegos-perdidos',
-            title:'Juegos Perdidos',
-            image:'images/juegos-perdidos.webp',
-            youtube:'https://youtu.be/nfFsRET3peI?si=JpOah6eecEwSRfx4',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'released',
-            year:'2025',
-            story:'Inspirada en los errores, las decisiones impulsivas y las oportunidades que no regresan. Una reflexión sobre las apuestas emocionales que todos hacemos alguna vez.'
-            },
-            {
-            id:'llevame',
-            title:'Llévame',
-            image:'images/llevame.webp',
-            youtube:'https://youtu.be/eZewzY6oK6g?si=_QF2EL70FUWB27-y',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'upcoming',
-            year:'2026',
-            story:'Una invitación a dejar atrás el ruido, los miedos y las rutinas. Una canción sobre el deseo de encontrar un nuevo comienzo cuando todo parece detenido.'
-            },
-            {
-            id:'hoy-tiene-tu-nombre',
-            title:'Hoy Tiene Tu Nombre',
-            image:'images/hoy-tiene-tu-nombre.webp',
-            youtube:'https://youtu.be/2YPGhVArN9k?si=XXCEPG4tgLYXnFbR',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'upcoming',
-            year:'2026',
-            story:'Un retrato de esos días en los que cualquier detalle es capaz de despertar un recuerdo. Una canción sobre la permanencia emocional de las personas que marcaron nuestra historia.'
-            },
-            {
-            id:'lo-que-el-tiempo',
-            title:'Lo Que El Tiempo Nunca Se Llevó',
-            image:'images/lo-que-el-tiempo.webp',
-            youtube:'https://youtu.be/z-tIGbOn0lk?si=cLCVCGvi6vrCPQvn',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'upcoming',
-            year:'2026',
-            story:'Una reflexión sobre aquello que permanece intacto a pesar de los años. Los recuerdos, las emociones y los momentos que siguen viviendo dentro de nosotros.'
-            }
+  <script>
+/* =========================
+   CATÁLOGO
+========================= */
+const songs = [
+    {
+        id:'cuentame-a',
+        title:'Cuéntame Parte A',
+        image:'images/cuentame-a.webp',
+        youtube:'https://youtu.be/qLFepwKCm54',
+        spotify:'https://open.spotify.com/intl-es/track/47rtgY73pA1ucGqryWF1t9',
+        status:'released',
+        year:'2024',
+        story:'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta.'
+    },
+    {
+        id:'cuentame-b',
+        title:'Cuéntame Parte B',
+        image:'images/cuentame-b.webp',
+        youtube:'https://youtu.be/bcxLLlF6ajs',
+        spotify:'https://open.spotify.com/intl-es/track/5rAmrOaZXuQ3LwNZY6nutW',
+        status:'released',
+        year:'2025',
+        story:'El cierre emocional de una conversación pendiente.'
+    },
+    {
+        id:'donde',
+        title:'Dónde',
+        image:'images/donde.webp',
+        youtube:'https://youtu.be/I1DabSSVEyY',
+        spotify:'https://open.spotify.com/intl-es/track/0KdjjrT6AsKM4i34jCKka0',
+        status:'released',
+        year:'2025',
+        story:'Una búsqueda entre recuerdos, lugares y promesas rotas.'
+    },
+    {
+        id:'reflejos',
+        title:'Reflejos',
+        image:'images/reflejos.webp',
+        youtube:'https://youtu.be/Fc8H_Aokxms',
+        spotify:'https://open.spotify.com/intl-es/track/6xGWaNRLVJD5kzyFTbg59c',
+        status:'released',
+        year:'2024',
+        story:'Identidad, cambios y huellas emocionales.'
+    },
+    {
+        id:'tan-solo',
+        title:'Tan Solo',
+        image:'images/tan-solo.webp',
+        youtube:'https://youtu.be/Dd0FsxpWJds',
+        spotify:'https://open.spotify.com/intl-es/track/6QR6XxXXnmvAZuTe9zCCzS',
+        status:'released',
+        year:'2024',
+        story:'Nostalgia y distancia emocional en noches largas.'
+    },
+    {
+        id:'juegos-perdidos',
+        title:'Juegos Perdidos',
+        image:'images/juegos-perdidos.webp',
+        youtube:'https://youtu.be/nfFsRET3peI',
+        spotify:'https://open.spotify.com/intl-es/track/13paMRtCN6yRENiETS9UXc',
+        status:'released',
+        year:'2025',
+        story:'Errores, decisiones impulsivas y oportunidades perdidas.'
+    },
+    {
+        id:'llevame',
+        title:'Llévame',
+        image:'images/llevame.webp',
+        youtube:'https://youtu.be/eZewzY6oK6g',
+        spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
+        status:'upcoming',
+        year:'2026',
+        story:'Un nuevo comienzo cuando todo parece detenido.'
+    },
+    {
+        id:'hoy-tiene-tu-nombre',
+        title:'Hoy Tiene Tu Nombre',
+        image:'images/hoy-tiene-tu-nombre.webp',
+        youtube:'https://youtu.be/2YPGhVArN9k',
+        spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
+        status:'upcoming',
+        year:'2026',
+        story:'Días donde cualquier recuerdo vuelve a aparecer.'
+    },
+    {
+        id:'lo-que-el-tiempo',
+        title:'Lo Que El Tiempo Nunca Se Llevó',
+        image:'images/lo-que-el-tiempo.webp',
+        youtube:'https://youtu.be/z-tIGbOn0lk',
+        spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
+        status:'upcoming',
+        year:'2026',
+        story:'Lo que permanece intacto a pesar de los años.'
+    }
 ];
-window.songs = songs;
 
-        const app = {
-            init: function() {
-                this.renderGallery();
-                this.initScrollReveal();
-                this.initHeaderScroll();
-                
-                setTimeout(() => this.triggerReveal(), 100);
-            },
+/* =========================
+   APP SPA + HISTORIAL PRO
+========================= */
+const app = {
+    historyStack: [],
+    historyIndex: -1,
+    observer: null,
 
-            navigate: function(viewId) {
-                document.getElementById('nav-menu').classList.remove('mobile-active');
-                
-                document.querySelectorAll('.view').forEach(view => {
-                    view.classList.remove('active');
-                });
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.classList.remove('active');
-                });
+    init() {
+        this.historyStack = ['inicio'];
+        this.historyIndex = 0;
 
-                document.getElementById(viewId).classList.add('active');
-                
-                if(viewId !== 'cancion-detalle' && document.getElementById('nav-' + viewId)) {
-                    document.getElementById('nav-' + viewId).classList.add('active');
-                } else if (viewId === 'cancion-detalle') {
-                    document.getElementById('nav-musica').classList.add('active');
-                }
+        const hash = window.location.hash.replace("#", "");
+        if (hash && document.getElementById(hash)) {
+            this.navigate(hash, false);
+        }
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
-                setTimeout(() => this.triggerReveal(), 300);
-            },
+        this.renderGallery();
+        this.initScrollReveal();
+        this.initHeaderScroll();
 
-            renderGallery: function() {
-                const container = document.getElementById('gallery-container');
-                container.innerHTML = '';
+        setTimeout(() => this.triggerReveal(), 100);
+    },
 
-                songs.forEach(song => {
-                    const badge = song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : '';
-                    
-                    const card = document.createElement('div');
-                    card.className = 'song-card reveal';
-                    card.onclick = () => this.openSong(song.id);
-                    
-                    card.innerHTML = `
-                    <div class="song-card-img-wrapper">
-                    ${badge}
-                    <img src="${song.image}" alt="${song.title}" class="cover-image">
-                    </div>
-                    
-                    <h3 class="song-card-title serif">
-                    ${song.title}
-                    </h3>
-                    `;
-                    container.appendChild(card);
-                });
-            },
+    navigate(viewId, push = true) {
+        if (!document.getElementById(viewId)) return;
 
-            openSong: function(songId) {
-    const song = songs.find(s => s.id === songId);
+        if (push) {
+            this.historyStack = this.historyStack.slice(0, this.historyIndex + 1);
+            this.historyStack.push(viewId);
+            this.historyIndex++;
 
-    if(!song) return;
+            history.pushState({ view: viewId }, "", "#" + viewId);
+        }
 
-    window.currentSong = song;
+        document.getElementById('nav-menu').classList.remove('mobile-active');
 
-    document.getElementById('detail-title').textContent = song.title; song.title;
-                document.getElementById('detail-date').textContent = song.year;
-                document.getElementById('detail-story').textContent = song.story;
-                
-                document.querySelector('.song-header .cover-placeholder').innerHTML =
-                `<img src="${song.image}" class="cover-image">`;
-                
-                document.querySelector('.song-actions').innerHTML = `
-                <a href="${song.spotify}" target="_blank" class="btn-link">
-                Escuchar en Spotify
-                </a>
-                
-                <a href="${song.youtube}" target="_blank" class="btn-link">
-                Ver en YouTube
-                </a>
-                
-                <a href="#" onclick="alert('Enlace copiado al portapapeles')" class="btn-link">
-                Compartir
-                </a>
-                `;
-                
-                this.navigate('cancion-detalle');
-            },
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
 
-            // Sistema Avanzado de Animación al hacer Scroll (Intersection Observer)
-            initScrollReveal: function() {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.15
-                };
+        const view = document.getElementById(viewId);
+        if (view) view.classList.add('active');
 
-                this.observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                        }
-                    });
-                }, observerOptions);
-            },
+        const nav = document.getElementById('nav-' + viewId);
+        if (nav) nav.classList.add('active');
 
-            triggerReveal: function() {
-                const reveals = document.querySelectorAll('.view.active .reveal');
-                reveals.forEach(el => this.observer.observe(el));
-            },
-            
-            // Efecto de Header al hacer Scroll
-            initHeaderScroll: function() {
-                window.addEventListener('scroll', () => {
-                    const header = document.getElementById('main-header');
-                    if (window.scrollY > 50) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                });
-            }
-        };
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        app.init();
-    </script>
-</body>
-</html>
+        document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
+        setTimeout(() => this.triggerReveal(), 150);
+    },
+
+    back() {
+        if (this.historyIndex > 0) {
+            this.historyIndex--;
+            this.navigate(this.historyStack[this.historyIndex], false);
+        }
+    },
+
+    forward() {
+        if (this.historyIndex < this.historyStack.length - 1) {
+            this.historyIndex++;
+            this.navigate(this.historyStack[this.historyIndex], false);
+        }
+    },
+
+    renderGallery() {
+        const container = document.getElementById('gallery-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        songs.forEach(song => {
+            const card = document.createElement('div');
+            card.className = 'song-card reveal';
+            card.onclick = () => this.openSong(song.id);
+
+            card.innerHTML = `
+                <div class="song-card-img-wrapper">
+                    ${song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : ''}
+                    <img src="${song.image}" class="cover-image" alt="${song.title}">
+                </div>
+                <h3 class="song-card-title serif">${song.title}</h3>
+            `;
+
+            container.appendChild(card);
+        });
+    },
+
+    openSong(songId) {
+        const song = songs.find(s => s.id === songId);
+        if (!song) return;
+
+        window.currentSong = song;
+
+        document.getElementById('detail-title').textContent = song.title;
+        document.getElementById('detail-date').textContent = song.year;
+        document.getElementById('detail-story').textContent = song.story;
+
+        document.querySelector('.song-header .cover-placeholder').innerHTML =
+            `<img src="${song.image}" class="cover-image">`;
+
+        document.querySelector('.song-actions').innerHTML = `
+            <a href="${song.spotify}" target="_blank" class="btn-link">Spotify</a>
+            <a href="${song.youtube}" target="_blank" class="btn-link">YouTube</a>
+            <a href="#" class="btn-link" onclick="navigator.clipboard.writeText(window.location.href)">Compartir</a>
+        `;
+
+        this.navigate('cancion-detalle');
+    },
+
+    initScrollReveal() {
+        this.observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+    },
+
+    triggerReveal() {
+        document.querySelectorAll('.view.active .reveal')
+            .forEach(el => this.observer.observe(el));
+    },
+
+    initHeaderScroll() {
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (!header) return;
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    }
+};
+
+/* =========================
+   INIT
+========================= */
+app.init();
+
+/* =========================
+   BACK/FORWARD NAVEGADOR REAL
+========================= */
+window.addEventListener("popstate", (e) => {
+    if (e.state?.view) {
+        app.navigate(e.state.view, false);
+    }
+});
+</script>
