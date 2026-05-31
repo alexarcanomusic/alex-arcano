@@ -68,8 +68,8 @@
 
     background:
         linear-gradient(
-            rgba(0,0,0,0.35),
-            rgba(0,0,0,0.35)
+            rgba(0,0,0,0.45),
+            rgba(0,0,0,0.45)
         ),
         url('images/fondo.webp') center center / cover no-repeat;
 
@@ -446,7 +446,7 @@
             font-family: var(--font-serif);
             font-size: 1.8rem;
             line-height: 1.6;
-            color: var(--color-text);
+            color: rgba(24,24,24,0.92);
             margin: 6rem auto;
             max-width: 750px;
             text-align: center;
@@ -536,10 +536,10 @@
         }
 
         .note-body {
-            font-size: 1.1rem;
-            color: var(--color-text);
-            line-height: 1.9;
-        }
+    font-size: 1.1rem;
+    color: rgba(24,24,24,0.92);
+    line-height: 1.9;
+}
 
         /* ==========================================
            SOBRE ALEX ARCANO
@@ -557,12 +557,12 @@
         }
         
         .about-text {
-            font-size: 1.25rem;
-            color: var(--color-muted);
-            line-height: 2;
-            text-align: justify;
-            text-align-last: center;
-        }
+    font-size: 1.25rem;
+    color: rgba(24,24,24,0.92);
+    line-height: 2;
+    text-align: justify;
+    text-align-last: center;
+}
         
         .about-text p {
             margin-bottom: 2.5rem;
@@ -655,8 +655,6 @@
 
 @media (max-width: 768px) {
 
-    @media (max-width: 768px) {
-
     body::before {
         content: "";
         position: fixed;
@@ -680,11 +678,6 @@
     text-shadow: 0 8px 30px rgba(255,255,255,0.35);
 }
 
-/* MEJORA VISIBILIDAD DE LOS TEXTOS */
-.about-text,
-.note-body,
-.song-story {
-    color: rgba(24,24,24,0.92);
 }
     </style>
 </head>
