@@ -1,1 +1,936 @@
-<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop y balada pop."> <meta name="keywords" content="Alex Arcano, Indie Pop, Balada Pop, Pop Alternativo, Minimalismo Emocional, Música Colombiana, Bucaramanga"> <meta name="author" content="Alex Arcano"> <meta name="theme-color" content="#FCFCFC"> <meta property="og:type" content="website"> <meta property="og:url" content="https://www.alexarcano.com/"> <meta property="og:title" content="Alex Arcano | Galería Emocional"> <meta property="og:description" content="Un archivo de recuerdos convertidos en canciones. Explora el minimalismo emocional de Alex Arcano."> <meta property="og:image" content="https://alexarcanomusic.github.io/alex-arcano/images/og-image.jpg"> <link rel="icon" type="image/png" href="favicon.png"> <title>Alex Arcano | Galería Emocional</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"> <style> /* ========================================== VARIABLES Y CONFIGURACIÓN BASE ========================================== */ :root { --color-bg: #FCFCFC; --color-text: #181818; --color-muted: #6B6B6B; --color-accent: #8A9AA8; --font-serif: 'Cormorant Garamond', serif; --font-sans: 'Inter', sans-serif; --spacing-section: 15vh; --spacing-element: 2rem; } html { scroll-behavior: smooth; } * { margin: 0; padding: 0; box-sizing: border-box; } body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('images/fondo.webp') center center / cover no-repeat; opacity: 0.25; z-index: -1; } /* ========================================== TIPOGRAFÍA Y EDITORIAL ========================================== */ h1, h2, h3, h4, .serif { font-family: var(--font-serif); font-weight: 400; } a { color: var(--color-text); text-decoration: none; transition: color 0.4s ease; } a:hover { color: var(--color-accent); } .btn-link { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid rgba(24, 24, 24, 0.3); padding-bottom: 3px; display: inline-block; cursor: pointer; transition: all 0.4s ease; } .btn-link:hover { color: var(--color-accent); border-color: var(--color-accent); } /* ========================================== ANIMACIONES DE SCROLL (REVEAL) ========================================== */ .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); } .reveal.active { opacity: 1; transform: translateY(0); } /* ========================================== NAVEGACIÓN ========================================== */ header { position: fixed; top: 0; left: 0; width: 100%; padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; background: linear-gradient( to bottom, rgba(252,252,252,0.92) 0%, rgba(252,252,252,0.85) 70%, rgba(252,252,252,0) 100% ); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1000; transition: padding 0.5s ease; } header.scrolled { padding: 1.5rem 4rem; box-shadow: 0 15px 40px rgba(0,0,0,0.08); } .logo { font-family: var(--font-sans); font-size: 1rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; } nav ul { display: flex; gap: 3.5rem; list-style: none; } nav a { font-size: 0.8rem; letter-spacing: 0.1em; cursor: pointer; text-transform: uppercase; color: var(--color-muted); position: relative; } nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-text); transition: width 0.3s ease; } nav a.active { color: var(--color-text); } nav a.active::after { width: 100%; } nav a:hover { color: var(--color-text); } .menu-toggle { display: none; cursor: pointer; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; } /* ========================================== ESTRUCTURA SPA ========================================== */ main { padding-top: 18vh; min-height: 100vh; max-width: 1700px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; } .view { display: none; opacity: 0; animation: fadeInView 1.2s forwards ease-out; } .view.active { display: block; } @keyframes fadeInView { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } } /* ========================================== INICIO ========================================== */ #inicio { text-align: center; padding-bottom: var(--spacing-section); } .hero-title { font-size: 4.5rem; margin-bottom: 1.5rem; letter-spacing: -0.01em; line-height: 1.1; } .hero-subtitle { font-size: 1.1rem; color: var(--color-muted); letter-spacing: 0.05em; margin-bottom: 5rem; font-weight: 300; } .hero-featured { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; } .featured-label { font-size: 0.75rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 2rem; display: block; } .cover-placeholder { width: 100%; background-color: #F3F3F3; display: flex; align-items: center; justify-content: center; color: #A0A0A0; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; box-shadow: 0 15px 50px rgba(0,0,0,0.05); transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); } .cover-image { width: 100%; height: 100%; object-fit: cover; display: block; } .hero-featured .cover-placeholder { max-width: 450px; aspect-ratio: 1/1; margin-bottom: 3rem; cursor: pointer; } .hero-featured .cover-placeholder:hover { transform: scale(1.02); } .featured-title { font-size: 3rem; margin-bottom: 3rem; } .media-embeds { width: 100%; max-width: 500px; margin: 0 auto 5rem auto; display: flex; flex-direction: column; gap: 2rem; } .embed-box { width: 100%; background: #FAFAFA; border: 1px solid #EAEAEA; padding: 3rem 2rem; text-align: center; color: var(--color-muted); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; } /* Redes Sociales */ .social-nav { margin-top: 6rem; padding-top: 4rem; border-top: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem; } /* ========================================== MÚSICA (GALERÍA) ========================================== */ .gallery-grid { grid-template-columns: repeat(3, 240px); justify-content: center; gap: 4rem 3rem; } .song-card { cursor: pointer; text-align: center; position: relative; group: song; } .song-card-img-wrapper { position: relative; overflow: hidden; margin-bottom: 2rem; aspect-ratio: 1 / 1; } .badge-upcoming { position: absolute; top: 1.5rem; right: 1.5rem; font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-bg); background: rgba(24, 24, 24, 0.9); padding: 0.4rem 1.2rem; backdrop-filter: blur(5px); z-index: 10; } .song-card .cover-image { height: 100%; transition: transform 0.6s ease; } .song-card:hover .cover-image { transform: scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.08); } .song-card-title { font-size: 1.8rem; margin-bottom: 0.5rem; } /* ========================================== PLANTILLA DE CANCIÓN INDIVIDUAL ========================================== */ .song-template-wrapper { max-width: 900px; margin: 0 auto; padding-bottom: var(--spacing-section); } .back-link { font-size: 0.8rem; color: var(--color-muted); cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 5rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s ease; } .back-link:hover { color: var(--color-text); } .song-header { text-align: center; margin-bottom: 5rem; } .song-header .cover-placeholder { max-width: 600px; margin: 0 auto 4rem auto; aspect-ratio: 1/1; } .song-title-large { font-size: 4rem; margin-bottom: 1rem; line-height: 1.1; } .song-meta { font-family: var(--font-sans); font-size: 0.85rem; color: var(--color-muted); letter-spacing: 0.15em; text-transform: uppercase; } .song-story { font-family: var(--font-serif); font-size: 1.8rem; line-height: 1.6; color: var(--color-text); margin: 6rem auto; max-width: 750px; text-align: center; font-style: italic; } .song-actions { display: flex; justify-content: center; gap: 3rem; margin: 4rem 0; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 3rem 0; } /* ========================================== NOTAS (DIARIO CREATIVO) ========================================== */ .notes-header { text-align: center; margin-bottom: 6rem; } .notes-categories { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem; } .category-tag { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-muted); border: 1px solid rgba(0,0,0,0.1); padding: 0.5rem 1.5rem; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; } .category-tag:hover { border-color: var(--color-text); color: var(--color-text); } .notes-container { max-width: 700px; margin: 0 auto; padding-bottom: var(--spacing-section); } .note-entry { margin-bottom: 8rem; position: relative; } .note-category-label { position: absolute; left: -150px; top: 10px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); text-align: right; width: 120px; } .note-date { font-family: var(--font-sans); font-size: 0.75rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; display: block; } .note-title { font-size: 2.8rem; margin-bottom: 2rem; line-height: 1.1; } .note-body { font-size: 1.1rem; color: var(--color-text); line-height: 1.9; } /* ========================================== SOBRE ALEX ARCANO ========================================== */ .about-container { max-width: 800px; margin: 0 auto; padding-bottom: var(--spacing-section); text-align: center; } .about-title { font-size: 4rem; margin-bottom: 4rem; } .about-text { font-size: 1.25rem; color: var(--color-muted); line-height: 2; text-align: justify; text-align-last: center; } .about-text p { margin-bottom: 2.5rem; } /* ========================================== RESPONSIVE ========================================== */ @media (max-width: 1024px) { .note-category-label { position: static; text-align: left; margin-bottom: 1rem; width: auto; } } @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 4rem 2rem; } .hero-title { font-size: 3.5rem; } .about-text { text-align: left; text-align-last: left; } } @media (max-width: 768px) { header { padding: 1.5rem 2rem; } header.scrolled { padding: 1.2rem 2rem; } nav ul { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(252,252,252,0.98); backdrop-filter: blur(10px); flex-direction: column; align-items: center; padding: 3rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); } nav ul.mobile-active { display: flex; } .menu-toggle { display: block; } .gallery-grid { grid-template-columns: 1fr; gap: 5rem; } .hero-title { font-size: 3rem; } .song-title-large { font-size: 3rem; } .about-title { font-size: 3rem; } .song-actions { flex-direction: column; align-items: center; gap: 2rem; } } /* BOTÓN SUBIR */ #scrollTopBtn{ position:fixed; bottom:30px; right:30px; width:50px; height:50px; border:none; border-radius:50%; background:#181818; color:white; cursor:pointer; font-size:22px; z-index:9999; box-shadow:0 5px 20px rgba(0,0,0,.2); } /* ATRÁS / ADELANTE */ #historyNav{ position:fixed; bottom:30px; left:30px; display:flex; gap:10px; z-index:9999; } #historyNav button{ width:50px; height:50px; border:none; border-radius:50%; background:#181818; color:white; cursor:pointer; font-size:20px; box-shadow:0 5px 20px rgba(0,0,0,.2); } </style> </head> <body> <!-- BOTÓN SUBIR --> <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"> ↑ </button> <!-- BOTONES ATRÁS / ADELANTE --> <div id="historyNav"> <button onclick="history.back()">←</button> <button onclick="history.forward()">→</button> </div> <header id="main-header"> <div class="logo" onclick="app.navigate('inicio')">Alex Arcano</div> <div class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('mobile-active')">Menú</div> <nav> <ul id="nav-menu"> <li><a onclick="app.navigate('inicio')" id="nav-inicio" class="active">Inicio</a></li> <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li> <li><a onclick="app.navigate('notas')" id="nav-notas">Notas</a></li> <li><a onclick="app.navigate('sobre-mi')" id="nav-sobre-mi">Sobre Mí</a></li> </ul> </nav> </header> <main> <section id="inicio" class="view active"> <div class="reveal"> <h1 class="hero-title serif">Pequeñas canciones para emociones enormes.</h1> <h2 class="hero-subtitle">Un archivo de recuerdos convertidos en canciones.</h2> </div> <div class="hero-featured reveal"> <span class="featured-label">Próximo Lanzamiento</span> <div class="cover-placeholder" onclick="app.openSong('llevame')"> <img src="images/llevame.webp" class="cover-image" alt="Llévame"> </div> <h3 class="featured-title serif"> Escúchame en Spotify</h3> <div class="media-embeds"> <!-- Spotify --> <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/59XvVC5GQwHQfEWHPTzqnq?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"> </iframe> <!-- Video Oficial --> <iframe width="100%" height="500" src="https://www.youtube.com/embed/cZwz0fXnt6E" title="Alex Arcano - Video Oficial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe> </div> <a onclick="app.openSong('donde')" class="btn-link"> Ver detalles de la canción </a> </div> <div class="social-nav reveal"> <a href="https://www.instagram.com/alex.arcano/" target="_blank" class="btn-link">Instagram</a> <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank" class="btn-link">Facebook</a> <a href="https://www.tiktok.com/@alex.arcano" target="_blank" class="btn-link">TikTok</a> <a href="https://x.com/AlexArcano_" target="_blank" class="btn-link">X</a> <a href="https://www.threads.com/@alex.arcano" target="_blank" class="btn-link">Threads</a> </div> </section> <section id="musica" class="view"> <div class="gallery-grid" id="gallery-container"> </div> </section> <section id="cancion-detalle" class="view"> <div class="song-template-wrapper"> <div class="back-link reveal" onclick="app.navigate('musica')"> ← Volver a la colección </div> <div class="song-header reveal"> <div class="cover-placeholder" style="cursor: default;"> </div> <h1 class="song-title-large serif" id="detail-title">Título</h1> <div class="song-meta" id="detail-date">Año de lanzamiento</div> </div> <div class="song-actions reveal"> </div> <p class="song-story reveal" id="detail-story">Historia de la canción disponible próximamente.</p> </div> </section> <section id="notas" class="view"> <div class="notes-header reveal"> <h1 class="hero-title serif">Diario Creativo</h1> <div class="notes-categories"> <span class="category-tag">Historias detrás de las canciones</span> <span class="category-tag">Reflexiones</span> <span class="category-tag">Inspiración</span> <span class="category-tag">Proceso creativo</span> </div> </div> <div class="notes-container"> <article class="note-entry reveal"> <div class="note-category-label">Proceso Creativo</div> <span class="note-date">Fecha por definir</span> <h2 class="note-title serif">El inicio del archivo</h2> <div class="note-body"> <p>Las primeras anotaciones de este diario creativo estarán disponibles pronto. Un espacio dedicado a explorar lo que sucede antes y después de que una canción esté terminada.</p> </div> </article> </div> </section> <section id="sobre-mi" class="view"> <div class="about-container reveal"> <h2 class="about-title serif">Sobre el Artista</h2> <div class="about-text"> <p>Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop, balada pop y pop alternativo.</p> <p>Su propuesta mezcla minimalismo visual y honestidad emocional, creando un universo donde cada canción funciona como una fotografía de momentos que el tiempo no logró borrar.</p> <p>A través de letras introspectivas, atmósferas melancólicas y una identidad visual coherente, Alex Arcano construye una experiencia artística centrada en la nostalgia, la memoria y las emociones humanas.</p> </div> <div class="social-nav" style="margin-top: 4rem; border-top: none;"> <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano" class="btn-link">Contacto por Email</a> <a href="tel:+573183557890" class="btn-link">WhatsApp / Teléfono</a> <a href="https://www.instagram.com/alex.arcano/" target="_blank" class="btn-link">Instagram</a> </div> </div> </section> </main> <script> /* ========================= CATÁLOGO ========================= */ const songs = [ { id:'cuentame-a', title:'Cuéntame Parte A', image:'images/cuentame-a.webp', youtube:'https://youtu.be/qLFepwKCm54', spotify:'https://open.spotify.com/intl-es/track/47rtgY73pA1ucGqryWF1t9', status:'released', year:'2024', story:'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta.' }, { id:'cuentame-b', title:'Cuéntame Parte B', image:'images/cuentame-b.webp', youtube:'https://youtu.be/bcxLLlF6ajs', spotify:'https://open.spotify.com/intl-es/track/5rAmrOaZXuQ3LwNZY6nutW', status:'released', year:'2025', story:'El cierre emocional de una conversación pendiente.' }, { id:'donde', title:'Dónde', image:'images/donde.webp', youtube:'https://youtu.be/I1DabSSVEyY', spotify:'https://open.spotify.com/intl-es/track/0KdjjrT6AsKM4i34jCKka0', status:'released', year:'2025', story:'Una búsqueda entre recuerdos, lugares y promesas rotas.' }, { id:'reflejos', title:'Reflejos', image:'images/reflejos.webp', youtube:'https://youtu.be/Fc8H_Aokxms', spotify:'https://open.spotify.com/intl-es/track/6xGWaNRLVJD5kzyFTbg59c', status:'released', year:'2024', story:'Identidad, cambios y huellas emocionales.' }, { id:'tan-solo', title:'Tan Solo', image:'images/tan-solo.webp', youtube:'https://youtu.be/Dd0FsxpWJds', spotify:'https://open.spotify.com/intl-es/track/6QR6XxXXnmvAZuTe9zCCzS', status:'released', year:'2024', story:'Nostalgia y distancia emocional en noches largas.' }, { id:'juegos-perdidos', title:'Juegos Perdidos', image:'images/juegos-perdidos.webp', youtube:'https://youtu.be/nfFsRET3peI', spotify:'https://open.spotify.com/intl-es/track/13paMRtCN6yRENiETS9UXc', status:'released', year:'2025', story:'Errores, decisiones impulsivas y oportunidades perdidas.' }, { id:'llevame', title:'Llévame', image:'images/llevame.webp', youtube:'https://youtu.be/eZewzY6oK6g', spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq', status:'upcoming', year:'2026', story:'Un nuevo comienzo cuando todo parece detenido.' }, { id:'hoy-tiene-tu-nombre', title:'Hoy Tiene Tu Nombre', image:'images/hoy-tiene-tu-nombre.webp', youtube:'https://youtu.be/2YPGhVArN9k', spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq', status:'upcoming', year:'2026', story:'Días donde cualquier recuerdo vuelve a aparecer.' }, { id:'lo-que-el-tiempo', title:'Lo Que El Tiempo Nunca Se Llevó', image:'images/lo-que-el-tiempo.webp', youtube:'https://youtu.be/z-tIGbOn0lk', spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq', status:'upcoming', year:'2026', story:'Lo que permanece intacto a pesar de los años.' } ]; /* ========================= APP SPA + HISTORIAL PRO ========================= */ const app = { historyStack: [], historyIndex: -1, observer: null, init() { this.historyStack = ['inicio']; this.historyIndex = 0; const hash = window.location.hash.replace("#", ""); if (hash && document.getElementById(hash)) { this.navigate(hash, false); } this.renderGallery(); this.initScrollReveal(); this.initHeaderScroll(); setTimeout(() => this.triggerReveal(), 100); }, navigate(viewId, push = true) { if (!document.getElementById(viewId)) return; if (push) { this.historyStack = this.historyStack.slice(0, this.historyIndex + 1); this.historyStack.push(viewId); this.historyIndex++; history.pushState({ view: viewId }, "", "#" + viewId); } document.getElementById('nav-menu').classList.remove('mobile-active'); document.querySelectorAll('.view').forEach(v => v.classList.remove('active')); document.querySelectorAll('nav a').forEach(a => a.classList.remove('active')); const view = document.getElementById(viewId); if (view) view.classList.add('active'); const nav = document.getElementById('nav-' + viewId); if (nav) nav.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active')); setTimeout(() => this.triggerReveal(), 150); }, back() { if (this.historyIndex > 0) { this.historyIndex--; this.navigate(this.historyStack[this.historyIndex], false); } }, forward() { if (this.historyIndex < this.historyStack.length - 1) { this.historyIndex++; this.navigate(this.historyStack[this.historyIndex], false); } }, renderGallery() { const container = document.getElementById('gallery-container'); if (!container) return; container.innerHTML = ''; songs.forEach(song => { const card = document.createElement('div'); card.className = 'song-card reveal'; card.onclick = () => this.openSong(song.id); card.innerHTML = <div class="song-card-img-wrapper"> ${song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : ''} <img src="${song.image}" class="cover-image" alt="${song.title}"> </div> <h3 class="song-card-title serif">${song.title}</h3> ; container.appendChild(card); }); }, openSong(songId) { const song = songs.find(s => s.id === songId); if (!song) return; window.currentSong = song; document.getElementById('detail-title').textContent = song.title; document.getElementById('detail-date').textContent = song.year; document.getElementById('detail-story').textContent = song.story; document.querySelector('.song-header .cover-placeholder').innerHTML = <img src="${song.image}" class="cover-image">; document.querySelector('.song-actions').innerHTML = <a href="${song.spotify}" target="_blank" class="btn-link">Spotify</a> <a href="${song.youtube}" target="_blank" class="btn-link">YouTube</a> <a href="#" class="btn-link" onclick="navigator.clipboard.writeText(window.location.href)">Compartir</a> ; this.navigate('cancion-detalle'); }, initScrollReveal() { this.observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.15 }); }, triggerReveal() { document.querySelectorAll('.view.active .reveal') .forEach(el => this.observer.observe(el)); }, initHeaderScroll() { window.addEventListener('scroll', () => { const header = document.getElementById('main-header'); if (!header) return; header.classList.toggle('scrolled', window.scrollY > 50); }); } }; /* ========================= INIT ========================= */ app.init(); /* ========================= BACK/FORWARD NAVEGADOR REAL ========================= */ window.addEventListener("popstate", (e) => { if (e.state?.view) { app.navigate(e.state.view, false); } }); </script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop y balada pop.">
+    <meta name="keywords" content="Alex Arcano, Indie Pop, Balada Pop, Pop Alternativo, Minimalismo Emocional, Música Colombiana, Bucaramanga">
+    <meta name="author" content="Alex Arcano">
+    <meta name="theme-color" content="#FCFCFC">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.alexarcano.com/">
+    <meta property="og:title" content="Alex Arcano | Galería Emocional">
+    <meta property="og:description" content="Un archivo de recuerdos convertidos en canciones. Explora el minimalismo emocional de Alex Arcano.">
+    <meta property="og:image" content="https://www.alexarcano.com/og-image.jpg">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <title>Alex Arcano | Galería Emocional</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           VARIABLES Y CONFIGURACIÓN BASE
+           ========================================== */
+        :root {
+            --color-bg: #FCFCFC;         
+            --color-text: #181818;       
+            --color-muted: #6B6B6B;      
+            --color-accent: #8A9AA8;     
+            
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+            
+            --spacing-section: 15vh;
+            --spacing-element: 2rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-sans);
+            line-height: 1.7;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================
+           TIPOGRAFÍA Y EDITORIAL
+           ========================================== */
+        h1, h2, h3, h4, .serif {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        .btn-link {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(24, 24, 24, 0.3);
+            padding-bottom: 3px;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-link:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        /* ==========================================
+           ANIMACIONES DE SCROLL (REVEAL)
+           ========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================
+           NAVEGACIÓN
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(252,252,252,0.95) 70%, rgba(252,252,252,0) 100%);
+            z-index: 1000;
+            transition: padding 0.5s ease;
+        }
+
+        header.scrolled {
+            padding: 1.5rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .logo {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-text);
+            transition: width 0.3s ease;
+        }
+
+        nav a.active { color: var(--color-text); }
+        nav a.active::after { width: 100%; }
+        nav a:hover { color: var(--color-text); }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* ==========================================
+           ESTRUCTURA SPA
+           ========================================== */
+        main {
+            padding-top: 18vh;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .view {
+            display: none;
+            opacity: 0;
+            animation: fadeInView 1.2s forwards ease-out;
+        }
+
+        .view.active { display: block; }
+
+        @keyframes fadeInView {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================
+           INICIO
+           ========================================== */
+        #inicio {
+            text-align: center;
+            padding-bottom: var(--spacing-section);
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 5rem;
+            font-weight: 300;
+        }
+
+        .hero-featured {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .featured-label {
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .cover-placeholder {
+            width: 100%;
+            background-color: #F3F3F3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A0A0A0;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-featured .cover-placeholder {
+            max-width: 700px;
+            aspect-ratio: 1/1;
+            margin-bottom: 3rem;
+            cursor: pointer;
+        }
+
+        .hero-featured .cover-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .featured-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .media-embeds {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto 5rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .embed-box {
+            width: 100%;
+            background: #FAFAFA;
+            border: 1px solid #EAEAEA;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--color-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Redes Sociales */
+        .social-nav {
+            margin-top: 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        /* ==========================================
+           MÚSICA (GALERÍA)
+           ========================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6rem 4rem;
+            padding-bottom: var(--spacing-section);
+        }
+
+        .song-card {
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            group: song;
+        }
+
+        .song-card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            aspect-ratio: 1 / 1;
+        }
+
+        .badge-upcoming {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-bg);
+            background: rgba(24, 24, 24, 0.9);
+            padding: 0.4rem 1.2rem;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+
+        .song-card .cover-image { height: 100%; transition: transform 0.6s ease; }
+        
+        .song-card:hover .cover-image {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .song-card-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==========================================
+           PLANTILLA DE CANCIÓN INDIVIDUAL
+           ========================================== */
+        .song-template-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-bottom: var(--spacing-section);
+        }
+
+        .back-link {
+            font-size: 0.8rem;
+            color: var(--color-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover { color: var(--color-text); }
+
+        .song-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .song-header .cover-placeholder {
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+            aspect-ratio: 1/1;
+        }
+
+        .song-title-large {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .song-meta {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--color-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .song-story {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            margin: 6rem auto;
+            max-width: 750px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .song-actions {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 4rem 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 3rem 0;
+        }
+
+        /* ==========================================
+           NOTAS (DIARIO CREATIVO)
+           ========================================== */
+        .notes-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+        
+        .notes-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .category-tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-tag:hover {
+            border-color: var(--color-text);
+            color: var(--color-text);
+        }
+
+        .notes-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding-bottom: var(--spacing-section);
+        }
+
+        .note-entry {
+            margin-bottom: 8rem;
+            position: relative;
+        }
+
+        .note-category-label {
+            position: absolute;
+            left: -150px;
+            top: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            text-align: right;
+            width: 120px;
+        }
+
+        .note-date {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .note-title {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .note-body {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            line-height: 1.9;
+        }
+
+        /* ==========================================
+           SOBRE ALEX ARCANO
+           ========================================== */
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: var(--spacing-section);
+            text-align: center;
+        }
+        
+        .about-title {
+            font-size: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        .about-text {
+            font-size: 1.25rem;
+            color: var(--color-muted);
+            line-height: 2;
+            text-align: justify;
+            text-align-last: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 2.5rem;
+        }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 1024px) {
+            .note-category-label { position: static; text-align: left; margin-bottom: 1rem; width: auto; }
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 4rem 2rem; }
+            .hero-title { font-size: 3.5rem; }
+            .about-text { text-align: left; text-align-last: left; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1.5rem 2rem; }
+            header.scrolled { padding: 1.2rem 2rem; }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(252,252,252,0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding: 3rem 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            }
+            nav ul.mobile-active { display: flex; }
+            .menu-toggle { display: block; }
+            
+            .gallery-grid { grid-template-columns: 1fr; gap: 5rem; }
+            .hero-title { font-size: 3rem; }
+            .song-title-large { font-size: 3rem; }
+            .about-title { font-size: 3rem; }
+            .song-actions { flex-direction: column; align-items: center; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logo" onclick="app.navigate('inicio')">Alex Arcano</div>
+        <div class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('mobile-active')">Menú</div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a onclick="app.navigate('inicio')" id="nav-inicio" class="active">Inicio</a></li>
+                <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li>
+                <li><a onclick="app.navigate('notas')" id="nav-notas">Notas</a></li>
+                <li><a onclick="app.navigate('sobre-mi')" id="nav-sobre-mi">Sobre Mí</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="view active">
+            <div class="reveal">
+                <h1 class="hero-title serif">Pequeñas canciones para emociones enormes.</h1>
+                <h2 class="hero-subtitle">Un archivo de recuerdos convertidos en canciones.</h2>
+            </div>
+            
+            <div class="hero-featured reveal">
+                <span class="featured-label">Video Oficial</span>
+                <div class="cover-placeholder" onclick="app.openSong('llevame')">
+                    <img src="images/llevame.webp" class="cover-image" alt="Llévame">
+                </div>
+                <h3 class="featured-title serif">Llévame</h3>
+                
+                <div class="media-embeds">
+
+    <!-- Spotify -->
+    <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/artist/59XvVC5GQwHQfEWHPTzqnq?utm_source=generator"
+        width="100%"
+        height="352"
+        frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
+
+    <!-- Video Oficial -->
+    <iframe
+        width="100%"
+        height="500"
+        src="https://www.youtube.com/embed/cZwz0fXnt6E"
+        title="Alex Arcano - Video Oficial"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+
+</div>
+                
+                <a onclick="app.openSong('llevame')" class="btn-link">Ver detalles de la canción</a>
+            </div>
+
+            <div class="social-nav reveal">
+                <a href="https://www.instagram.com/alex.arcano/" target="_blank" class="btn-link">Instagram</a>
+                <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank" class="btn-link">Facebook</a>
+                <a href="https://www.tiktok.com/@alex.arcano" target="_blank" class="btn-link">TikTok</a>
+                <a href="https://x.com/AlexArcano_" target="_blank" class="btn-link">X</a>
+                <a href="https://www.threads.com/@alex.arcano" target="_blank" class="btn-link">Threads</a>
+            </div>
+        </section>
+
+        <section id="musica" class="view">
+            <div class="gallery-grid" id="gallery-container">
+                </div>
+        </section>
+
+        <section id="cancion-detalle" class="view">
+            <div class="song-template-wrapper">
+                <div class="back-link reveal" onclick="app.navigate('musica')">
+                    ← Volver a la colección
+                </div>
+                
+                <div class="song-header reveal">
+                    <div class="cover-placeholder" style="cursor: default;">
+                        </div>
+                    <h1 class="song-title-large serif" id="detail-title">Título</h1>
+                    <div class="song-meta" id="detail-date">Año de lanzamiento</div>
+                </div>
+
+                <div class="song-actions reveal">
+                    </div>
+
+                <p class="song-story reveal" id="detail-story">Historia de la canción disponible próximamente.</p>
+            </div>
+        </section>
+
+        <section id="notas" class="view">
+            <div class="notes-header reveal">
+                <h1 class="hero-title serif">Diario Creativo</h1>
+                <div class="notes-categories">
+                    <span class="category-tag">Historias detrás de las canciones</span>
+                    <span class="category-tag">Reflexiones</span>
+                    <span class="category-tag">Inspiración</span>
+                    <span class="category-tag">Proceso creativo</span>
+                </div>
+            </div>
+
+            <div class="notes-container">
+                <article class="note-entry reveal">
+                    <div class="note-category-label">Proceso Creativo</div>
+                    <span class="note-date">Fecha por definir</span>
+                    <h2 class="note-title serif">El inicio del archivo</h2>
+                    <div class="note-body">
+                        <p>Las primeras anotaciones de este diario creativo estarán disponibles pronto. Un espacio dedicado a explorar lo que sucede antes y después de que una canción esté terminada.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="view">
+            <div class="about-container reveal">
+                <h2 class="about-title serif">Sobre el Artista</h2>
+                <div class="about-text">
+                    <p>Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop, balada pop y pop alternativo.</p>
+                    <p>Su propuesta mezcla minimalismo visual y honestidad emocional, creando un universo donde cada canción funciona como una fotografía de momentos que el tiempo no logró borrar.</p>
+                    <p>A través de letras introspectivas, atmósferas melancólicas y una identidad visual coherente, Alex Arcano construye una experiencia artística centrada en la nostalgia, la memoria y las emociones humanas.</p>
+                </div>
+                
+                <div class="social-nav" style="margin-top: 4rem; border-top: none;">
+                    <a href="mailto:alexarcano.musica@gmail.com" class="btn-link">Contacto Directo</a>
+                    <a href="https://www.instagram.com/alex.arcano/" target="_blank" class="btn-link">Instagram</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Catálogo Oficial
+        const songs = [
+            {
+            id:'cuentame-a',
+            title:'Cuéntame Parte A',
+            image:'images/cuentame-a.webp',
+            youtube:'https://youtu.be/qLFepwKCm54?si=6hJ85H81g0hszdvW',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'released',
+            year:'2024',
+            story:'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta. Una conversación imaginaria con alguien que ya no está, pero cuya ausencia sigue ocupando espacio en cada recuerdo.'
+            },
+            {
+            id:'cuentame-b',
+            title:'Cuéntame Parte B',
+            image:'images/cuentame-b.webp',
+            youtube:'https://youtu.be/bcxLLlF6ajs?si=ILdD9aJVIXWIK2BG',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'released',
+            year:'2025',
+            story:'El cierre emocional de una conversación pendiente. Una canción sobre aceptar el silencio, aprender a vivir con las respuestas que nunca llegaron y encontrar calma en medio de la incertidumbre.'
+            },
+            {
+            id:'donde',
+            title:'Dónde',
+            image:'images/donde.webp',
+            youtube:'https://youtu.be/I1DabSSVEyY?si=QJ4e4e3aPhoi57Pz',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'released',
+            year:'2025',
+            story:'Una búsqueda entre recuerdos, lugares y promesas rotas. La canción explora el vacío que queda cuando una historia termina y las preguntas permanecen abiertas.'
+            },
+            {
+            id:'reflejos',
+            title:'Reflejos',
+            image:'images/reflejos.webp',
+            youtube:'https://youtu.be/Fc8H_Aokxms?si=qnjLGCuOZOy5aMFy',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'released',
+            year:'2024',
+            story:'Una mirada hacia el pasado a través de los fragmentos que aún permanecen en la memoria. Reflejos habla de identidad, cambios y las huellas que dejan las personas que pasan por nuestra vida.'
+            },
+            {
+            id:'tan-solo',
+            title:'Tan Solo',
+            image:'images/tan-solo.webp',
+            youtube:'https://youtu.be/Dd0FsxpWJds?si=byVyfw_W4rkh92II',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'released',
+            year:'2024',
+            story:'Una canción nacida de la nostalgia y la distancia emocional. Habla de esas noches en las que los recuerdos parecen más fuertes que el paso del tiempo.'
+            },
+            {
+            id:'juegos-perdidos',
+            title:'Juegos Perdidos',
+            image:'images/juegos-perdidos.webp',
+            youtube:'https://youtu.be/nfFsRET3peI?si=JpOah6eecEwSRfx4',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'released',
+            year:'2025',
+            story:'Inspirada en los errores, las decisiones impulsivas y las oportunidades que no regresan. Una reflexión sobre las apuestas emocionales que todos hacemos alguna vez.'
+            },
+            {
+            id:'llevame',
+            title:'Llévame',
+            image:'images/llevame.webp',
+            youtube:'https://youtu.be/eZewzY6oK6g?si=_QF2EL70FUWB27-y',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'upcoming',
+            year:'2026',
+            story:'Una invitación a dejar atrás el ruido, los miedos y las rutinas. Una canción sobre el deseo de encontrar un nuevo comienzo cuando todo parece detenido.'
+            },
+            {
+            id:'hoy-tiene-tu-nombre',
+            title:'Hoy Tiene Tu Nombre',
+            image:'images/hoy-tiene-tu-nombre.webp',
+            youtube:'https://youtu.be/2YPGhVArN9k?si=XXCEPG4tgLYXnFbR',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'upcoming',
+            year:'2026',
+            story:'Un retrato de esos días en los que cualquier detalle es capaz de despertar un recuerdo. Una canción sobre la permanencia emocional de las personas que marcaron nuestra historia.'
+            },
+            {
+            id:'lo-que-el-tiempo',
+            title:'Lo Que El Tiempo Nunca Se Llevó',
+            image:'images/lo-que-el-tiempo.webp',
+            youtube:'https://youtu.be/z-tIGbOn0lk?si=cLCVCGvi6vrCPQvn',
+            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            status:'upcoming',
+            year:'2026',
+            story:'Una reflexión sobre aquello que permanece intacto a pesar de los años. Los recuerdos, las emociones y los momentos que siguen viviendo dentro de nosotros.'
+            }
+];
+window.songs = songs;
+
+        const app = {
+            init: function() {
+                this.renderGallery();
+                this.initScrollReveal();
+                this.initHeaderScroll();
+                
+                setTimeout(() => this.triggerReveal(), 100);
+            },
+
+            navigate: function(viewId) {
+                document.getElementById('nav-menu').classList.remove('mobile-active');
+                
+                document.querySelectorAll('.view').forEach(view => {
+                    view.classList.remove('active');
+                });
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                document.getElementById(viewId).classList.add('active');
+                
+                if(viewId !== 'cancion-detalle' && document.getElementById('nav-' + viewId)) {
+                    document.getElementById('nav-' + viewId).classList.add('active');
+                } else if (viewId === 'cancion-detalle') {
+                    document.getElementById('nav-musica').classList.add('active');
+                }
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
+                setTimeout(() => this.triggerReveal(), 300);
+            },
+
+            renderGallery: function() {
+                const container = document.getElementById('gallery-container');
+                container.innerHTML = '';
+
+                songs.forEach(song => {
+                    const badge = song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : '';
+                    
+                    const card = document.createElement('div');
+                    card.className = 'song-card reveal';
+                    card.onclick = () => this.openSong(song.id);
+                    
+                    card.innerHTML = `
+                    <div class="song-card-img-wrapper">
+                    ${badge}
+                    <img src="${song.image}" alt="${song.title}" class="cover-image">
+                    </div>
+                    
+                    <h3 class="song-card-title serif">
+                    ${song.title}
+                    </h3>
+                    `;
+                    container.appendChild(card);
+                });
+            },
+
+            openSong: function(songId) {
+    const song = songs.find(s => s.id === songId);
+
+    if(!song) return;
+
+    window.currentSong = song;
+
+    document.getElementById('detail-title').textContent = song.title; song.title;
+                document.getElementById('detail-date').textContent = song.year;
+                document.getElementById('detail-story').textContent = song.story;
+                
+                document.querySelector('.song-header .cover-placeholder').innerHTML =
+                `<img src="${song.image}" class="cover-image">`;
+                
+                document.querySelector('.song-actions').innerHTML = `
+                <a href="${song.spotify}" target="_blank" class="btn-link">
+                Escuchar en Spotify
+                </a>
+                
+                <a href="${song.youtube}" target="_blank" class="btn-link">
+                Ver en YouTube
+                </a>
+                
+                <a href="#" onclick="alert('Enlace copiado al portapapeles')" class="btn-link">
+                Compartir
+                </a>
+                `;
+                
+                this.navigate('cancion-detalle');
+            },
+
+            // Sistema Avanzado de Animación al hacer Scroll (Intersection Observer)
+            initScrollReveal: function() {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.15
+                };
+
+                this.observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                        }
+                    });
+                }, observerOptions);
+            },
+
+            triggerReveal: function() {
+                const reveals = document.querySelectorAll('.view.active .reveal');
+                reveals.forEach(el => this.observer.observe(el));
+            },
+            
+            // Efecto de Header al hacer Scroll
+            initHeaderScroll: function() {
+                window.addEventListener('scroll', () => {
+                    const header = document.getElementById('main-header');
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        };
+
+        app.init();
+    </script>
+</body>
+</html>
