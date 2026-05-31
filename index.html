@@ -634,17 +634,25 @@
 
 @media (max-width: 768px) {
 
-    body{
-        background:
+    body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
         linear-gradient(
-            rgba(252,252,252,0.50),
-            rgba(252,252,252,0.50)
+            rgba(252,252,252,0.82),
+            rgba(252,252,252,0.82)
         ),
-        url('images/fondo.webp') center center no-repeat;
+        url('images/fondo.webp') center top/cover no-repeat;
 
-        background-size: cover;
-        background-attachment: scroll;
-    }
+    z-index:0;
+}
+
+main,
+header{
+    position:relative;
+    z-index:1;
+}
 }
 
     </style>
