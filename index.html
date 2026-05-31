@@ -756,7 +756,8 @@
                 </div>
                 
                 <div class="social-nav" style="margin-top: 4rem; border-top: none;">
-  <a href="mailto:alexarcano.musica@gmail.com" class="btn-link">Contacto por Email</a>
+  <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano"
+   class="btn-link">Contacto por Email</a>
 <a href="tel:+573183557890" class="btn-link">WhatsApp / Teléfono</a>
                     <a href="https://www.instagram.com/alex.arcano/" target="_blank" class="btn-link">Instagram</a>
                 </div>
@@ -860,37 +861,48 @@
 ];
 window.songs = songs;
 
-        const app = {
-            init: function() {
-                this.renderGallery();
-                this.initScrollReveal();
-                this.initHeaderScroll();
-                
-                setTimeout(() => this.triggerReveal(), 100);
+        init: function() {
+
+    const hash = window.location.hash.replace("#", "");
+
+    if (hash && document.getElementById(hash)) {
+        this.navigate(hash);
+    }
+
+    this.renderGallery();
+    this.initScrollReveal();
+    this.initHeaderScroll();
+
+    setTimeout(() => this.triggerReveal(), 100);
+},
             },
 
             navigate: function(viewId) {
-                document.getElementById('nav-menu').classList.remove('mobile-active');
-                
-                document.querySelectorAll('.view').forEach(view => {
-                    view.classList.remove('active');
-                });
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.classList.remove('active');
-                });
 
-                document.getElementById(viewId).classList.add('active');
-                
-                if(viewId !== 'cancion-detalle' && document.getElementById('nav-' + viewId)) {
-                    document.getElementById('nav-' + viewId).classList.add('active');
-                } else if (viewId === 'cancion-detalle') {
-                    document.getElementById('nav-musica').classList.add('active');
-                }
+    history.pushState({ view: viewId }, "", `#${viewId}`);
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
-                setTimeout(() => this.triggerReveal(), 300);
+    document.getElementById('nav-menu').classList.remove('mobile-active');
+
+    document.querySelectorAll('.view').forEach(view => {
+        view.classList.remove('active');
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active');
+    });
+
+    document.getElementById(viewId).classList.add('active');
+
+    if(viewId !== 'cancion-detalle' && document.getElementById('nav-' + viewId)) {
+        document.getElementById('nav-' + viewId).classList.add('active');
+    } else if (viewId === 'cancion-detalle') {
+        document.getElementById('nav-musica').classList.add('active');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
+    setTimeout(() => this.triggerReveal(), 300);
             },
 
             renderGallery: function() {
@@ -985,6 +997,11 @@ window.songs = songs;
         };
 
         app.init();
+        window.addEventListener("popstate", (e) => {
+    if (e.state?.view) {
+        app.navigate(e.state.view);
+    }
+});
     </script>
 </body>
 </html>
