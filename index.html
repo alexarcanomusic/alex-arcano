@@ -9,13 +9,24 @@
     <meta name="author" content="Alex Arcano">
     <meta name="theme-color" content="#FCFCFC">
     
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.alexarcano.com/">
-    <meta property="og:title" content="Alex Arcano | Galería Emocional">
-    <meta property="og:description" content="Un archivo de recuerdos convertidos en canciones. Explora el minimalismo emocional de Alex Arcano.">
-   <meta property="og:image" content="https://alexarcanomusic.github.io/alex-arcano/images/og-image.jpg">
+   <meta property="og:type" content="website">
+<meta property="og:url" content="https://alexarcanomusic.github.io/alex-arcano/">
+<meta property="og:title" content="Alex Arcano | Galería Emocional">
+<meta property="og:description" content="Un archivo de recuerdos convertidos en canciones. Explora el minimalismo emocional de Alex Arcano.">
+<meta property="og:image" content="https://alexarcanomusic.github.io/alex-arcano/images/og-image.jpg">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alex Arcano | Galería Emocional">
+<meta name="twitter:description" content="Un archivo de recuerdos convertidos en canciones.">
+<meta name="twitter:image" content="https://alexarcanomusic.github.io/alex-arcano/images/og-image.jpg">
 
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <title>Alex Arcano | Galería Emocional</title>
     
@@ -644,6 +655,7 @@
     background: url('images/fondo.webp') center center / cover no-repeat;
     opacity: 0.75;
     z-index: -1;
+    pointer-events:none;
 }
 
 }
@@ -790,7 +802,11 @@
                 <div class="social-nav" style="margin-top: 4rem; border-top: none;">
   <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano"
    class="btn-link">Contacto por Email</a>
-<a href="tel:+573183557890" class="btn-link">WhatsApp / Teléfono</a>
+<a href="https://wa.me/+573183557890"
+target="_blank"
+class="btn-link">
+WhatsApp
+</a>
                     <a href="https://www.instagram.com/alex.arcano/" target="_blank" class="btn-link">Instagram</a>
                 </div>
             </div>
@@ -906,10 +922,15 @@ const app = {
         this.historyStack = ['inicio'];
         this.historyIndex = 0;
 
-        const hash = window.location.hash.replace("#", "");
-        if (hash && document.getElementById(hash)) {
-            this.navigate(hash, false);
-        }
+        const hash = window.location.hash.substring(1);
+
+if (
+    hash &&
+    document.getElementById(hash) &&
+    hash !== 'cancion-detalle'
+) {
+    this.navigate(hash, false);
+}
 
         this.renderGallery();
         this.initScrollReveal();
@@ -999,7 +1020,14 @@ const app = {
         document.querySelector('.song-actions').innerHTML = `
             <a href="${song.spotify}" target="_blank" class="btn-link">Spotify</a>
             <a href="${song.youtube}" target="_blank" class="btn-link">YouTube</a>
-            <a href="#" class="btn-link" onclick="navigator.clipboard.writeText(window.location.href)">Compartir</a>
+            <a href="#" class="btn-link"
+onclick="
+event.preventDefault();
+navigator.clipboard.writeText(window.location.href);
+alert('Enlace copiado');
+">
+Compartir
+</a>
         `;
 
         this.navigate('cancion-detalle');
