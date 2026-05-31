@@ -769,6 +769,10 @@
 /* =========================
    CATÁLOGO
 ========================= */
+<script>
+/* =========================
+   CATÁLOGO
+========================= */
 const songs = [
     {
         id:'cuentame-a',
@@ -863,21 +867,17 @@ const songs = [
 ];
 
 /* =========================
-   APP
+   APP (HISTORIAL PRO)
 ========================= */
 const app = {
-    historyStack: [],
-    historyIndex: -1,
     observer: null,
 
     init() {
-        this.historyStack = ['inicio'];
-        this.historyIndex = 0;
+        const initial = window.location.hash.replace('#','') || 'inicio';
 
-        const hash = window.location.hash.replace("#", "");
-        if (hash && document.getElementById(hash)) {
-            this.navigate(hash);
-        }
+        // estado inicial limpio
+        history.replaceState({view: initial}, "", `#${initial}`);
+        this.navigate(initial, false);
 
         this.renderGallery();
         this.initScrollReveal();
@@ -886,44 +886,26 @@ const app = {
         setTimeout(() => this.triggerReveal(), 100);
     },
 
-    navigate(viewId, push = true) {
-        if (!document.getElementById(viewId)) return;
+    navigate(viewId, pushState = true) {
+        const view = document.getElementById(viewId);
+        if (!view) return;
 
-        if (push) {
-            this.historyStack = this.historyStack.slice(0, this.historyIndex + 1);
-            this.historyStack.push(viewId);
-            this.historyIndex++;
-        }
-
-        document.getElementById('nav-menu').classList.remove('mobile-active');
+        document.getElementById('nav-menu')?.classList.remove('mobile-active');
 
         document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
         document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
 
-        const view = document.getElementById(viewId);
-        if (view) view.classList.add('active');
+        view.classList.add('active');
+        document.getElementById('nav-' + viewId)?.classList.add('active');
 
-        const nav = document.getElementById('nav-' + viewId);
-        if (nav) nav.classList.add('active');
+        if (pushState) {
+            history.pushState({view: viewId}, "", `#${viewId}`);
+        }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
         setTimeout(() => this.triggerReveal(), 200);
-    },
-
-    back() {
-        if (this.historyIndex > 0) {
-            this.historyIndex--;
-            this.navigate(this.historyStack[this.historyIndex], false);
-        }
-    },
-
-    forward() {
-        if (this.historyIndex < this.historyStack.length - 1) {
-            this.historyIndex++;
-            this.navigate(this.historyStack[this.historyIndex], false);
-        }
     },
 
     renderGallery() {
@@ -953,8 +935,6 @@ const app = {
         const song = songs.find(s => s.id === songId);
         if (!song) return;
 
-        window.currentSong = song;
-
         document.getElementById('detail-title').textContent = song.title;
         document.getElementById('detail-date').textContent = song.year;
         document.getElementById('detail-story').textContent = song.story;
@@ -981,31 +961,27 @@ const app = {
 
     triggerReveal() {
         document.querySelectorAll('.view.active .reveal')
-            .forEach(el => this.observer.observe(el));
+            .forEach(el => this.observer?.observe(el));
     },
 
     initHeaderScroll() {
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            if (!header) return;
-            header.classList.toggle('scrolled', window.scrollY > 50);
+            document.getElementById('main-header')
+                ?.classList.toggle('scrolled', window.scrollY > 50);
         });
     }
 };
 
 /* =========================
-   INIT
-========================= */
-app.init();
-
-/* =========================
-   BOTÓN BACK NAVEGADOR
+   BACK / FORWARD REAL BROWSER
 ========================= */
 window.addEventListener("popstate", (e) => {
-    if (e.state?.view) {
-        app.navigate(e.state.view, false);
-    }
+    const view = e.state?.view || "inicio";
+    app.navigate(view, false);
 });
+
+/* INIT */
+app.init();
 </script>
 });
 </script>
