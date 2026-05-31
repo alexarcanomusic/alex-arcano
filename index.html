@@ -768,240 +768,206 @@
     <script>
         // Catálogo Oficial
         const songs = [
-            {
-            id:'cuentame-a',
-            title:'Cuéntame Parte A',
-            image:'images/cuentame-a.webp',
-            youtube:'https://youtu.be/qLFepwKCm54?si=6hJ85H81g0hszdvW',
-            spotify:'https://open.spotify.com/intl-es/track/47rtgY73pA1ucGqryWF1t9?si=d9746e93a2334f72',
-            status:'released',
-            year:'2024',
-            story:'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta. Una conversación imaginaria con alguien que ya no está, pero cuya ausencia sigue ocupando espacio en cada recuerdo.'
-            },
-            {
-            id:'cuentame-b',
-            title:'Cuéntame Parte B',
-            image:'images/cuentame-b.webp',
-            youtube:'https://youtu.be/bcxLLlF6ajs?si=ILdD9aJVIXWIK2BG',
-            spotify:'https://open.spotify.com/intl-es/track/5rAmrOaZXuQ3LwNZY6nutW?si=12f070450fc942aa',
-            status:'released',
-            year:'2025',
-            story:'El cierre emocional de una conversación pendiente. Una canción sobre aceptar el silencio, aprender a vivir con las respuestas que nunca llegaron y encontrar calma en medio de la incertidumbre.'
-            },
-            {
-            id:'donde',
-            title:'Dónde',
-            image:'images/donde.webp',
-            youtube:'https://youtu.be/I1DabSSVEyY?si=QJ4e4e3aPhoi57Pz',
-            spotify:'https://open.spotify.com/intl-es/track/0KdjjrT6AsKM4i34jCKka0?si=ba464f185548490d',
-            status:'released',
-            year:'2025',
-            story:'Una búsqueda entre recuerdos, lugares y promesas rotas. La canción explora el vacío que queda cuando una historia termina y las preguntas permanecen abiertas.'
-            },
-            {
-            id:'reflejos',
-            title:'Reflejos',
-            image:'images/reflejos.webp',
-            youtube:'https://youtu.be/Fc8H_Aokxms?si=qnjLGCuOZOy5aMFy',
-            spotify:'https://open.spotify.com/intl-es/track/6xGWaNRLVJD5kzyFTbg59c?si=7e609944469e45e1',
-            status:'released',
-            year:'2024',
-            story:'Una mirada hacia el pasado a través de los fragmentos que aún permanecen en la memoria. Reflejos habla de identidad, cambios y las huellas que dejan las personas que pasan por nuestra vida.'
-            },
-            {
-            id:'tan-solo',
-            title:'Tan Solo',
-            image:'images/tan-solo.webp',
-            youtube:'https://youtu.be/Dd0FsxpWJds?si=byVyfw_W4rkh92II',
-            spotify:'https://open.spotify.com/intl-es/track/6QR6XxXXnmvAZuTe9zCCzS?si=2a010bb058dc4b35',
-            status:'released',
-            year:'2024',
-            story:'Una canción nacida de la nostalgia y la distancia emocional. Habla de esas noches en las que los recuerdos parecen más fuertes que el paso del tiempo.'
-            },
-            {
-            id:'juegos-perdidos',
-            title:'Juegos Perdidos',
-            image:'images/juegos-perdidos.webp',
-            youtube:'https://youtu.be/nfFsRET3peI?si=JpOah6eecEwSRfx4',
-            spotify:'https://open.spotify.com/intl-es/track/13paMRtCN6yRENiETS9UXc?si=401b77f048784615',
-            status:'released',
-            year:'2025',
-            story:'Inspirada en los errores, las decisiones impulsivas y las oportunidades que no regresan. Una reflexión sobre las apuestas emocionales que todos hacemos alguna vez.'
-            },
-            {
-            id:'llevame',
-            title:'Llévame',
-            image:'images/llevame.webp',
-            youtube:'https://youtu.be/eZewzY6oK6g?si=_QF2EL70FUWB27-y',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'upcoming',
-            year:'2026',
-            story:'Una invitación a dejar atrás el ruido, los miedos y las rutinas. Una canción sobre el deseo de encontrar un nuevo comienzo cuando todo parece detenido.'
-            },
-            {
-            id:'hoy-tiene-tu-nombre',
-            title:'Hoy Tiene Tu Nombre',
-            image:'images/hoy-tiene-tu-nombre.webp',
-            youtube:'https://youtu.be/2YPGhVArN9k?si=XXCEPG4tgLYXnFbR',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'upcoming',
-            year:'2026',
-            story:'Un retrato de esos días en los que cualquier detalle es capaz de despertar un recuerdo. Una canción sobre la permanencia emocional de las personas que marcaron nuestra historia.'
-            },
-            {
-            id:'lo-que-el-tiempo',
-            title:'Lo Que El Tiempo Nunca Se Llevó',
-            image:'images/lo-que-el-tiempo.webp',
-            youtube:'https://youtu.be/z-tIGbOn0lk?si=cLCVCGvi6vrCPQvn',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
-            status:'upcoming',
-            year:'2026',
-            story:'Una reflexión sobre aquello que permanece intacto a pesar de los años. Los recuerdos, las emociones y los momentos que siguen viviendo dentro de nosotros.'
-            }
+    {
+        id:'cuentame-a',
+        title:'Cuéntame Parte A',
+        image:'images/cuentame-a.webp',
+        youtube:'https://youtu.be/qLFepwKCm54?si=6hJ85H81g0hszdvW',
+        spotify:'https://open.spotify.com/intl-es/track/47rtgY73pA1ucGqryWF1t9?si=d9746e93a2334f72',
+        status:'released',
+        year:'2024',
+        story:'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta...'
+    },
+    {
+        id:'cuentame-b',
+        title:'Cuéntame Parte B',
+        image:'images/cuentame-b.webp',
+        youtube:'https://youtu.be/bcxLLlF6ajs?si=ILdD9aJVIXWIK2BG',
+        spotify:'https://open.spotify.com/intl-es/track/5rAmrOaZXuQ3LwNZY6nutW?si=12f070450fc942aa',
+        status:'released',
+        year:'2025',
+        story:'El cierre emocional de una conversación pendiente...'
+    },
+    {
+        id:'donde',
+        title:'Dónde',
+        image:'images/donde.webp',
+        youtube:'https://youtu.be/I1DabSSVEyY?si=QJ4e4e3aPhoi57Pz',
+        spotify:'https://open.spotify.com/intl-es/track/0KdjjrT6AsKM4i34jCKka0?si=ba464f185548490d',
+        status:'released',
+        year:'2025',
+        story:'Una búsqueda entre recuerdos, lugares y promesas rotas...'
+    },
+    {
+        id:'reflejos',
+        title:'Reflejos',
+        image:'images/reflejos.webp',
+        youtube:'https://youtu.be/Fc8H_Aokxms?si=qnjLGCuOZOy5aMFy',
+        spotify:'https://open.spotify.com/intl-es/track/6xGWaNRLVJD5kzyFTbg59c?si=7e609944469e45e1',
+        status:'released',
+        year:'2024',
+        story:'Una mirada hacia el pasado...'
+    },
+    {
+        id:'tan-solo',
+        title:'Tan Solo',
+        image:'images/tan-solo.webp',
+        youtube:'https://youtu.be/Dd0FsxpWJds?si=byVyfw_W4rkh92II',
+        spotify:'https://open.spotify.com/intl-es/track/6QR6XxXXnmvAZuTe9zCCzS?si=2a010bb058dc4b35',
+        status:'released',
+        year:'2024',
+        story:'Una canción nacida de la nostalgia...'
+    },
+    {
+        id:'juegos-perdidos',
+        title:'Juegos Perdidos',
+        image:'images/juegos-perdidos.webp',
+        youtube:'https://youtu.be/nfFsRET3peI?si=JpOah6eecEwSRfx4',
+        spotify:'https://open.spotify.com/intl-es/track/13paMRtCN6yRENiETS9UXc?si=401b77f048784615',
+        status:'released',
+        year:'2025',
+        story:'Inspirada en los errores...'
+    },
+    {
+        id:'llevame',
+        title:'Llévame',
+        image:'images/llevame.webp',
+        youtube:'https://youtu.be/eZewzY6oK6g?si=_QF2EL70FUWB27-y',
+        spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
+        status:'upcoming',
+        year:'2026',
+        story:'Una invitación a dejar atrás el ruido...'
+    }
 ];
-window.songs = songs;
 
-        init: function() {
+const app = {
+    currentView: 'inicio',
+    observer: null,
 
-    const hash = window.location.hash.replace("#", "");
+    init() {
+        // Evita que el scroll se vaya al inicio al recargar
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
 
-    if (hash && document.getElementById(hash)) {
-        this.navigate(hash);
-    }
+        const hash = window.location.hash.replace("#", "");
+        if (hash && document.getElementById(hash)) {
+            this.navigate(hash, false);
+        }
 
-    this.renderGallery();
-    this.initScrollReveal();
-    this.initHeaderScroll();
+        this.renderGallery();
+        this.initScrollReveal();
+        this.initHeaderScroll();
 
-    setTimeout(() => this.triggerReveal(), 100);
-},
-            },
+        window.scrollTo(0, 0);
 
-            navigate: function(viewId) {
+        setTimeout(() => this.triggerReveal(), 100);
+    },
 
-    history.pushState({ view: viewId }, "", `#${viewId}`);
+    navigate(viewId, push = true) {
+        if (!document.getElementById(viewId)) return;
 
-    document.getElementById('nav-menu').classList.remove('mobile-active');
+        this.currentView = viewId;
 
-    document.querySelectorAll('.view').forEach(view => {
-        view.classList.remove('active');
-    });
+        if (push) {
+            history.pushState({ view: viewId }, "", `#${viewId}`);
+        }
 
-    document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-    });
+        document.getElementById('nav-menu').classList.remove('mobile-active');
 
-    document.getElementById(viewId).classList.add('active');
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        document.getElementById(viewId).classList.add('active');
 
-    if(viewId !== 'cancion-detalle' && document.getElementById('nav-' + viewId)) {
-        document.getElementById('nav-' + viewId).classList.add('active');
-    } else if (viewId === 'cancion-detalle') {
-        document.getElementById('nav-musica').classList.add('active');
-    }
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (viewId === 'cancion-detalle') {
+            document.getElementById('nav-musica').classList.add('active');
+        } else {
+            const nav = document.getElementById('nav-' + viewId);
+            if (nav) nav.classList.add('active');
+        }
 
-    document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
-    setTimeout(() => this.triggerReveal(), 300);
-            },
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            renderGallery: function() {
-                const container = document.getElementById('gallery-container');
-                container.innerHTML = '';
+        document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
+        setTimeout(() => this.triggerReveal(), 200);
+    },
 
-                songs.forEach(song => {
-                    const badge = song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : '';
-                    
-                    const card = document.createElement('div');
-                    card.className = 'song-card reveal';
-                    card.onclick = () => this.openSong(song.id);
-                    
-                    card.innerHTML = `
-                    <div class="song-card-img-wrapper">
-                    ${badge}
-                    <img src="${song.image}" alt="${song.title}" class="cover-image">
-                    </div>
-                    
-                    <h3 class="song-card-title serif">
-                    ${song.title}
-                    </h3>
-                    `;
-                    container.appendChild(card);
-                });
-            },
+    renderGallery() {
+        const container = document.getElementById('gallery-container');
+        container.innerHTML = '';
 
-            openSong: function(songId) {
-    const song = songs.find(s => s.id === songId);
+        songs.forEach(song => {
+            const card = document.createElement('div');
+            card.className = 'song-card reveal';
+            card.onclick = () => this.openSong(song.id);
 
-    if(!song) return;
-
-    window.currentSong = song;
-
-    document.getElementById('detail-title').textContent = song.title;
-                document.getElementById('detail-date').textContent = song.year;
-                document.getElementById('detail-story').textContent = song.story;
-                
-                document.querySelector('.song-header .cover-placeholder').innerHTML =
-                `<img src="${song.image}" class="cover-image">`;
-                
-                document.querySelector('.song-actions').innerHTML = `
-                <a href="${song.spotify}" target="_blank" class="btn-link">
-                Escuchar en Spotify
-                </a>
-                
-                <a href="${song.youtube}" target="_blank" class="btn-link">
-                Ver en YouTube
-                </a>
-                
-                <a href="#" onclick="alert('Enlace copiado al portapapeles')" class="btn-link">
-                Compartir
-                </a>
-                `;
-                
-                this.navigate('cancion-detalle');
-            },
-
-            // Sistema Avanzado de Animación al hacer Scroll (Intersection Observer)
-            initScrollReveal: function() {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.15
-                };
-
-                this.observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                        }
-                    });
-                }, observerOptions);
-            },
-
-            triggerReveal: function() {
-                const reveals = document.querySelectorAll('.view.active .reveal');
-                reveals.forEach(el => this.observer.observe(el));
-            },
-            
-            // Efecto de Header al hacer Scroll
-            initHeaderScroll: function() {
-                window.addEventListener('scroll', () => {
-                    const header = document.getElementById('main-header');
-                    if (window.scrollY > 50) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
+            card.innerHTML = `
+                <div class="song-card-img-wrapper">
+                    ${song.status === 'upcoming'
+                        ? '<span class="badge-upcoming">Próximamente</span>'
+                        : ''
                     }
-                });
-            }
-        };
+                    <img src="${song.image}" class="cover-image" alt="${song.title}">
+                </div>
+                <h3 class="song-card-title serif">${song.title}</h3>
+            `;
 
-        app.init();
-        window.addEventListener("popstate", (e) => {
+            container.appendChild(card);
+        });
+    },
+
+    openSong(songId) {
+        const song = songs.find(s => s.id === songId);
+        if (!song) return;
+
+        window.currentSong = song;
+
+        document.getElementById('detail-title').textContent = song.title;
+        document.getElementById('detail-date').textContent = song.year;
+        document.getElementById('detail-story').textContent = song.story;
+
+        document.querySelector('.song-header .cover-placeholder').innerHTML =
+            `<img src="${song.image}" class="cover-image">`;
+
+        document.querySelector('.song-actions').innerHTML = `
+            <a href="${song.spotify}" target="_blank" class="btn-link">Escuchar Spotify</a>
+            <a href="${song.youtube}" target="_blank" class="btn-link">Ver YouTube</a>
+            <a href="#" onclick="navigator.clipboard.writeText(window.location.href)" class="btn-link">Compartir</a>
+        `;
+
+        this.navigate('cancion-detalle');
+    },
+
+    initScrollReveal() {
+        this.observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+    },
+
+    triggerReveal() {
+        document
+            .querySelectorAll('.view.active .reveal')
+            .forEach(el => this.observer.observe(el));
+    },
+
+    initHeaderScroll() {
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    }
+};
+
+app.init();
+
+window.addEventListener("popstate", (e) => {
     if (e.state?.view) {
-        app.navigate(e.state.view);
+        app.navigate(e.state.view, false);
     }
 });
-    </script>
-</body>
-</html>
