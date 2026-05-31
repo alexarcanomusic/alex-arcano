@@ -575,9 +575,60 @@
             .about-title { font-size: 3rem; }
             .song-actions { flex-direction: column; align-items: center; gap: 2rem; }
         }
+
+/* BOTÓN SUBIR */
+#scrollTopBtn{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#181818;
+    color:white;
+    cursor:pointer;
+    font-size:22px;
+    z-index:9999;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* ATRÁS / ADELANTE */
+#historyNav{
+    position:fixed;
+    bottom:30px;
+    left:30px;
+    display:flex;
+    gap:10px;
+    z-index:9999;
+}
+
+#historyNav button{
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#181818;
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
     </style>
 </head>
 <body>
+
+    <!-- BOTÓN SUBIR -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        ↑
+    </button>
+
+    <!-- BOTONES ATRÁS / ADELANTE -->
+    <div id="historyNav">
+        <button onclick="history.back()">←</button>
+        <button onclick="history.forward()">→</button>
+    </div>
 
     <header id="main-header">
         <div class="logo" onclick="app.navigate('inicio')">Alex Arcano</div>
@@ -600,11 +651,11 @@
             </div>
             
             <div class="hero-featured reveal">
-                <span class="featured-label">Video Oficial</span>
+                <span class="featured-label">Próximo Lanzamiento</span>
                 <div class="cover-placeholder" onclick="app.openSong('llevame')">
-                    <img src="images/llevame.webp" class="cover-image" alt="Llévame">
-                </div>
-                <h3 class="featured-title serif">Llévame</h3>
+    <img src="images/llevame.webp" class="cover-image" alt="Llévame">
+</div>
+                <h3 class="featured-title serif">Dónde</h3>
                 
                 <div class="media-embeds">
 
@@ -633,7 +684,9 @@
 
 </div>
                 
-                <a onclick="app.openSong('llevame')" class="btn-link">Ver detalles de la canción</a>
+  <a onclick="app.openSong('donde')" class="btn-link">
+    Ver detalles de la canción
+</a>
             </div>
 
             <div class="social-nav reveal">
@@ -718,7 +771,7 @@
             title:'Cuéntame Parte A',
             image:'images/cuentame-a.webp',
             youtube:'https://youtu.be/qLFepwKCm54?si=6hJ85H81g0hszdvW',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            spotify:'https://open.spotify.com/intl-es/track/47rtgY73pA1ucGqryWF1t9?si=d9746e93a2334f72',
             status:'released',
             year:'2024',
             story:'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta. Una conversación imaginaria con alguien que ya no está, pero cuya ausencia sigue ocupando espacio en cada recuerdo.'
@@ -728,7 +781,7 @@
             title:'Cuéntame Parte B',
             image:'images/cuentame-b.webp',
             youtube:'https://youtu.be/bcxLLlF6ajs?si=ILdD9aJVIXWIK2BG',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            spotify:'https://open.spotify.com/intl-es/track/5rAmrOaZXuQ3LwNZY6nutW?si=12f070450fc942aa',
             status:'released',
             year:'2025',
             story:'El cierre emocional de una conversación pendiente. Una canción sobre aceptar el silencio, aprender a vivir con las respuestas que nunca llegaron y encontrar calma en medio de la incertidumbre.'
@@ -738,7 +791,7 @@
             title:'Dónde',
             image:'images/donde.webp',
             youtube:'https://youtu.be/I1DabSSVEyY?si=QJ4e4e3aPhoi57Pz',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            spotify:'https://open.spotify.com/intl-es/track/0KdjjrT6AsKM4i34jCKka0?si=ba464f185548490d',
             status:'released',
             year:'2025',
             story:'Una búsqueda entre recuerdos, lugares y promesas rotas. La canción explora el vacío que queda cuando una historia termina y las preguntas permanecen abiertas.'
@@ -748,7 +801,7 @@
             title:'Reflejos',
             image:'images/reflejos.webp',
             youtube:'https://youtu.be/Fc8H_Aokxms?si=qnjLGCuOZOy5aMFy',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            spotify:'https://open.spotify.com/intl-es/track/6xGWaNRLVJD5kzyFTbg59c?si=7e609944469e45e1',
             status:'released',
             year:'2024',
             story:'Una mirada hacia el pasado a través de los fragmentos que aún permanecen en la memoria. Reflejos habla de identidad, cambios y las huellas que dejan las personas que pasan por nuestra vida.'
@@ -758,7 +811,7 @@
             title:'Tan Solo',
             image:'images/tan-solo.webp',
             youtube:'https://youtu.be/Dd0FsxpWJds?si=byVyfw_W4rkh92II',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            spotify:'https://open.spotify.com/intl-es/track/6QR6XxXXnmvAZuTe9zCCzS?si=2a010bb058dc4b35',
             status:'released',
             year:'2024',
             story:'Una canción nacida de la nostalgia y la distancia emocional. Habla de esas noches en las que los recuerdos parecen más fuertes que el paso del tiempo.'
@@ -768,7 +821,7 @@
             title:'Juegos Perdidos',
             image:'images/juegos-perdidos.webp',
             youtube:'https://youtu.be/nfFsRET3peI?si=JpOah6eecEwSRfx4',
-            spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq?si=VmGapWnOS5GXE3mrOIrWVQ',
+            spotify:'https://open.spotify.com/intl-es/track/13paMRtCN6yRENiETS9UXc?si=401b77f048784615',
             status:'released',
             year:'2025',
             story:'Inspirada en los errores, las decisiones impulsivas y las oportunidades que no regresan. Una reflexión sobre las apuestas emocionales que todos hacemos alguna vez.'
@@ -871,7 +924,7 @@ window.songs = songs;
 
     window.currentSong = song;
 
-    document.getElementById('detail-title').textContent = song.title; song.title;
+    document.getElementById('detail-title').textContent = song.title;
                 document.getElementById('detail-date').textContent = song.year;
                 document.getElementById('detail-story').textContent = song.story;
                 
@@ -932,5 +985,13 @@ window.songs = songs;
 
         app.init();
     </script>
+
+    <!-- Botón subir -->
+    <button id="backToTop">↑</button>
+
+    <!-- Botón atrás -->
+    <div id="nav-history">
+        <button onclick="history.back()">←</button>
+    </div>
 </body>
 </html>
