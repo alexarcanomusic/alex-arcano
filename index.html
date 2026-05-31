@@ -774,8 +774,8 @@ const songs = [
         id:'cuentame-a',
         title:'Cuéntame Parte A',
         image:'images/cuentame-a.webp',
-        youtube:'https://youtu.be/qLFepwKCm54?si=6hJ85H81g0hszdvW',
-        spotify:'https://open.spotify.com/intl-es/track/47rtgY73pA1ucGqryWF1t9?si=d9746e93a2334f72',
+        youtube:'https://youtu.be/qLFepwKCm54',
+        spotify:'https://open.spotify.com/intl-es/track/47rtgY73pA1ucGqryWF1t9',
         status:'released',
         year:'2024',
         story:'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta.'
@@ -784,8 +784,8 @@ const songs = [
         id:'cuentame-b',
         title:'Cuéntame Parte B',
         image:'images/cuentame-b.webp',
-        youtube:'https://youtu.be/bcxLLlF6ajs?si=ILdD9aJVIXWIK2BG',
-        spotify:'https://open.spotify.com/intl-es/track/5rAmrOaZXuQ3LwNZY6nutW?si=12f070450fc942aa',
+        youtube:'https://youtu.be/bcxLLlF6ajs',
+        spotify:'https://open.spotify.com/intl-es/track/5rAmrOaZXuQ3LwNZY6nutW',
         status:'released',
         year:'2025',
         story:'El cierre emocional de una conversación pendiente.'
@@ -794,31 +794,87 @@ const songs = [
         id:'donde',
         title:'Dónde',
         image:'images/donde.webp',
-        youtube:'https://youtu.be/I1DabSSVEyY?si=QJ4e4e3aPhoi57Pz',
-        spotify:'https://open.spotify.com/intl-es/track/0KdjjrT6AsKM4i34jCKka0?si=ba464f185548490d',
+        youtube:'https://youtu.be/I1DabSSVEyY',
+        spotify:'https://open.spotify.com/intl-es/track/0KdjjrT6AsKM4i34jCKka0',
         status:'released',
         year:'2025',
         story:'Una búsqueda entre recuerdos, lugares y promesas rotas.'
     },
     {
+        id:'reflejos',
+        title:'Reflejos',
+        image:'images/reflejos.webp',
+        youtube:'https://youtu.be/Fc8H_Aokxms',
+        spotify:'https://open.spotify.com/intl-es/track/6xGWaNRLVJD5kzyFTbg59c',
+        status:'released',
+        year:'2024',
+        story:'Identidad, cambios y huellas emocionales.'
+    },
+    {
+        id:'tan-solo',
+        title:'Tan Solo',
+        image:'images/tan-solo.webp',
+        youtube:'https://youtu.be/Dd0FsxpWJds',
+        spotify:'https://open.spotify.com/intl-es/track/6QR6XxXXnmvAZuTe9zCCzS',
+        status:'released',
+        year:'2024',
+        story:'Nostalgia y distancia emocional en noches largas.'
+    },
+    {
+        id:'juegos-perdidos',
+        title:'Juegos Perdidos',
+        image:'images/juegos-perdidos.webp',
+        youtube:'https://youtu.be/nfFsRET3peI',
+        spotify:'https://open.spotify.com/intl-es/track/13paMRtCN6yRENiETS9UXc',
+        status:'released',
+        year:'2025',
+        story:'Errores, decisiones impulsivas y oportunidades perdidas.'
+    },
+    {
         id:'llevame',
         title:'Llévame',
         image:'images/llevame.webp',
-        youtube:'https://youtu.be/eZewzY6oK6g?si=_QF2EL70FUWB27-y',
+        youtube:'https://youtu.be/eZewzY6oK6g',
         spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
         status:'upcoming',
         year:'2026',
-        story:'Una invitación a dejar atrás el ruido y los miedos.'
+        story:'Un nuevo comienzo cuando todo parece detenido.'
+    },
+    {
+        id:'hoy-tiene-tu-nombre',
+        title:'Hoy Tiene Tu Nombre',
+        image:'images/hoy-tiene-tu-nombre.webp',
+        youtube:'https://youtu.be/2YPGhVArN9k',
+        spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
+        status:'upcoming',
+        year:'2026',
+        story:'Días donde cualquier recuerdo vuelve a aparecer.'
+    },
+    {
+        id:'lo-que-el-tiempo',
+        title:'Lo Que El Tiempo Nunca Se Llevó',
+        image:'images/lo-que-el-tiempo.webp',
+        youtube:'https://youtu.be/z-tIGbOn0lk',
+        spotify:'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
+        status:'upcoming',
+        year:'2026',
+        story:'Lo que permanece intacto a pesar de los años.'
     }
 ];
 
 /* =========================
-   APP PRINCIPAL
+   APP
 ========================= */
 const app = {
-    init() {
-        const hash = window.location.hash.replace("#", "");
+    historyStack: [],
+    historyIndex: -1,
+    observer: null,
 
+    init() {
+        this.historyStack = ['inicio'];
+        this.historyIndex = 0;
+
+        const hash = window.location.hash.replace("#", "");
         if (hash && document.getElementById(hash)) {
             this.navigate(hash);
         }
@@ -830,8 +886,14 @@ const app = {
         setTimeout(() => this.triggerReveal(), 100);
     },
 
-    navigate(viewId) {
-        history.pushState({ view: viewId }, "", `#${viewId}`);
+    navigate(viewId, push = true) {
+        if (!document.getElementById(viewId)) return;
+
+        if (push) {
+            this.historyStack = this.historyStack.slice(0, this.historyIndex + 1);
+            this.historyStack.push(viewId);
+            this.historyIndex++;
+        }
 
         document.getElementById('nav-menu').classList.remove('mobile-active');
 
@@ -847,11 +909,27 @@ const app = {
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
-        setTimeout(() => this.triggerReveal(), 300);
+        setTimeout(() => this.triggerReveal(), 200);
+    },
+
+    back() {
+        if (this.historyIndex > 0) {
+            this.historyIndex--;
+            this.navigate(this.historyStack[this.historyIndex], false);
+        }
+    },
+
+    forward() {
+        if (this.historyIndex < this.historyStack.length - 1) {
+            this.historyIndex++;
+            this.navigate(this.historyStack[this.historyIndex], false);
+        }
     },
 
     renderGallery() {
         const container = document.getElementById('gallery-container');
+        if (!container) return;
+
         container.innerHTML = '';
 
         songs.forEach(song => {
@@ -894,13 +972,11 @@ const app = {
     },
 
     initScrollReveal() {
-        const observer = new IntersectionObserver(entries => {
+        this.observer = new IntersectionObserver(entries => {
             entries.forEach(e => {
                 if (e.isIntersecting) e.target.classList.add('active');
             });
         }, { threshold: 0.15 });
-
-        this.observer = observer;
     },
 
     triggerReveal() {
@@ -911,19 +987,25 @@ const app = {
     initHeaderScroll() {
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
+            if (!header) return;
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
     }
 };
 
 /* =========================
-   INIT + BACK BUTTON
+   INIT
 ========================= */
 app.init();
 
+/* =========================
+   BOTÓN BACK NAVEGADOR
+========================= */
 window.addEventListener("popstate", (e) => {
     if (e.state?.view) {
-        app.navigate(e.state.view);
+        app.navigate(e.state.view, false);
     }
+});
+</script>
 });
 </script>
