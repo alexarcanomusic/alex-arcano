@@ -71,14 +71,16 @@
             font-family: var(--font-sans);
             content: "";
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
 
             background:
                 linear-gradient(
                     rgba(0,0,0,0.50),
                     rgba(0,0,0,0.50)
                 ),
-                /* Si quieres usar og-image.jpg, cámbialo en la línea de abajo. Si era fondo.webp, déjalo como estaba */
                 url('images/fondo.webp') center center / cover no-repeat;
 
             opacity: 1;
