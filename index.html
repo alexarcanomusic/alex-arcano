@@ -602,6 +602,34 @@
             font-weight: 500;
         }
 
+        /* Notificación Toast Premium (Elimina alerts de navegador) */
+        .custom-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(50px);
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 50px;
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            pointer-events: none;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .custom-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
         /* ==========================================
            NOTAS (DIARIO CREATIVO)
            ========================================== */
@@ -825,9 +853,12 @@
 
     <!-- BOTONES ATRÁS / ADELANTE -->
     <div id="historyNav">
-        <button onclick="history.back()">←</button>
-        <button onclick="history.forward()">→</button>
+        <button onclick="app.back()">←</button>
+        <button onclick="app.forward()">→</button>
     </div>
+
+    <!-- Notificación flotante para la copia del enlace -->
+    <div id="toast-notification" class="custom-toast">Enlace copiado</div>
 
     <header id="main-header">
         <div class="logo" onclick="app.goHome()">
@@ -1341,227 +1372,275 @@ Cambiando la memoria por un nuevo destino`
             if (!url) return '';
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             const match = url.match(regExp);
-            return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : '';
+            return (match && match[2].length === 11) ? match[2] : '';
         }
 
         /* =========================
            SISTEMA SPA COMPLETO (SPA ENGINE)
-        ========================= */
+           ========================= */
         const app = {
+            historyStack: [],
+            historyIndex: -1,
             observer: null,
 
             init() {
-                // Configura navegación SPA basada en hashes de URL
-                window.addEventListener('hashchange', () => this.handleRouting());
-                
-                this.renderGallery();
-                this.initScrollReveal();
-                this.initHeaderScroll();
-                this.handleRouting();
-            },
+                this.historyStack = ['inicio'];
+                this.historyIndex = 0;
 
-            handleRouting() {
                 const hash = window.location.hash.substring(1);
-                
+
                 if (hash === 'cancion-detalle') {
                     const savedSongId = sessionStorage.getItem('currentSongId');
                     if (savedSongId) {
-                        this.openSong(savedSongId, false);
+                        this.openSong(savedSongId);
                     } else {
                         this.navigate('inicio', false);
                     }
                 } else if (hash && document.getElementById(hash)) {
                     this.navigate(hash, false);
-                } else {
-                    this.navigate('inicio', false);
                 }
+
+                this.renderGallery();
+                this.initScrollReveal();
+                this.initHeaderScroll();
+
+                setTimeout(() => this.triggerReveal(), 100);
             },
 
             navigate(viewId, push = true) {
                 const currentView = document.querySelector('.view.active');
-                if (currentView && currentView.id === viewId) return;
 
-                if (!document.getElementById(viewId)) return;
-
-                if (push) {
-                    history.pushState({ view: viewId }, "", "#" + viewId);
+                if (currentView && currentView.id === viewId) {
+                    return;
                 }
 
-    document
-        .getElementById('nav-menu')
-        .classList.remove('mobile-active');
+                if (!document.getElementById(viewId)) {
+                    return;
+                }
 
-    document
-        .querySelectorAll('.view')
-        .forEach(v => v.classList.remove('active'));
+                if (push) {
+                    this.historyStack = this.historyStack.slice(0, this.historyIndex + 1);
+                    this.historyStack.push(viewId);
+                    this.historyIndex++;
 
-    document
-        .querySelectorAll('nav a')
-        .forEach(a => a.classList.remove('active'));
+                    history.pushState(
+                        { view: viewId },
+                        "",
+                        "#" + viewId
+                    );
+                }
 
-    const view = document.getElementById(viewId);
+                document.getElementById('nav-menu').classList.remove('mobile-active');
 
-    if (view) {
-        view.classList.add('active');
-    }
+                document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
 
-    const nav = document.getElementById('nav-' + viewId);
+                const view = document.getElementById(viewId);
+                if (view) {
+                    view.classList.add('active');
+                }
 
-    if (nav) {
-        nav.classList.add('active');
-    }
+                const nav = document.getElementById('nav-' + viewId);
+                if (nav) {
+                    nav.classList.add('active');
+                }
 
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
 
-    document
-        .querySelectorAll('.reveal')
-        .forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
 
-    setTimeout(() => this.triggerReveal(), 150);
-},
+                setTimeout(() => this.triggerReveal(), 150);
+            },
 
-    back() {
-        if (this.historyIndex > 0) {
-            this.historyIndex--;
-            this.navigate(this.historyStack[this.historyIndex], false);
+            back() {
+                if (this.historyIndex > 0) {
+                    this.historyIndex--;
+                    this.navigate(this.historyStack[this.historyIndex], false);
+                }
+            },
+
+            forward() {
+                if (this.historyIndex < this.historyStack.length - 1) {
+                    this.historyIndex++;
+                    this.navigate(this.historyStack[this.historyIndex], false);
+                }
+            },
+
+            renderGallery() {
+                const container = document.getElementById('gallery-container');
+                if (!container) return;
+
+                container.innerHTML = '';
+
+                songs.forEach(song => {
+                    const card = document.createElement('div');
+                    card.className = 'song-card reveal';
+                    card.onclick = () => this.openSong(song.id);
+
+                    card.innerHTML = `
+                        <div class="song-card-img-wrapper">
+                            ${song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : ''}
+                            <img src="${song.image}" class="cover-image" alt="${song.title}" onerror="this.src='https://placehold.co/500x500/121212/888888?text=${encodeURIComponent(song.title)}'">
+                            <div class="song-overlay">
+                                <h3 class="song-card-title serif">${song.title}</h3>
+                                <span class="song-card-year">${song.year}</span>
+                            </div>
+                        </div>
+                    `;
+
+                    container.appendChild(card);
+                });
+            },
+
+            openSong(songId) {
+                if (
+                    document.getElementById('cancion-detalle').classList.contains('active')
+                    &&
+                    window.currentSong?.id === songId
+                ){
+                    return;
+                }
+                const song = songs.find(s => s.id === songId);
+                if (!song) return;
+
+                window.currentSong = song;
+                sessionStorage.setItem('currentSongId', songId);
+
+                document.getElementById('detail-title').textContent = song.title;
+                document.getElementById('detail-date').textContent = song.year;
+                document.getElementById('detail-story').textContent = song.story;
+
+                document.getElementById('detail-cover-container').innerHTML =
+                    `<img src="${song.image}" class="cover-image" alt="${song.title}" onerror="this.src='https://placehold.co/500x500/121212/888888?text=${encodeURIComponent(song.title)}'">`;
+
+                // Inyección dinámica de video de YouTube si está disponible
+                const videoContainer = document.getElementById('detail-video-container');
+                const embedId = getYoutubeEmbedUrl(song.youtube);
+                if (embedId && song.status !== 'upcoming') {
+                    videoContainer.innerHTML = `
+                        <iframe class="video-responsive" 
+                            src="https://www.youtube.com/embed/${embedId}" 
+                            title="${song.title} - Video Oficial" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>`;
+                    videoContainer.style.display = 'block';
+                } else {
+                    videoContainer.innerHTML = '';
+                    videoContainer.style.display = 'none';
+                }
+
+                // Lógica de letras dinámica con Slide + Fade
+                const lyricsWrapper = document.getElementById('detail-lyrics-wrapper');
+                const lyricsText = document.getElementById('lyrics-text');
+                const lyricsContent = document.getElementById('lyrics-content-container');
+                const toggleBtn = document.getElementById('btn-toggle-lyrics');
+
+                // Resetea el estado del colapsable de letras
+                lyricsContent.classList.remove('abierto');
+                if (toggleBtn) toggleBtn.innerText = "Leer Letra";
+
+                if (song.lyrics) {
+                    lyricsText.innerHTML = formatLyrics(song.lyrics);
+                    lyricsWrapper.style.display = 'block';
+                } else {
+                    lyricsText.innerHTML = '';
+                    lyricsWrapper.style.display = 'none';
+                }
+
+                // Actualizar enlaces / acciones
+                const actionsContainer = document.querySelector('.song-actions');
+                if (song.status === 'upcoming') {
+                    actionsContainer.innerHTML = `<span class="btn-link" style="cursor: default; border-color: rgba(255,255,255,0.15); opacity: 0.6;">Próximamente en Spotify</span>`;
+                } else {
+                    actionsContainer.innerHTML = `
+                        <a href="${song.spotify}" target="_blank" rel="noopener noreferrer" class="btn-link">Spotify</a>
+                        <a href="${song.youtube}" target="_blank" rel="noopener noreferrer" class="btn-link">YouTube</a>
+                        <a href="#" class="btn-link" onclick="event.preventDefault(); app.copyShareLink();">Compartir</a>
+                    `;
+                }
+
+                this.navigate('cancion-detalle');
+            },
+
+            toggleLyrics() {
+                const container = document.getElementById('lyrics-content-container');
+                const btn = document.getElementById('btn-toggle-lyrics');
+                const isOpen = container.classList.toggle('abierto');
+                
+                btn.innerText = isOpen ? "Ocultar Letra" : "Leer Letra";
+            },
+
+            copyShareLink() {
+                const dummy = document.createElement('input');
+                document.body.appendChild(dummy);
+                // Generar un link que apunte directamente a la canción actual usando sessionStorage
+                dummy.value = window.location.origin + window.location.pathname + "#cancion-detalle";
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+
+                // Mostrar notificación Toast sin alert() intrusivo
+                const toast = document.getElementById('toast-notification');
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 2500);
+                }
+            },
+
+            goHome() {
+                if (
+                    document.querySelector('.view.active')?.id === 'inicio'
+                ){
+                    return;
+                }
+
+                this.navigate('inicio');
+            },
+
+            initScrollReveal() {
+                this.observer = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) e.target.classList.add('active');
+                    });
+                }, { threshold: 0.15 });
+            },
+
+            triggerReveal() {
+                document.querySelectorAll('.view.active .reveal')
+                    .forEach(el => this.observer.observe(el));
+            },
+
+            initHeaderScroll() {
+                window.addEventListener('scroll', () => {
+                    const header = document.getElementById('main-header');
+                    if (!header) return;
+                    header.classList.toggle('scrolled', window.scrollY > 50);
+                });
+            }
+        };
+
+        /* =========================
+           INIT
+           ========================= */
+        window.onload = function() {
+            app.init();
         }
-    },
 
-    forward() {
-        if (this.historyIndex < this.historyStack.length - 1) {
-            this.historyIndex++;
-            this.navigate(this.historyStack[this.historyIndex], false);
-        }
-    },
-
-    renderGallery() {
-        const container = document.getElementById('gallery-container');
-        if (!container) return;
-
-        container.innerHTML = '';
-
-        songs.forEach(song => {
-            const card = document.createElement('div');
-            card.className = 'song-card reveal';
-            card.onclick = () => this.openSong(song.id);
-
-            card.innerHTML = `
-    <div class="song-card-img-wrapper">
-        ${song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : ''}
-
-        <img src="${song.image}" class="cover-image" alt="${song.title}">
-
-        <div class="song-overlay">
-            <h3 class="song-card-title serif">${song.title}</h3>
-            <span class="song-card-year">${song.year}</span>
-        </div>
-    </div>
-`;
-
-            container.appendChild(card);
+        /* =========================
+           BACK/FORWARD NAVEGADOR REAL
+           ========================= */
+        window.addEventListener("popstate", (e) => {
+            if (e.state?.view) {
+                app.navigate(e.state.view, false);
+            }
         });
-    },
-
-    openSong(songId) {
-
-    if (
-        document.getElementById('cancion-detalle')
-            .classList.contains('active')
-        &&
-        window.currentSong?.id === songId
-    ){
-        return;
-    }
-        const song = songs.find(s => s.id === songId);
-        if (!song) return;
-
-        window.currentSong = song;
-        
-        sessionStorage.setItem('currentSongId', songId);
-
-        document.getElementById('detail-title').textContent = song.title;
-        document.getElementById('detail-date').textContent = song.year;
-        document.getElementById('detail-story').textContent = song.story;
-
-        document.querySelector('.song-header .cover-placeholder').innerHTML =
-            `<img src="${song.image}"
-     class="cover-image"
-     alt="${song.title}">`;
-
-        let embedUrl = song.youtube;
-        if(embedUrl.includes('youtu.be/')) {
-            embedUrl = embedUrl.replace('youtu.be/', 'www.youtube.com/embed/');
-        }
-
-        document.getElementById('detail-video-container').innerHTML = `
-            <iframe
-                class="video-responsive"
-                src="${embedUrl}"
-                title="${song.title} - Video Oficial"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        `;
-
-        document.querySelector('.song-actions').innerHTML = `
-            <a href="${song.spotify}" target="_blank" class="btn-link">Spotify</a>
-            <a href="${song.youtube}" target="_blank" class="btn-link">YouTube</a>
-            <a href="#" class="btn-link"
-onclick="
-event.preventDefault();
-navigator.clipboard.writeText(window.location.href);
-alert('Enlace copiado');
-">
-Compartir
-</a>
-        `;
-
-        this.navigate('cancion-detalle');
-},
-   goHome() {
-
-        if (
-            document.querySelector('.view.active')?.id === 'inicio'
-        ){
-            return;
-        }
-
-        this.navigate('inicio');
-    },
-
-    initScrollReveal() {
-        this.observer = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) e.target.classList.add('active');
-            });
-        }, { threshold: 0.15 });
-    },
-
-    triggerReveal() {
-        document.querySelectorAll('.view.active .reveal')
-            .forEach(el => this.observer.observe(el));
-    },
-
-    initHeaderScroll() {
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            if (!header) return;
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-    }
-};
-
-app.init();
-
-window.addEventListener("popstate", (e) => {
-    if (e.state?.view) {
-        app.navigate(e.state.view, false);
-    }
-});
-</script>
+    </script>
 </body>
 </html>
