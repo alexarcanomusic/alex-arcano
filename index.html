@@ -51,23 +51,26 @@
             --spacing-element: 2rem;
         }
 
-       }
+       html {
+    scroll-behavior: smooth;
+}
 
-      html {
-            scroll-behavior: smooth;
-            background-color: #000000;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body::before {
     color: #FFFFFF;
     font-family: var(--font-sans);
     content: "";
     position: fixed;
-    inset: 0;
+
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
 
     background:
         linear-gradient(
@@ -78,11 +81,15 @@
 
     opacity: 1;
     z-index: -1;
+
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
 }
         
         /* ==========================================
            TIPOGRAFÍA Y EDITORIAL
-           ========================================== */ 
+           ========================================== */
         h1, h2, h3, h4, .serif {
             font-family: var(--font-serif);
             font-weight: 400;
