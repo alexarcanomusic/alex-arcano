@@ -39,10 +39,10 @@
            VARIABLES Y CONFIGURACIÓN BASE
            ========================================== */
         :root {
-    --color-bg: #FCFCFC;
-    --color-text: #FFFFFF;
---color-muted: rgba(255,255,255,0.78);
-   --color-accent: rgba(255,255,255,0.92);    
+            --color-bg: #FCFCFC;
+            --color-text: #FFFFFF;
+            --color-muted: rgba(255,255,255,0.78);
+            --color-accent: rgba(255,255,255,0.92);    
             
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Inter', sans-serif;
@@ -343,18 +343,6 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.60);
             gap: 3rem;
         }
 
-        .embed-box {
-            width: 100%;
-            background: #FAFAFA;
-            border: 1px solid #EAEAEA;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--color-muted);
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
         /* Redes Sociales */
         .social-nav {
             margin-top: 3rem;
@@ -485,7 +473,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.60);
         }
 
         .song-header .cover-placeholder {
-            max-width: 600px;
+            max-width: 500px; /* Igual al de inicio */
             margin: 0 auto;
             aspect-ratio: 1/1;
         }
@@ -520,7 +508,7 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
         /* Contenedor del video en el detalle */
         #detail-video-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 500px; /* Igual al de inicio */
             margin: 4rem auto;
         }
 
@@ -741,10 +729,12 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
 </head>
 <body>
 
+    <!-- BOTÓN SUBIR -->
     <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         ↑
     </button>
 
+    <!-- BOTONES ATRÁS / ADELANTE -->
     <div id="historyNav">
         <button onclick="history.back()">←</button>
         <button onclick="history.forward()">→</button>
@@ -780,6 +770,7 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
                 
                 <div class="media-embeds">
 
+    <!-- Spotify -->
     <iframe
         style="border-radius:12px"
         src="https://open.spotify.com/embed/artist/59XvVC5GQwHQfEWHPTzqnq?utm_source=generator"
@@ -791,6 +782,7 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
         loading="lazy">
     </iframe>
 
+    <!-- Video Oficial -->
     <iframe
     class="video-responsive"
     src="https://www.youtube.com/embed/cZwz0fXnt6E"
@@ -834,8 +826,10 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
 
                 <p class="song-story reveal" id="detail-story">Historia de la canción disponible próximamente.</p>
                 
+                <!-- CONTENEDOR NUEVO PARA EL VIDEO DE YOUTUBE -->
                 <div id="detail-video-container" class="reveal">
-                    </div>
+                    <!-- Aquí se inyectará el video automáticamente -->
+                </div>
 
                 <div class="song-actions reveal">
                     </div>
@@ -1000,7 +994,6 @@ const app = {
 
         const hash = window.location.hash.substring(1);
 
-        // Novedad: Comprobamos si el usuario recargó en una canción específica
         if (hash === 'cancion-detalle') {
             const savedSongId = sessionStorage.getItem('currentSongId');
             if (savedSongId) {
@@ -1139,7 +1132,6 @@ const app = {
 
         window.currentSong = song;
         
-        // Guardar en sesión para evitar pérdida al recargar
         sessionStorage.setItem('currentSongId', songId);
 
         document.getElementById('detail-title').textContent = song.title;
@@ -1151,13 +1143,11 @@ const app = {
      class="cover-image"
      alt="${song.title}">`;
 
-        // Transformar link de YouTube (youtu.be) al formato Embed
         let embedUrl = song.youtube;
         if(embedUrl.includes('youtu.be/')) {
             embedUrl = embedUrl.replace('youtu.be/', 'www.youtube.com/embed/');
         }
 
-        // Inyectar el video debajo de la historia
         document.getElementById('detail-video-container').innerHTML = `
             <iframe
                 class="video-responsive"
@@ -1217,14 +1207,8 @@ Compartir
     }
 };
 
-/* =========================
-   INIT
-========================= */
 app.init();
 
-/* =========================
-   BACK/FORWARD NAVEGADOR REAL
-========================= */
 window.addEventListener("popstate", (e) => {
     if (e.state?.view) {
         app.navigate(e.state.view, false);
