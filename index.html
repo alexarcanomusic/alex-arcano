@@ -7,7 +7,7 @@
     <meta name="description" content="Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop y balada pop.">
     <meta name="keywords" content="Alex Arcano, Indie Pop, Balada Pop, Pop Alternativo, Minimalismo Emocional, Música Colombiana, Bucaramanga">
     <meta name="author" content="Alex Arcano">
-    <meta name="theme-color" content="#000000"> <!-- Actualizado a negro para combinar mejor en móviles -->
+    <meta name="theme-color" content="#000000"> 
     
    <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexarcanomusic.github.io/alex-arcano/">
@@ -26,7 +26,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- Actualizado a negro -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
 
     <title>Alex Arcano | Galería Emocional</title>
     
@@ -53,11 +53,11 @@
 
         html {
             scroll-behavior: smooth;
-            background-color: #000000; /* Soluciona el rebote blanco en el celular */
+            background-color: #000000; 
         }
 
         body {
-            background-color: transparent; /* Lo dejamos transparente para que se vea tu imagen */
+            background-color: transparent; 
         }
 
         * {
@@ -1036,7 +1036,7 @@ if (
         .forEach(el => el.classList.remove('active'));
 
     setTimeout(() => this.triggerReveal(), 150);
-}
+},
 
     back() {
         if (this.historyIndex > 0) {
@@ -1123,9 +1123,15 @@ Compartir
         }
 
         this.navigate('inicio');
-    }
-};
-,
+    },
+
+    initScrollReveal() {
+        this.observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+    },
 
     triggerReveal() {
         document.querySelectorAll('.view.active .reveal')
