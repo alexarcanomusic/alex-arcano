@@ -911,6 +911,33 @@
         .about-title {
             text-shadow: 0 8px 30px rgba(0,0,0,0.55);
         }
+
+.nav-social{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.nav-social img{
+    width:18px;
+    height:18px;
+    opacity:.75;
+    filter:brightness(0) invert(1);
+    transition:all .3s ease;
+}
+
+.nav-social img:hover{
+    opacity:1;
+    transform:scale(1.15);
+}
+
+/* AGREGA ESTO AQUÍ */
+.social-nav{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
     </style>
 </head>
 <body>
@@ -935,12 +962,35 @@
         </div>
         <div class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('mobile-active')">Menú</div>
         <nav>
-            <ul id="nav-menu">
-                <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li>
-                <li><a onclick="app.navigate('notas')" id="nav-notas">Notas</a></li>
-                <li><a onclick="app.navigate('sobre-mi')" id="nav-sobre-mi">Sobre Mí</a></li>
-            </ul>
-        </nav>
+    <ul id="nav-menu">
+        <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li>
+        <li><a onclick="app.navigate('notas')" id="nav-notas">Notas</a></li>
+
+        <li class="nav-social">
+            <a href="https://www.instagram.com/alex.arcano/" target="_blank">
+                <img src="images/instagram.webp" alt="Instagram">
+            </a>
+
+            <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank">
+                <img src="images/facebook.webp" alt="Facebook">
+            </a>
+
+            <a href="https://www.tiktok.com/@alex.arcano" target="_blank">
+                <img src="images/tiktok.webp" alt="TikTok">
+            </a>
+
+            <a href="https://x.com/AlexArcano_" target="_blank">
+                <img src="images/x.webp" alt="X">
+            </a>
+
+            <a href="https://www.threads.com/@alex.arcano" target="_blank">
+                <img src="images/threads.webp" alt="Threads">
+            </a>
+        </li>
+
+        <li><a onclick="app.navigate('sobre-mi')" id="nav-sobre-mi">Sobre Mí</a></li>
+    </ul>
+</nav>
     </header>
 
     <main>
