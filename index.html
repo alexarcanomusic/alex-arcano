@@ -53,11 +53,11 @@
 
         html {
             scroll-behavior: smooth;
-            background-color: #000000; /* Solución para la franja blanca en móviles */
+            background-color: #000000; /* Soluciona el rebote blanco en el celular */
         }
 
         body {
-            background-color: #000000; /* Solución para la franja blanca en móviles */
+            background-color: transparent; /* Lo dejamos transparente para que se vea tu imagen */
         }
 
         * {
@@ -66,23 +66,24 @@
             box-sizing: border-box;
         }
 
-     body::before {
-    color: #FFFFFF;
-    font-family: var(--font-sans);
-    content: "";
-    position: fixed;
-    inset: 0;
+        body::before {
+            color: #FFFFFF;
+            font-family: var(--font-sans);
+            content: "";
+            position: fixed;
+            inset: 0;
 
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.50),
-            rgba(0,0,0,0.50)
-        ),
-        url('images/fondo.webp') center center / cover no-repeat;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.50),
+                    rgba(0,0,0,0.50)
+                ),
+                /* Si quieres usar og-image.jpg, cámbialo en la línea de abajo. Si era fondo.webp, déjalo como estaba */
+                url('images/fondo.webp') center center / cover no-repeat;
 
-    opacity: 1;
-    z-index: -1;
-}
+            opacity: 1;
+            z-index: -1;
+        }
         
         /* ==========================================
            TIPOGRAFÍA Y EDITORIAL
