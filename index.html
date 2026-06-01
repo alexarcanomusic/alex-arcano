@@ -518,6 +518,12 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
             font-style: italic;
         }
 
+        /* Contenedor del video en el detalle */
+        #detail-video-container {
+            max-width: 800px;
+            margin: 4rem auto;
+        }
+
         .song-actions {
             display: flex;
             justify-content: center;
@@ -831,6 +837,11 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
                 </div>
 
                 <p class="song-story reveal" id="detail-story">Historia de la canción disponible próximamente.</p>
+                
+                <!-- CONTENEDOR NUEVO PARA EL VIDEO DE YOUTUBE -->
+                <div id="detail-video-container" class="reveal">
+                    <!-- Aquí se inyectará el video automáticamente -->
+                </div>
 
                 <div class="song-actions reveal">
                     </div>
@@ -995,13 +1006,17 @@ const app = {
 
         const hash = window.location.hash.substring(1);
 
-if (
-    hash &&
-    document.getElementById(hash) &&
-    hash !== 'cancion-detalle'
-) {
-    this.navigate(hash, false);
-}
+        // Novedad: Comprobamos si el usuario recargó en una canción específica
+        if (hash === 'cancion-detalle') {
+            const savedSongId = sessionStorage.getItem('currentSongId');
+            if (savedSongId) {
+                this.openSong(savedSongId);
+            } else {
+                this.navigate('inicio', false);
+            }
+        } else if (hash && document.getElementById(hash)) {
+            this.navigate(hash, false);
+        }
 
         this.renderGallery();
         this.initScrollReveal();
@@ -1015,12 +1030,10 @@ if (
     const currentView =
         document.querySelector('.view.active');
 
-    // Evita navegar a la misma vista
     if (currentView && currentView.id === viewId) {
         return;
     }
 
-    // Evita errores si la vista no existe
     if (!document.getElementById(viewId)) {
         return;
     }
@@ -1131,6 +1144,9 @@ if (
         if (!song) return;
 
         window.currentSong = song;
+        
+        // Guardar en sesión para evitar pérdida al recargar
+        sessionStorage.setItem('currentSongId', songId);
 
         document.getElementById('detail-title').textContent = song.title;
         document.getElementById('detail-date').textContent = song.year;
@@ -1140,6 +1156,24 @@ if (
             `<img src="${song.image}"
      class="cover-image"
      alt="${song.title}">`;
+
+        // Transformar link de YouTube (youtu.be) al formato Embed
+        let embedUrl = song.youtube;
+        if(embedUrl.includes('youtu.be/')) {
+            embedUrl = embedUrl.replace('youtu.be/', 'www.youtube.com/embed/');
+        }
+
+        // Inyectar el video debajo de la historia
+        document.getElementById('detail-video-container').innerHTML = `
+            <iframe
+                class="video-responsive"
+                src="${embedUrl}"
+                title="${song.title} - Video Oficial"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        `;
 
         document.querySelector('.song-actions').innerHTML = `
             <a href="${song.spotify}" target="_blank" class="btn-link">Spotify</a>
