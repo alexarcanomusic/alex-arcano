@@ -257,6 +257,7 @@
             color: #FFFFFF;
 text-shadow: 0 10px 40px rgba(0,0,0,0.60);
             font-size: 4.5rem;
+            margin-top: 2rem;
             margin-bottom: 1.5rem;
             letter-spacing: -0.01em;
             line-height: 1.1;
@@ -519,7 +520,8 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
 
         /* Contenedor del video en el detalle */
         #detail-video-container {
-            max-width: 800px;
+            width: 100%;
+            max-width: 500px;
             margin: 4rem auto;
         }
 
@@ -740,12 +742,10 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
 </head>
 <body>
 
-    <!-- BOTÓN SUBIR -->
     <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         ↑
     </button>
 
-    <!-- BOTONES ATRÁS / ADELANTE -->
     <div id="historyNav">
         <button onclick="history.back()">←</button>
         <button onclick="history.forward()">→</button>
@@ -781,7 +781,6 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
                 
                 <div class="media-embeds">
 
-    <!-- Spotify -->
     <iframe
         style="border-radius:12px"
         src="https://open.spotify.com/embed/artist/59XvVC5GQwHQfEWHPTzqnq?utm_source=generator"
@@ -793,7 +792,6 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
         loading="lazy">
     </iframe>
 
-    <!-- Video Oficial -->
     <iframe
     class="video-responsive"
     src="https://www.youtube.com/embed/cZwz0fXnt6E"
@@ -837,10 +835,8 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
 
                 <p class="song-story reveal" id="detail-story">Historia de la canción disponible próximamente.</p>
                 
-                <!-- CONTENEDOR NUEVO PARA EL VIDEO DE YOUTUBE -->
                 <div id="detail-video-container" class="reveal">
-                    <!-- Aquí se inyectará el video automáticamente -->
-                </div>
+                    </div>
 
                 <div class="song-actions reveal">
                     </div>
