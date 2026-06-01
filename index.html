@@ -255,7 +255,7 @@
             text-shadow: 0 10px 40px rgba(0,0,0,0.60);
             font-size: 4.5rem;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.03em; /* Ajuste editorial: letras más compactas en títulos grandes */
+            letter-spacing: -0.01em;
             line-height: 1.1;
         }
         
@@ -504,7 +504,6 @@
             margin-bottom: 0.2rem;
             line-height: 1.1;
             text-align: left;
-            letter-spacing: -0.03em; /* Ajuste editorial: estilo póster o portada de libro */
         }
 
         .song-detail-right .song-meta {
@@ -587,7 +586,9 @@
 
         .lyrics-toggle-btn:hover::after {
             width: 100%;
-        /* Contenedor colapsable con transición */
+        }
+
+        /* Contenedor colapsable de líricas */
         .lyrics-content {
             max-height: 0;
             opacity: 0;
@@ -597,18 +598,16 @@
         }
 
         .lyrics-content.abierto {
-            max-height: 3500px; /* Suficientemente alto para contener la lírica completa */
+            max-height: 3500px;
             opacity: 1;
             margin-top: 4rem;
         }
 
         .lyrics-text {
             font-family: var(--font-serif);
-            font-style: italic; /* Cursiva poética: le da un alma líquida y melancólica */
-            font-weight: 400;
-            font-size: 1.35rem; /* Un pelín más grande para compensar la cursiva */
+            font-size: 1.25rem;
             line-height: 2.2;
-            color: rgba(255, 255, 255, 0.85); /* Mayor contraste sutil contra fondo oscuro */
+            color: rgba(255, 255, 255, 0.8);
             white-space: pre-line;
             text-align: center;
             letter-spacing: 0.02em;
@@ -618,10 +617,10 @@
         .lyrics-text span.etiqueta {
             display: block;
             font-family: var(--font-sans);
-            font-size: 0.65rem; /* Letras muy pequeñas para look de anotación de libreto */
-            letter-spacing: 0.25em; /* Separación amplia de estilo minimalista */
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.35); /* Gris muy sutil, imitando un libreto físico impreso */
+            color: rgba(255, 255, 255, 0.4);
             margin-top: 2.5rem;
             margin-bottom: -1rem;
             font-weight: 500;
