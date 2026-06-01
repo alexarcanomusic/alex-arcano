@@ -7,7 +7,7 @@
     <meta name="description" content="Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop y balada pop.">
     <meta name="keywords" content="Alex Arcano, Indie Pop, Balada Pop, Pop Alternativo, Minimalismo Emocional, Música Colombiana, Bucaramanga">
     <meta name="author" content="Alex Arcano">
-    <meta name="theme-color" content="#FCFCFC">
+    <meta name="theme-color" content="#000000"> <!-- Actualizado a negro para combinar mejor en móviles -->
     
    <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexarcanomusic.github.io/alex-arcano/">
@@ -26,7 +26,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- Actualizado a negro -->
 
     <title>Alex Arcano | Galería Emocional</title>
     
@@ -51,26 +51,27 @@
             --spacing-element: 2rem;
         }
 
-       html {
-    scroll-behavior: smooth;
-}
+        html {
+            scroll-behavior: smooth;
+            background-color: #000000; /* Solución para la franja blanca en móviles */
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        body {
+            background-color: #000000; /* Solución para la franja blanca en móviles */
+        }
 
-body::before {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+     body::before {
     color: #FFFFFF;
     font-family: var(--font-sans);
     content: "";
     position: fixed;
-
-    top: -20px;
-    left: -20px;
-    right: -20px;
-    bottom: -20px;
+    inset: 0;
 
     background:
         linear-gradient(
@@ -81,15 +82,11 @@ body::before {
 
     opacity: 1;
     z-index: -1;
-
-    transform: translateZ(0);
-    will-change: transform;
-    backface-visibility: hidden;
 }
         
         /* ==========================================
            TIPOGRAFÍA Y EDITORIAL
-           ========================================== */
+           ========================================== */ 
         h1, h2, h3, h4, .serif {
             font-family: var(--font-serif);
             font-weight: 400;
@@ -1103,3 +1100,5 @@ window.addEventListener("popstate", (e) => {
     }
 });
 </script>
+</body>
+</html>
