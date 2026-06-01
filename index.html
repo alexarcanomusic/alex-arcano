@@ -413,12 +413,50 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.60);
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        .song-card-title {
-            color: #FFFFFF;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
+/* OVERLAY SOBRE IMAGEN */
+.song-card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
 
+/* texto encima de la imagen */
+.song-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.55)
+    );
+
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* aparece al hover */
+.song-card:hover .song-overlay {
+    opacity: 1;
+}
+
+.song-card-title {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+
+.song-card-year {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.75);
+}
         /* ==========================================
            PLANTILLA DE CANCIÓN INDIVIDUAL
            ========================================== */
@@ -1062,12 +1100,17 @@ if (
             card.onclick = () => this.openSong(song.id);
 
             card.innerHTML = `
-                <div class="song-card-img-wrapper">
-                    ${song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : ''}
-                    <img src="${song.image}" class="cover-image" alt="${song.title}">
-                </div>
-                <h3 class="song-card-title serif">${song.title}</h3>
-            `;
+    <div class="song-card-img-wrapper">
+        ${song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : ''}
+
+        <img src="${song.image}" class="cover-image" alt="${song.title}">
+
+        <div class="song-overlay">
+            <h3 class="song-card-title serif">${song.title}</h3>
+            <span class="song-card-year">${song.year}</span>
+        </div>
+    </div>
+`;
 
             container.appendChild(card);
         });
