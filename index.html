@@ -443,10 +443,10 @@
         }
 
         /* ==========================================
-           PLANTILLA DE CANCIÓN INDIVIDUAL
+           PLANTILLA DE CANCIÓN INDIVIDUAL (ASIMÉTRICA EDITORIAL)
            ========================================== */
         .song-template-wrapper {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             padding-bottom: var(--spacing-section);
         }
@@ -458,56 +458,80 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             transition: color 0.3s ease;
         }
         .back-link:hover { color: var(--color-text); }
 
-        .song-header {
-            text-align: center;
-            margin-bottom: 2rem;
+        /* Estructura asimétrica de dos columnas para detalles */
+        .song-detail-layout {
+            display: flex;
+            gap: 3.5rem;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            text-align: left;
         }
 
-        .song-header .cover-placeholder {
-            max-width: 500px;
-            margin: 0 auto;
-            aspect-ratio: 1/1;
+        .song-detail-left {
+            flex: 0 0 240px;
         }
 
-        .song-title-large {
+        .song-detail-left .cover-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+        .song-detail-left .cover-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .song-detail-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .song-detail-right .song-title-large {
             color: #FFFFFF;
             text-shadow: 0 8px 30px rgba(0,0,0,0.50);
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            margin-bottom: 0.2rem;
             line-height: 1.1;
+            text-align: left;
         }
 
-        .song-meta {
+        .song-detail-right .song-meta {
             font-family: var(--font-sans);
             font-size: 0.85rem;
             color: var(--color-muted);
             letter-spacing: 0.15em;
             text-transform: uppercase;
+            text-align: left;
         }
 
-        .song-story {
+        .song-detail-right .song-story {
             font-family: var(--font-serif);
-            font-size: 1.8rem;
-            line-height: 1.6;
+            font-size: 1.35rem;
+            line-height: 1.7;
             color: rgba(255,255,255,0.92);
-            margin: 4rem auto;
-            max-width: 750px;
-            text-align: center;
+            text-align: left;
             font-style: italic;
+            margin: 0;
+            border-left: 2px solid rgba(255,255,255,0.15);
+            padding-left: 1.5rem;
         }
 
-        /* Contenedor del video en el detalle */
-        #detail-video-container {
+        /* Contenedor del video integrado en la derecha */
+        .song-detail-right #detail-video-container {
             width: 100%;
             max-width: 500px;
-            margin: 4rem auto;
+            margin: 1rem 0 0 0;
         }
 
         .song-actions {
@@ -517,14 +541,14 @@
             margin: 4rem 0;
             border-top: 1px solid rgba(255,255,255,0.1);
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 3rem 0;
+            padding: 2.5rem 0;
         }
 
         /* ==========================================
            SECCIÓN DE LETRA (SLIDE + FADE EMOCIONAL)
            ========================================== */
         .lyrics-wrapper {
-            margin: 5rem auto;
+            margin: 4rem auto;
             text-align: center;
             max-width: 600px;
         }
@@ -774,9 +798,38 @@
                 text-shadow: 0 2px 10px rgba(0,0,0,0.6);
             }
             
+            /* Detalle adaptado a móvil vertical */
+            .song-detail-layout {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 2rem;
+            }
+            .song-detail-left {
+                flex: 0 0 200px;
+                width: 200px;
+            }
+            .song-detail-right {
+                align-items: center;
+            }
+            .song-detail-right .song-title-large {
+                font-size: 2.8rem;
+                text-align: center;
+            }
+            .song-detail-right .song-meta {
+                text-align: center;
+            }
+            .song-detail-right .song-story {
+                text-align: center;
+                border-left: none;
+                padding-left: 0;
+            }
+            .song-detail-right #detail-video-container {
+                margin-top: 1.5rem;
+            }
+
             .gallery-grid { grid-template-columns: 1fr; gap: 5rem; }
             .hero-title { font-size: 3rem; }
-            .song-title-large { font-size: 3rem; }
             .about-title { font-size: 3rem; }
             .song-actions { flex-direction: column; align-items: center; gap: 2rem; }
         }
@@ -838,8 +891,7 @@
         .hero-title,
         .hero-subtitle,
         .note-title,
-        .about-title,
-        .song-title-large {
+        .about-title {
             text-shadow: 0 8px 30px rgba(0,0,0,0.55);
         }
     </style>
@@ -930,27 +982,36 @@
             </div>
         </section>
 
-        <!-- SECCIÓN DETALLE DE CANCIÓN -->
+        <!-- SECCIÓN DETALLE DE CANCIÓN (ASIMÉTRICA REDISEÑADA) -->
         <section id="cancion-detalle" class="view">
             <div class="song-template-wrapper">
                 <div class="back-link reveal" onclick="app.navigate('musica')">
                     ← Volver a la colección
                 </div>
                 
-                <div class="song-header reveal">
-                    <h1 class="song-title-large serif" id="detail-title">Título</h1>
-                    <div class="song-meta" id="detail-date" style="margin-bottom: 3rem;">Año de lanzamiento</div>
-                    
-                    <div class="cover-placeholder" id="detail-cover-container" style="cursor: default;">
-                        <!-- Se inyecta la portada de la canción dinámicamente -->
+                <!-- CONTENEDOR FLEX PRINCIPAL -->
+                <div class="song-detail-layout reveal">
+                    <!-- COLUMNA IZQUIERDA: IMAGEN PEQUEÑA -->
+                    <div class="song-detail-left">
+                        <div class="cover-placeholder" id="detail-cover-container" style="cursor: default;">
+                            <!-- Portada inyectada aquí -->
+                        </div>
                     </div>
-                </div>
-
-                <p class="song-story reveal" id="detail-story">Historia de la canción disponible próximamente.</p>
-                
-                <!-- CONTENEDOR PARA EL VIDEO DE YOUTUBE -->
-                <div id="detail-video-container" class="reveal">
-                    <!-- Aquí se inyectará el video automáticamente -->
+                    
+                    <!-- COLUMNA DERECHA: TEXTOS Y VIDEO -->
+                    <div class="song-detail-right">
+                        <div>
+                            <h1 class="song-title-large serif" id="detail-title">Título</h1>
+                            <div class="song-meta" id="detail-date">Año de lanzamiento</div>
+                        </div>
+                        
+                        <p class="song-story" id="detail-story">Historia de la canción disponible próximamente.</p>
+                        
+                        <!-- CONTENEDOR PARA EL VIDEO DE YOUTUBE -->
+                        <div id="detail-video-container">
+                            <!-- Aquí se inyectará el video automáticamente -->
+                        </div>
+                    </div>
                 </div>
 
                 <!-- SECCIÓN DE LA LETRA (DESPLIEGUE SUAVE AUTOMATIZADO) -->
@@ -961,6 +1022,7 @@
                     </div>
                 </div>
 
+                <!-- ENLACES DE REDES Y ACCIONES -->
                 <div class="song-actions reveal">
                     <!-- Enlaces dinámicos Spotify/YouTube -->
                 </div>
@@ -1249,9 +1311,9 @@ Y aunque solo yo te quiera para mí, eso bastará...`
                 id: 'llevame',
                 title: 'Llévame',
                 image: 'images/llevame.webp',
-                youtube: 'https://youtu.be/eZewzY6oK6g',
+                youtube: 'https://youtu.be/eZewzY6oK6g?si=76QsSMKxmtjt_Fg-',
                 spotify: 'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
-                status: 'upcoming',
+                status: 'released',
                 year: '2026',
                 story: 'Un nuevo comienzo cuando todo parece detenido. La reconstrucción de un corazón que empieza a sanar.',
                 lyrics: `[verse]
@@ -1290,9 +1352,9 @@ Nunca te dejaré hasta morir`
                 id: 'hoy-tiene-tu-nombre',
                 title: 'Hoy Tiene Tu Nombre',
                 image: 'images/hoy-tiene-tu-nombre.webp',
-                youtube: 'https://youtu.be/2YPGhVArN9k',
+                youtube: 'https://youtu.be/2YPGhVArN9k?si=LMgdBL-07cdTY7pM',
                 spotify: 'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
-                status: 'upcoming',
+                status: 'released',
                 year: '2026',
                 story: 'Esos días extraños donde cualquier detalle fortuito, un aroma o una melodía, vuelve a traer su recuerdo.',
                 lyrics: `[verse]
@@ -1319,9 +1381,9 @@ Donde tu ausencia se hace mi compañía`
                 id: 'lo-que-el-tiempo',
                 title: 'Lo Que El Tiempo Nunca Se Llevó',
                 image: 'images/lo-que-el-tiempo.webp',
-                youtube: 'https://youtu.be/z-tIGbOn0lk',
+                youtube: 'https://youtu.be/z-tIGbOn0lk?si=1GzszJl4yTvfljKa',
                 spotify: 'https://open.spotify.com/intl-es/artist/59XvVC5GQwHQfEWHPTzqnq',
-                status: 'upcoming',
+                status: 'released',
                 year: '2026',
                 story: 'Un homenaje a aquello que permanece completamente intacto, a pesar de los años, la distancia y el silencio.',
                 lyrics: `[verse]
@@ -1370,14 +1432,15 @@ Cambiando la memoria por un nuevo destino`
         /* Extrae el ID de YouTube para armar la URL de inserción (embed) */
         function getYoutubeEmbedUrl(url) {
             if (!url) return '';
+            // Soporta urls con query parameters de tracking o de share de youtube (.be o watch?v=)
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             const match = url.match(regExp);
             return (match && match[2].length === 11) ? match[2] : '';
         }
 
-        /* =========================
+        /* ==========================================
            SISTEMA SPA COMPLETO (SPA ENGINE)
-           ========================= */
+           ========================================== */
         const app = {
             historyStack: [],
             historyIndex: -1,
@@ -1509,14 +1572,16 @@ Cambiando la memoria por un nuevo destino`
                 window.currentSong = song;
                 sessionStorage.setItem('currentSongId', songId);
 
+                // Inyectar datos en la estructura del Detail de la derecha
                 document.getElementById('detail-title').textContent = song.title;
                 document.getElementById('detail-date').textContent = song.year;
                 document.getElementById('detail-story').textContent = song.story;
 
+                // Inyectar Portada Compacta a la izquierda
                 document.getElementById('detail-cover-container').innerHTML =
                     `<img src="${song.image}" class="cover-image" alt="${song.title}" onerror="this.src='https://placehold.co/500x500/121212/888888?text=${encodeURIComponent(song.title)}'">`;
 
-                // Inyección dinámica de video de YouTube si está disponible
+                // Inyección de video de YouTube si está disponible
                 const videoContainer = document.getElementById('detail-video-container');
                 const embedId = getYoutubeEmbedUrl(song.youtube);
                 if (embedId && song.status !== 'upcoming') {
@@ -1534,13 +1599,13 @@ Cambiando la memoria por un nuevo destino`
                     videoContainer.style.display = 'none';
                 }
 
-                // Lógica de letras dinámica con Slide + Fade
+                // Configurar contenedor de líricas con Slide + Fade
                 const lyricsWrapper = document.getElementById('detail-lyrics-wrapper');
                 const lyricsText = document.getElementById('lyrics-text');
                 const lyricsContent = document.getElementById('lyrics-content-container');
                 const toggleBtn = document.getElementById('btn-toggle-lyrics');
 
-                // Resetea el estado del colapsable de letras
+                // Reiniciar acordeón colapsable al cambiar canción
                 lyricsContent.classList.remove('abierto');
                 if (toggleBtn) toggleBtn.innerText = "Leer Letra";
 
@@ -1552,7 +1617,7 @@ Cambiando la memoria por un nuevo destino`
                     lyricsWrapper.style.display = 'none';
                 }
 
-                // Actualizar enlaces / acciones
+                // Generar Enlaces de Redes y Compartir
                 const actionsContainer = document.querySelector('.song-actions');
                 if (song.status === 'upcoming') {
                     actionsContainer.innerHTML = `<span class="btn-link" style="cursor: default; border-color: rgba(255,255,255,0.15); opacity: 0.6;">Próximamente en Spotify</span>`;
@@ -1578,13 +1643,13 @@ Cambiando la memoria por un nuevo destino`
             copyShareLink() {
                 const dummy = document.createElement('input');
                 document.body.appendChild(dummy);
-                // Generar un link que apunte directamente a la canción actual usando sessionStorage
+                // Genera link que apunta a la canción abierta
                 dummy.value = window.location.origin + window.location.pathname + "#cancion-detalle";
                 dummy.select();
                 document.execCommand('copy');
                 document.body.removeChild(dummy);
 
-                // Mostrar notificación Toast sin alert() intrusivo
+                // Mostrar notificación Toast Premium sin alerts invasivos
                 const toast = document.getElementById('toast-notification');
                 if (toast) {
                     toast.classList.add('show');
@@ -1634,7 +1699,7 @@ Cambiando la memoria por un nuevo destino`
         }
 
         /* =========================
-           BACK/FORWARD NAVEGADOR REAL
+           MANEJO DE NAVEGACIÓN RETROCOMPATIBLE
            ========================= */
         window.addEventListener("popstate", (e) => {
             if (e.state?.view) {
