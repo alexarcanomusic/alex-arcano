@@ -605,6 +605,11 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
         }
 
         @media (max-width: 768px) {
+            /* ESTA ES LA LÍNEA NUEVA QUE DESACTIVA EL REBOTE SOLO EN CELULAR */
+            html, body {
+                overscroll-behavior-y: none;
+            }
+
             header { padding: 1.5rem 2rem; }
             header.scrolled { padding: 1.2rem 2rem; }
             
@@ -623,10 +628,10 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
             }
             nav ul.mobile-active { display: flex; }
             .menu-toggle {
-    display: block;
-    color: #FFFFFF !important;
-    font-weight: 600;
-}
+                display: block;
+                color: #FFFFFF !important;
+                font-weight: 600;
+            }
             
             .gallery-grid { grid-template-columns: 1fr; gap: 5rem; }
             .hero-title { font-size: 3rem; }
