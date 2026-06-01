@@ -30,6 +30,7 @@
 
     <title>Alex Arcano | Galería Emocional</title>
     
+    <!-- Enlace a tipografías premium: Cormorant Garamond (emocional) e Inter (minimalista) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -53,11 +54,14 @@
 
         html {
             scroll-behavior: smooth;
-            background-color: #000000; 
+            background-color: #0a0a0a; /* Fondo base ultra oscuro de seguridad */
         }
 
         body {
-            background-color: transparent; 
+            background-color: #0a0a0a; /* Respaldo para evitar pantallazos blancos/negros si falla la imagen */
+            color: var(--color-text);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
         }
 
         * {
@@ -66,29 +70,27 @@
             box-sizing: border-box;
         }
 
+        /* Degradado emocional de fondo con imagen texturizada de respaldo */
         body::before {
-            color: #FFFFFF;
-            font-family: var(--font-sans);
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-
-            background:
+            inset: 0;
+            background-color: #0a0a0a;
+            background-image: 
                 linear-gradient(
                     rgba(0,0,0,0.65),
                     rgba(0,0,0,0.65)
                 ),
-                url('images/fondo.webp') center center / cover no-repeat;
-
+                url('images/fondo.webp');
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
             opacity: 1;
             z-index: -1;
         }
         
         /* ==========================================
-           TIPOGRAFÍA Y EDITORIAL
+           TIPOGRAFÍA Y EDITORIAL (MEJORADO)
            ========================================== */ 
         h1, h2, h3, h4, .serif {
             font-family: var(--font-serif);
@@ -255,7 +257,7 @@
             text-shadow: 0 10px 40px rgba(0,0,0,0.60);
             font-size: 4.5rem;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.03em; /* Ajuste editorial: Letras compactas en títulos grandes estilo póster */
             line-height: 1.1;
         }
         
@@ -264,7 +266,7 @@
         .note-title,
         .about-title {
             color: rgba(255,255,255,0.85);
-            text-shadow: 0 8px 30px rgba(0,0,0,0.45);
+            text-shadow: 0 8px 30px rgba(0,0,0,0.55);
         }
 
         .hero-subtitle {
@@ -293,34 +295,14 @@
             text-shadow: 0 6px 25px rgba(0,0,0,0.45);
         }
 
-        .cover-placeholder {
-            width: 100%;
-            background-color: #121212;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #A0A0A0;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .cover-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
         .hero-featured .cover-placeholder {
             max-width: 500px;
             aspect-ratio: 1/1;
             margin-bottom: 3rem;
             cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .hero-featured .cover-placeholder:hover {
@@ -355,7 +337,7 @@
         }
 
         /* ==========================================
-           MÚSICA (GALERÍA)
+           MÚSICA (GALERÍA DE CARTAS)
            ========================================== */
         .gallery-grid {
             display: grid;
@@ -379,23 +361,6 @@
             border-radius: 4px;
             background-color: #121212;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .badge-upcoming {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #000000;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 0.4rem 1.2rem;
-            backdrop-filter: blur(5px);
-            z-index: 10;
-            font-weight: 500;
-            border-radius: 2px;
         }
 
         .song-card .cover-image { 
@@ -451,20 +416,6 @@
             padding-bottom: var(--spacing-section);
         }
 
-        .back-link {
-            font-size: 0.8rem;
-            color: var(--color-muted);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 4rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
-        }
-        .back-link:hover { color: var(--color-text); }
-
         /* Estructura asimétrica de dos columnas para detalles */
         .song-detail-layout {
             display: flex;
@@ -486,6 +437,7 @@
             overflow: hidden;
             transition: transform 0.5s ease;
         }
+        
         .song-detail-left .cover-placeholder:hover {
             transform: scale(1.02);
         }
@@ -497,6 +449,7 @@
             gap: 1.8rem;
         }
 
+        /* Estilo editorial de títulos de canciones compactos */
         .song-detail-right .song-title-large {
             color: #FFFFFF;
             text-shadow: 0 8px 30px rgba(0,0,0,0.50);
@@ -504,6 +457,7 @@
             margin-bottom: 0.2rem;
             line-height: 1.1;
             text-align: left;
+            letter-spacing: -0.03em; /* Ajuste editorial: estilo póster clásico de libro */
         }
 
         .song-detail-right .song-meta {
@@ -534,18 +488,8 @@
             margin: 1rem 0 0 0;
         }
 
-        .song-actions {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 4rem 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 2.5rem 0;
-        }
-
         /* ==========================================
-           SECCIÓN DE LETRA (SLIDE + FADE EMOCIONAL)
+           SECCIÓN DE LETRA (SLIDE + FADE EMOCIONAL MEJORADO)
            ========================================== */
         .lyrics-wrapper {
             margin: 4rem auto;
@@ -571,7 +515,7 @@
             color: var(--color-text);
         }
 
-        /* Línea sutil bajo el botón */
+        /* Línea sutil bajo el botón de despliegue */
         .lyrics-toggle-btn::after {
             content: '';
             position: absolute;
@@ -588,7 +532,7 @@
             width: 100%;
         }
 
-        /* Contenedor colapsable de líricas */
+        /* Contenedor colapsable con transición fluida */
         .lyrics-content {
             max-height: 0;
             opacity: 0;
@@ -598,29 +542,32 @@
         }
 
         .lyrics-content.abierto {
-            max-height: 3500px;
+            max-height: 3500px; /* Suficiente para letras extremadamente largas */
             opacity: 1;
             margin-top: 4rem;
         }
 
+        /* Letra poética: Cursiva y tono cálido para evitar cansancio ocular en fondos oscuros */
         .lyrics-text {
             font-family: var(--font-serif);
-            font-size: 1.25rem;
+            font-style: italic; /* Cursiva poética: le da un alma líquida y melancólica */
+            font-weight: 400;
+            font-size: 1.35rem; /* Un pelín más grande para compensar la cursiva */
             line-height: 2.2;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85); /* Mayor contraste sutil contra fondo oscuro */
             white-space: pre-line;
             text-align: center;
             letter-spacing: 0.02em;
         }
 
-        /* Tipografía poética para las partes de la canción (etiquetas) */
+        /* Etiquetas líricas de estructura de canción (Verse, Chorus, Outro) */
         .lyrics-text span.etiqueta {
             display: block;
             font-family: var(--font-sans);
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
+            font-size: 0.65rem; /* Letras muy pequeñas para look de anotación de libreto */
+            letter-spacing: 0.25em; /* Separación amplia de estilo minimalista */
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.35); /* Gris sutil, imitando un libreto impreso */
             margin-top: 2.5rem;
             margin-bottom: -1rem;
             font-weight: 500;
@@ -655,7 +602,7 @@
         }
 
         /* ==========================================
-           NOTAS (DIARIO CREATIVO)
+           DIARIO CREATIVO (NOTAS)
            ========================================== */
         .notes-header {
             text-align: center;
@@ -760,7 +707,7 @@
         }
 
         /* ==========================================
-           RESPONSIVE
+           RESPONSIVE Y ADAPTACIONES MÓVILES
            ========================================== */
         @media (max-width: 1024px) {
             .note-category-label { position: static; text-align: left; margin-bottom: 1rem; width: auto; }
@@ -782,7 +729,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(0,0,0,0.95);
+                background: rgba(10,10,10,0.98);
                 backdrop-filter: blur(10px);
                 flex-direction: column;
                 align-items: center;
@@ -903,7 +850,7 @@
         ↑
     </button>
 
-    <!-- BOTONES ATRÁS / ADELANTE -->
+    <!-- BOTONES ATRÁS / ADELANTE (HISTORIAL NATIVO) -->
     <div id="historyNav">
         <button onclick="app.back()">←</button>
         <button onclick="app.forward()">→</button>
@@ -991,14 +938,14 @@
                 
                 <!-- CONTENEDOR FLEX PRINCIPAL -->
                 <div class="song-detail-layout reveal">
-                    <!-- COLUMNA IZQUIERDA: IMAGEN PEQUEÑA -->
+                    <!-- COLUMNA IZQUIERDA: PORTADA COMPACTA EN ESQUINA -->
                     <div class="song-detail-left">
                         <div class="cover-placeholder" id="detail-cover-container" style="cursor: default;">
                             <!-- Portada inyectada aquí -->
                         </div>
                     </div>
                     
-                    <!-- COLUMNA DERECHA: TEXTOS Y VIDEO -->
+                    <!-- COLUMNA DERECHA: TEXTOS, DESCRIPCIÓN Y VIDEO -->
                     <div class="song-detail-right">
                         <div>
                             <h1 class="song-title-large serif" id="detail-title">Título</h1>
@@ -1073,7 +1020,7 @@
 
     <script>
         /* ==========================================
-           CATÁLOGO DE CANCIONES (CON LETRAS COMPLETAS)
+           CATÁLOGO DE CANCIONES (CON TODAS SUS LETRAS COMPLETAS)
            ========================================== */
         const songs = [
             {
@@ -1631,7 +1578,7 @@ Entre tantos sueños que se han ido hoy`
         ];
 
         /* ==========================================
-           FORMATO AUTOMÁTICO DE LÍRICAS
+           FORMATO POÉTICO AUTOMÁTICO (CD BOOKLET STYLE)
            ========================================== */
         function formatLyrics(rawLyrics) {
             if (!rawLyrics) return '';
@@ -1639,9 +1586,8 @@ Entre tantos sueños que se han ido hoy`
                 .split('\n')
                 .map(line => {
                     const trimmed = line.trim();
-                    const isTag = /^(pre-chorus|chorus|verse|intro|bridge|outro|solo)$/i.test(trimmed) || 
-                                  /^\[(pre-chorus|chorus|verse|intro|bridge|outro|solo)\]$/i.test(trimmed) ||
-                                  /^(chorus \(final\)|pre-chorus \/ chorus|outro \/ final)$/i.test(trimmed);
+                    // Detecta marcadores de estructura clásica
+                    const isTag = /^(pre-chorus|chorus|verse|intro|bridge|outro|solo|chorus \(final\)|pre-chorus \/ chorus|outro \/ final)$/i.test(trimmed.replace(/[\[\]]/g, ''));
                     if (isTag) {
                         const cleanTag = trimmed.replace(/[\[\]]/g, '');
                         return `<span class="etiqueta">${cleanTag}</span>`;
@@ -1793,16 +1739,16 @@ Entre tantos sueños que se han ido hoy`
                 window.currentSong = song;
                 sessionStorage.setItem('currentSongId', songId);
 
-                // Inyectar datos en la estructura del Detail de la derecha
+                // Inyectar datos en la estructura de detalles (Columna Derecha)
                 document.getElementById('detail-title').textContent = song.title;
                 document.getElementById('detail-date').textContent = song.year;
                 document.getElementById('detail-story').textContent = song.story;
 
-                // Inyectar Portada Compacta a la izquierda
+                // Inyectar Portada Compacta (Columna Izquierda)
                 document.getElementById('detail-cover-container').innerHTML =
                     `<img src="${song.image}" class="cover-image" alt="${song.title}" onerror="this.src='https://placehold.co/500x500/121212/888888?text=${encodeURIComponent(song.title)}'">`;
 
-                // Inyección de video de YouTube si está disponible
+                // Inyección del video de YouTube correspondiente (¡Se carga para estrenos y lanzados!)
                 const videoContainer = document.getElementById('detail-video-container');
                 const embedId = getYoutubeEmbedUrl(song.youtube);
                 if (embedId) {
