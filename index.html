@@ -286,7 +286,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.60);
         }
 
         .featured-label {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     font-family: var(--font-serif);
     letter-spacing: 0.08em;
     color: rgba(255,255,255,0.95);
@@ -712,7 +712,6 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
         <div class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('mobile-active')">Menú</div>
         <nav>
             <ul id="nav-menu">
-                <li><a onclick="app.navigate('inicio')" id="nav-inicio" class="active">Inicio</a></li>
                 <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li>
                 <li><a onclick="app.navigate('notas')" id="nav-notas">Notas</a></li>
                 <li><a onclick="app.navigate('sobre-mi')" id="nav-sobre-mi">Sobre Mí</a></li>
@@ -973,8 +972,20 @@ if (
     },
 
     navigate(viewId, push = true) {
-        if (!document.getElementById(viewId)) return;
 
+    const currentView =
+        document.querySelector('.view.active');
+
+    if (currentView && currentView.id === viewId) {
+        return;
+    }
+
+    if (!document.getElementById(viewId)) {
+        return;
+    }
+
+    ...
+}
         if (push) {
             this.historyStack = this.historyStack.slice(0, this.historyIndex + 1);
             this.historyStack.push(viewId);
@@ -1038,6 +1049,15 @@ if (
     },
 
     openSong(songId) {
+
+    if (
+        document.getElementById('cancion-detalle')
+            .classList.contains('active')
+        &&
+        window.currentSong?.id === songId
+    ){
+        return;
+    }
         const song = songs.find(s => s.id === songId);
         if (!song) return;
 
