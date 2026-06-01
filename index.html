@@ -1113,24 +1113,18 @@ Compartir
         `;
 
         this.navigate('cancion-detalle');
-    },
-goHome() {
+   goHome() {
 
-    if (
-        document.querySelector('.view.active')?.id === 'inicio'
-    ){
-        return;
+        if (
+            document.querySelector('.view.active')?.id === 'inicio'
+        ){
+            return;
+        }
+
+        this.navigate('inicio');
     }
-
-    this.navigate('inicio');
-},
-    initScrollReveal() {
-        this.observer = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) e.target.classList.add('active');
-            });
-        }, { threshold: 0.15 });
-    },
+};
+,
 
     triggerReveal() {
         document.querySelectorAll('.view.active .reveal')
