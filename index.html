@@ -34,6 +34,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         /* ==========================================
            VARIABLES Y CONFIGURACIÓN BASE
@@ -111,7 +113,9 @@
             text-transform: uppercase;
             border-bottom: 1px solid rgba(255,255,255,0.25);
             padding-bottom: 3px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             cursor: pointer;
             transition: all 0.4s ease;
         }
@@ -344,15 +348,35 @@
         }
 
         /* Redes Sociales */
-        .social-nav {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.10);
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-        }
+        .social-icons {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons a img {
+    width: 30px;
+    height: 30px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.social-icons a img:hover {
+    transform: scale(1.25);
+    opacity: 1;
+    filter: brightness(1) invert(0);
+}
 
         /* ==========================================
            MÚSICA (GALERÍA)
@@ -964,13 +988,29 @@
                 </div>
             </div>
 
-            <div class="social-nav reveal">
-                <a href="https://www.instagram.com/alex.arcano/" target="_blank" rel="noopener noreferrer" class="btn-link">Instagram</a>
-                <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank" rel="noopener noreferrer" class="btn-link">Facebook</a>
-                <a href="https://www.tiktok.com/@alex.arcano" target="_blank" rel="noopener noreferrer" class="btn-link">TikTok</a>
-                <a href="https://x.com/AlexArcano_" target="_blank" rel="noopener noreferrer" class="btn-link">X</a>
-                <a href="https://www.threads.com/@alex.arcano" target="_blank" rel="noopener noreferrer" class="btn-link">Threads</a>
-            </div>
+           <div class="social-icons reveal">
+
+    <a href="https://www.instagram.com/alex.arcano/" target="_blank" rel="noopener noreferrer">
+        <img src="images/icons/instagram.webp" alt="Instagram">
+    </a>
+
+    <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank" rel="noopener noreferrer">
+        <img src="images/icons/facebook.webp" alt="Facebook">
+    </a>
+
+    <a href="https://www.tiktok.com/@alex.arcano" target="_blank" rel="noopener noreferrer">
+        <img src="images/icons/tiktok.webp" alt="TikTok">
+    </a>
+
+    <a href="https://x.com/AlexArcano_" target="_blank" rel="noopener noreferrer">
+        <img src="images/icons/x.webp" alt="X">
+    </a>
+
+    <a href="https://www.threads.com/@alex.arcano" target="_blank" rel="noopener noreferrer">
+        <img src="images/icons/threads.webp" alt="Threads">
+    </a>
+
+</div>
         </section>
 
         <!-- SECCIÓN DE MÚSICA -->
@@ -1062,8 +1102,8 @@
                 </div>
                 
                 <div class="social-nav" style="margin-top: 4rem; border-top: none;">
-                    <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano" class="btn-link">Contacto por Email</a>
-                    <a href="https://wa.me/573183557890" target="_blank" rel="noopener noreferrer" class="btn-link">WhatsApp</a>
+                    <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano" class="btn-link"><i class="fa-solid fa-envelope"></i> Contacto por Email</a>
+                    <a href="https://wa.me/573183557890" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
                 </div>
             </div>
         </section>
