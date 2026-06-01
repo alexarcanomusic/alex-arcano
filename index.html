@@ -1114,7 +1114,16 @@ Compartir
 
         this.navigate('cancion-detalle');
     },
+goHome() {
 
+    if (
+        document.querySelector('.view.active')?.id === 'inicio'
+    ){
+        return;
+    }
+
+    this.navigate('inicio');
+},
     initScrollReveal() {
         this.observer = new IntersectionObserver(entries => {
             entries.forEach(e => {
@@ -1136,24 +1145,7 @@ Compartir
         });
     }
 };
-goHome() {
 
-    if (
-        document.querySelector('.view.active')?.id === 'inicio'
-    ){
-        return;
-    }
-
-    this.navigate('inicio');
-},
-
-initScrollReveal() {
-    this.observer = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add('active');
-        });
-    }, { threshold: 0.15 });
-},
 /* =========================
    INIT
 ========================= */
