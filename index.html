@@ -598,33 +598,40 @@
         }
 
         .lyrics-content.abierto {
-            max-height: 3500px;
-            opacity: 1;
-            margin-top: 4rem;
-        }
+    max-height: 3500px;
+    opacity: 1;
+    margin-top: 4rem;
+
+    background: rgba(0,0,0,0.35);
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
 
         .lyrics-text {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            line-height: 2.2;
-            color: rgba(255, 255, 255, 0.8);
-            white-space: pre-line;
-            text-align: center;
-            letter-spacing: 0.02em;
-        }
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 2.2;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: pre-line;
+    text-align: center;
+    letter-spacing: 0.02em;
+    font-style: italic;
+}
+
+.lyrics-text br {
+    line-height: 1.2;
+}
 
         /* Tipografía poética para las partes de la canción (etiquetas) */
         .lyrics-text span.etiqueta {
-            display: block;
-            font-family: var(--font-sans);
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 2.5rem;
-            margin-bottom: -1rem;
-            font-weight: 500;
-        }
+    display: block;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    opacity: 0.5;
+}
 
         /* Notificación Toast Premium (Elimina alerts de navegador) */
         .custom-toast {
@@ -772,7 +779,13 @@
             .about-text { text-align: left; text-align-last: left; }
         }
 
-        @media (max-width: 768px) {
+       @media (max-width: 768px) {
+
+    .lyrics-text {
+        font-size: 1.05rem;
+        line-height: 2;
+        padding: 0 1rem;
+    }
             header { padding: 1.5rem 2rem; }
             header.scrolled { padding: 1.2rem 2rem; }
             
