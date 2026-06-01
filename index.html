@@ -51,42 +51,50 @@
             --spacing-element: 2rem;
         }
 
-      html {
+     html {
     scroll-behavior: smooth;
     background: #000;
 }
 
 body {
-    color: #FFFFFF;
-    font-family: var(--font-sans);
+    background: transparent;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
 
     background:
         linear-gradient(
             rgba(0,0,0,0.50),
             rgba(0,0,0,0.50)
         ),
-        url('images/fondo.webp') center center / cover no-repeat fixed;
+        url('images/fondo.webp') center center / cover no-repeat;
 
-    background-color: #000;
-    min-height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
-Y agrega al final del CSS:
-
-/* Android / móviles */
+/* Solo móvil */
 @media (max-width: 768px) {
 
+    html,
     body {
-        background:
-            linear-gradient(
-                rgba(0,0,0,0.50),
-                rgba(0,0,0,0.50)
-            ),
-            url('images/fondo.webp') center center / cover no-repeat;
-
-        background-color: #000;
+        overflow-x: hidden;
+        overscroll-behavior-y: none;
     }
 
+    .about-text {
+        font-size: 1.1rem;
+        text-align: left;
+        text-align-last: left;
+    }
 }
         
         /* ==========================================
