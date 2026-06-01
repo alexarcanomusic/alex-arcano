@@ -708,7 +708,9 @@ text-shadow: 0 8px 30px rgba(0,0,0,0.50);
     </div>
 
     <header id="main-header">
-        <div class="logo" onclick="app.navigate('inicio')">Alex Arcano</div>
+        <div class="logo" onclick="app.goHome()">
+    Alex Arcano
+</div>
         <div class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('mobile-active')">Menú</div>
         <nav>
             <ul id="nav-menu">
@@ -976,40 +978,65 @@ if (
     const currentView =
         document.querySelector('.view.active');
 
+    // Evita navegar a la misma vista
     if (currentView && currentView.id === viewId) {
         return;
     }
 
+    // Evita errores si la vista no existe
     if (!document.getElementById(viewId)) {
         return;
     }
 
-    ...
+    if (push) {
+        this.historyStack =
+            this.historyStack.slice(0, this.historyIndex + 1);
+
+        this.historyStack.push(viewId);
+        this.historyIndex++;
+
+        history.pushState(
+            { view: viewId },
+            "",
+            "#" + viewId
+        );
+    }
+
+    document
+        .getElementById('nav-menu')
+        .classList.remove('mobile-active');
+
+    document
+        .querySelectorAll('.view')
+        .forEach(v => v.classList.remove('active'));
+
+    document
+        .querySelectorAll('nav a')
+        .forEach(a => a.classList.remove('active'));
+
+    const view = document.getElementById(viewId);
+
+    if (view) {
+        view.classList.add('active');
+    }
+
+    const nav = document.getElementById('nav-' + viewId);
+
+    if (nav) {
+        nav.classList.add('active');
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    document
+        .querySelectorAll('.reveal')
+        .forEach(el => el.classList.remove('active'));
+
+    setTimeout(() => this.triggerReveal(), 150);
 }
-        if (push) {
-            this.historyStack = this.historyStack.slice(0, this.historyIndex + 1);
-            this.historyStack.push(viewId);
-            this.historyIndex++;
-
-            history.pushState({ view: viewId }, "", "#" + viewId);
-        }
-
-        document.getElementById('nav-menu').classList.remove('mobile-active');
-
-        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-
-        const view = document.getElementById(viewId);
-        if (view) view.classList.add('active');
-
-        const nav = document.getElementById('nav-' + viewId);
-        if (nav) nav.classList.add('active');
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
-        setTimeout(() => this.triggerReveal(), 150);
-    },
 
     back() {
         if (this.historyIndex > 0) {
@@ -1109,7 +1136,24 @@ Compartir
         });
     }
 };
+goHome() {
 
+    if (
+        document.querySelector('.view.active')?.id === 'inicio'
+    ){
+        return;
+    }
+
+    this.navigate('inicio');
+},
+
+initScrollReveal() {
+    this.observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('active');
+        });
+    }, { threshold: 0.15 });
+},
 /* =========================
    INIT
 ========================= */
