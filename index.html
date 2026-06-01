@@ -571,7 +571,7 @@
             color: var(--color-text);
         }
 
-        /* Línea animada sutil bajo el botón */
+        /* Línea sutil bajo el botón */
         .lyrics-toggle-btn::after {
             content: '';
             position: absolute;
@@ -588,7 +588,7 @@
             width: 100%;
         }
 
-        /* Contenedor colapsable con transición */
+        /* Contenedor colapsable de líricas */
         .lyrics-content {
             max-height: 0;
             opacity: 0;
@@ -598,7 +598,7 @@
         }
 
         .lyrics-content.abierto {
-            max-height: 3500px; /* Suficientemente alto para contener la lírica completa */
+            max-height: 3500px;
             opacity: 1;
             margin-top: 4rem;
         }
@@ -1024,7 +1024,7 @@
 
                 <!-- ENLACES DE REDES Y ACCIONES -->
                 <div class="song-actions reveal">
-                    <!-- Enlaces dinámicos Spotify/YouTube -->
+                    <!-- Enlaces dinámicos Spotify/YouTube se inyectan dinámicamente -->
                 </div>
             </div>
         </section>
@@ -1143,7 +1143,7 @@ Me enseñaste a estar vivo
 Pero no lo puedo estar
 Sin ti
 
-chorus (final)
+chorus
 Cuéntame
 Dime cómo mentir
 Si ya no estás aquí conmigo
@@ -1152,6 +1152,7 @@ Cuéntame
 Que no puedo huir
 De todo lo que hemos pasado
 De no sentirte aquí a mi lado
+
 Cuéntame
 Dime cómo escapar
 Decir que el miedo ya se ha ido
@@ -1419,7 +1420,7 @@ Para volver a empezar
 ¿Dónde queda todo, todo mi amor?
 Todo
 
-chorus (final)
+chorus
 ¿Dónde quedan los recuerdos de aquel amor?
 ¿Dónde se esconde la mentira y la ironía
 De cada día, sin poder volverte a ver?
@@ -1623,24 +1624,24 @@ Solo quiero escribirte esta canción
 Es que no puedo vivir tranquilo
 En lo que el tiempo nunca se llevó
 
-outro / final
+outro
 Mi destino se ha perdido
 Entre tantos sueños que se han ido hoy`
             }
         ];
 
-        /* =========================
+        /* ==========================================
            FORMATO AUTOMÁTICO DE LÍRICAS
-        ========================= */
+           ========================================== */
         function formatLyrics(rawLyrics) {
             if (!rawLyrics) return '';
             return rawLyrics
                 .split('\n')
                 .map(line => {
                     const trimmed = line.trim();
-                    // Identifica secciones musicales básicas para estructurarlas elegantemente
                     const isTag = /^(pre-chorus|chorus|verse|intro|bridge|outro|solo)$/i.test(trimmed) || 
-                                  /^\[(pre-chorus|chorus|verse|intro|bridge|outro|solo)\]$/i.test(trimmed);
+                                  /^\[(pre-chorus|chorus|verse|intro|bridge|outro|solo)\]$/i.test(trimmed) ||
+                                  /^(chorus \(final\)|pre-chorus \/ chorus|outro \/ final)$/i.test(trimmed);
                     if (isTag) {
                         const cleanTag = trimmed.replace(/[\[\]]/g, '');
                         return `<span class="etiqueta">${cleanTag}</span>`;
@@ -1653,7 +1654,6 @@ Entre tantos sueños que se han ido hoy`
         /* Extrae el ID de YouTube para armar la URL de inserción (embed) */
         function getYoutubeEmbedUrl(url) {
             if (!url) return '';
-            // Soporta urls con query parameters de tracking o de share de youtube (.be o watch?v=)
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             const match = url.match(regExp);
             return (match && match[2].length === 11) ? match[2] : '';
@@ -1802,7 +1802,7 @@ Entre tantos sueños que se han ido hoy`
                 document.getElementById('detail-cover-container').innerHTML =
                     `<img src="${song.image}" class="cover-image" alt="${song.title}" onerror="this.src='https://placehold.co/500x500/121212/888888?text=${encodeURIComponent(song.title)}'">`;
 
-                // Inyección de video de YouTube si está disponible (eliminando restricción de upcoming)
+                // Inyección de video de YouTube si está disponible
                 const videoContainer = document.getElementById('detail-video-container');
                 const embedId = getYoutubeEmbedUrl(song.youtube);
                 if (embedId) {
