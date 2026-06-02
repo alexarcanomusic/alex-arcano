@@ -999,16 +999,37 @@ header nav .nav-social img:hover{
             }
         }
 
-.site-footer {
-    text-align: center;
-    padding: 40px 20px;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    margin-top: 80px;
+.site-footer{
+    text-align:center;
+    padding:60px 20px 40px;
+    margin-top:80px;
+}
+
+.footer-social{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    margin-bottom:25px;
+}
+
+.footer-social a{
+    color:#ffffff;
+    font-size:1.8rem;
+    opacity:.85;
+    transition:.3s;
+}
+
+.footer-social a:hover{
+    opacity:1;
+    transform:scale(1.15);
+}
+
+.site-footer p{
+    margin:0;
+    font-family:var(--font-sans);
+    font-size:.9rem;
+    color:rgba(255,255,255,.9);
 }
     </style>
 </head>
@@ -1207,8 +1228,36 @@ header nav .nav-social img:hover{
     </main>
 
     <footer class="site-footer">
+
+    <div class="footer-social">
+
+        <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank">
+            <i class="fab fa-facebook"></i>
+        </a>
+
+        <a href="https://x.com/AlexArcano_" target="_blank">
+            <i class="fab fa-x-twitter"></i>
+        </a>
+
+        <a href="https://www.instagram.com/alex.arcano/" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@alex.arcano" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+
+        <a href="https://www.youtube.com/@AlexArcano" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+    </div>
+
+    <p>
         © ALEX ARCANO – Todos los derechos reservados
-    </footer>
+    </p>
+
+</footer>
 
     <script>
         /* ==========================================
