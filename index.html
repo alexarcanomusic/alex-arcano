@@ -796,6 +796,7 @@
         flex-direction: column;
         align-items: center;
         padding: 0; /* Sin padding para que el fondo activo llene el ancho */
+        gap: 0; /* CORRECCIÓN: Elimina el hueco negro heredado del escritorio */
         border-radius: 0; 
         box-shadow: 0 20px 60px rgba(0,0,0,.8);
         z-index: 2000;
@@ -816,15 +817,15 @@
 
     nav ul li:last-child{
         margin-bottom: 0;
-        padding-top: 1.5rem; 
-        padding-bottom: 1.5rem;
+        padding-top: 0; 
+        padding-bottom: 0;
         border-bottom: none; /* Quitamos la línea al final (sección redes) */
     }
 
     nav ul li a{
         display: block;
         width: 100%;
-        padding: 1.2rem 0; /* Altura del bloque */
+        padding: 1.5rem 0; /* Bloque un poco más alto para mejor toque */
         font-size: 1.3rem; /* Tamaño más grande tipo título */
         line-height: 1.2;
         font-family: var(--font-serif);
@@ -853,7 +854,7 @@
         align-items: center;
         gap: 25px; 
         width: 100%;
-        padding: 0 !important; 
+        padding: 1.5rem 0 !important; /* CORRECCIÓN: Da espacio para que se vean los íconos */
         margin: 0;
         border: none !important;
     }
