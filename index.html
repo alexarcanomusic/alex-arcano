@@ -32,7 +32,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -90,11 +90,16 @@
         }
         
         /* ==========================================
-           TIPOGRAFÍA Y EDITORIAL
+           TIPOGRAFÍA Y EDITORIAL (PC)
            ========================================== */ 
         h1, h2, h3, h4, .serif {
             font-family: var(--font-serif);
             font-weight: 500;
+        }
+
+        .hero-title, .song-title-large, .note-title, .about-title {
+            color: #FFFFFF !important; /* Forzar legibilidad blanca */
+            text-shadow: 0 8px 30px rgba(0,0,0,0.65);
         }
 
         a {
@@ -139,7 +144,7 @@
         }
 
         /* ==========================================
-           NAVEGACIÓN
+           NAVEGACIÓN (PC)
            ========================================== */
         header {
             position: fixed;
@@ -247,7 +252,7 @@
         }
 
         /* ==========================================
-           INICIO
+           INICIO (PC)
            ========================================== */
         #inicio {
             text-align: center;
@@ -255,26 +260,26 @@
         }
 
         .hero-title {
-    color: #FFFFFF;
-    text-shadow: 0 10px 40px rgba(0,0,0,0.60);
-    font-size: 4.8rem;
-    margin-top:-30px; /* NUEVO */
-    margin-bottom: 0.8rem;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-}
+            color: #FFFFFF;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.60);
+            font-size: 4.8rem;
+            margin-top: -30px; 
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
 
         .hero-subtitle {
-    font-size: 1.15rem;
-    color: rgba(255,255,255,0.75);
-    letter-spacing: 0.04em; /* antes 0.08em */
-    margin-bottom: 1.8rem; /* antes 4rem */
-    font-weight: 300;
-    line-height: 1.8;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.04em; 
+            margin-bottom: 1.8rem; 
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         .hero-featured {
             max-width: 800px;
@@ -285,14 +290,14 @@
         }
 
         .featured-label {
-    font-family: var(--font-serif);
-    font-size: 2.4rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 0.02em;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 6px 20px rgba(0,0,0,0.35);
-}
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.85);
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        }
 
         .cover-placeholder {
             width: 100%;
@@ -344,36 +349,35 @@
             gap: 3rem;
         }
 
-        /* Redes Sociales */
+        /* Redes Sociales del Inicio */
         .social-icons {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.10);
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-}
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.10);
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
 
-.social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.social-icons a img {
-    width: 30px;
-    height: 30px;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    filter: brightness(0) invert(1);
-}
+        .social-icons a img {
+            width: 30px;
+            height: 30px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
 
-.social-icons a img:hover {
-    transform: scale(1.25);
-    opacity: 1;
-    filter: brightness(1) invert(0);
-}
+        .social-icons a img:hover {
+            transform: scale(1.25);
+            opacity: 1;
+        }
 
         /* ==========================================
            MÚSICA (GALERÍA)
@@ -464,7 +468,7 @@
         }
 
         /* ==========================================
-           PLANTILLA DE CANCIÓN INDIVIDUAL (ASIMÉTRICA EDITORIAL)
+           PLANTILLA DE CANCIÓN INDIVIDUAL
            ========================================== */
         .song-template-wrapper {
             max-width: 950px;
@@ -519,7 +523,7 @@
         }
 
         .song-detail-right .song-title-large {
-            color: #FFFFFF;
+            color: #FFFFFF !important;
             text-shadow: 0 8px 30px rgba(0,0,0,0.50);
             font-size: 3.2rem;
             margin-bottom: 0.2rem;
@@ -611,15 +615,14 @@
         }
 
         .lyrics-content.abierto {
-    max-height: 3500px;
-    opacity: 1;
-    margin-top: 4rem;
-
-    background: rgba(0,0,0,0.35);
-    padding: 2.5rem 1.5rem;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-}
+            max-height: 3500px;
+            opacity: 1;
+            margin-top: 4rem;
+            background: rgba(0,0,0,0.35);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
 
         .lyrics-text {
             font-family: var(--font-serif);
@@ -631,6 +634,26 @@
             letter-spacing: 0.02em;
             font-style: italic;
             font-weight: 500;
+        }
+
+        /* NOTIFICACIÓN TOAST PREMIUM */
+        .custom-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            opacity: 0;
+            transition: all .4s ease;
+            background: rgba(0,0,0,0.85);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: #fff;
+            z-index: 9999;
+            pointer-events: none;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .custom-toast.show {
@@ -729,6 +752,7 @@
         .about-title {
             font-size: 4rem;
             margin-bottom: 4rem;
+            color: #FFFFFF !important;
         }
         
         .about-text {
@@ -742,180 +766,6 @@
         .about-text p {
             margin-bottom: 2.5rem;
         }
-
-        /* ==========================================
-           RESPONSIVE
-           ========================================== */
-        @media (max-width: 1024px) {
-            .note-category-label { position: static; text-align: left; margin-bottom: 1rem; width: auto; }
-        }
-
-        @media (max-width: 900px) {
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 4rem 2rem; }
-            .hero-title { font-size: 3.5rem; }
-            .about-text { text-align: left; text-align-last: left; }
-        }
-
-    @media (max-width:768px){
-
-    header {
-        padding: 1.2rem 2rem; 
-        justify-content: space-between; 
-    }
-
-    header.scrolled {
-        padding: 1rem 2rem; 
-    }
-
-    .logo {
-        margin: 0; 
-    }
-
-    .menu-toggle{
-        display: block;
-        font-size: 1.1rem;
-        letter-spacing: .08em;
-        font-weight: 600;
-        z-index: 2001;
-        color: #fff;
-        margin-right: 0; 
-        text-align: right;
-    }
-
-    nav ul{
-        display: none;
-        position: absolute; 
-        top: 100%; /* Cae justo debajo del header */
-        left: 0; 
-        transform: none;
-        width: 100%; 
-        max-width: none;
-        background: rgba(15, 15, 15, 0.98); 
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        flex-direction: column;
-        align-items: center;
-        padding: 0; /* Sin padding para que el fondo activo llene el ancho */
-        gap: 0; /* CORRECCIÓN: Elimina el hueco negro heredado del escritorio */
-        border-radius: 0; 
-        box-shadow: 0 20px 60px rgba(0,0,0,.8);
-        z-index: 2000;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    nav ul.mobile-active{
-        display:flex;
-    }
-
-    nav ul li{
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(255,255,255,0.2); /* Línea blanca debajo de cada ítem */
-        margin-bottom: 0; 
-    }
-
-    nav ul li:last-child{
-        margin-bottom: 0;
-        padding-top: 0; 
-        padding-bottom: 0;
-        border-bottom: none; /* Quitamos la línea al final (sección redes) */
-    }
-
-    nav ul li a{
-        display: block;
-        width: 100%;
-        padding: 1.5rem 0; /* Bloque un poco más alto para mejor toque */
-        font-size: 1.3rem; /* Tamaño más grande tipo título */
-        line-height: 1.2;
-        font-family: var(--font-serif);
-        letter-spacing: .08em; 
-        color: rgba(255,255,255,0.85);
-        text-transform: uppercase;
-        position: relative; 
-        transition: all 0.3s ease;
-    }
-    
-    /* Quitamos la línea inferior antigua que hereda del escritorio */
-    nav a::after {
-        display: none; 
-    }
-
-    /* Bloque activo: Fondo blanco, texto negro */
-    nav a.active{
-        background: #FFFFFF; 
-        color: #000000 !important;
-        font-weight: 600;
-    }
-
-    .nav-social{
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        gap: 25px; 
-        width: 100%;
-        padding: 1.5rem 0 !important; /* CORRECCIÓN: Da espacio para que se vean los íconos */
-        margin: 0;
-        border: none !important;
-    }
-
-    .nav-social a{
-        width: auto !important;
-        padding: 0 !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .nav-social img{
-        width: 22px; 
-        height: 22px;
-        opacity: 0.8;
-    }
-
-    .hero-title{
-        font-size:3rem;
-        line-height:1.1;
-    }
-
-    .hero-subtitle{
-        font-size:1rem;
-        line-height:1.7;
-        padding:0 1rem;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr;
-        gap:5rem;
-    }
-
-    .song-detail-layout{
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-    }
-
-    .song-detail-right{
-        align-items:center;
-    }
-
-    .song-detail-right .song-title-large{
-        text-align:center;
-        font-size:2.6rem;
-    }
-
-    .song-detail-right .song-story{
-        text-align:center;
-        border-left:none;
-        padding-left:0;
-    }
-
-    .song-actions{
-        flex-direction:column;
-        align-items:center;
-        gap:2rem;
-    }
-}
 
         /* BOTÓN SUBIR */
         #scrollTopBtn{
@@ -938,25 +788,9 @@
             background: rgba(255,255,255,0.3);
         }
 
-        /* ATRÁS / ADELANTE */
+        /* ATRÁS / ADELANTE (PC) */
         #historyNav{
-               display: none !important;
-}
-
-        #historyNav button{
-            width:50px;
-            height:50px;
-            border:none;
-            border-radius:50%;
-            background:rgba(255,255,255,0.15);
-            color:white;
-            cursor:pointer;
-            font-size:20px;
-            box-shadow:0 5px 20px rgba(0,0,0,.2);
-            transition: background 0.3s ease;
-        }
-        #historyNav button:hover {
-            background: rgba(255,255,255,0.3);
+            display: none !important; /* Desactivado por defecto, manejado por botones nativos */
         }
 
         .video-responsive {
@@ -965,21 +799,182 @@
             border-radius: 12px;
         }
 
-        /* MEJORA VISIBILIDAD DE LOS TÍTULOS */
-        .hero-title,
-        .hero-subtitle,
-        .note-title,
-        .about-title {
-            text-shadow: 0 8px 30px rgba(0,0,0,0.55);
-        }
+        /* ==========================================
+           MÓVIL / CELULAR (ESTRICTAMENTE FILTRADO)
+           ========================================== */
+        @media (max-width: 768px) {
+            
+            /* 1. Cabecera móvil balanceada */
+            header {
+                padding: 1.2rem 2rem !important; 
+                justify-content: space-between !important; 
+            }
 
-/* AGREGA ESTO AQUÍ */
-.social-nav{
-    display:flex;
-    justify-content:center;
-    gap:80px;
-    flex-wrap:wrap;
-}
+            header.scrolled {
+                padding: 1rem 2rem !important; 
+            }
+
+            /* Logotipo movido un poco hacia adentro (centrado sutil) */
+            .logo {
+                margin: 0;
+                margin-left: 1.2rem !important;
+                letter-spacing: 0.18em !important;
+            }
+
+            /* Botón Menú unificado a la derecha con misma tipografía sans */
+            .menu-toggle {
+                display: block !important;
+                font-family: var(--font-sans) !important;
+                font-size: 1.1rem !important;
+                letter-spacing: 0.08em !important;
+                font-weight: 500 !important;
+                z-index: 2001 !important;
+                color: #FFFFFF !important;
+                margin-right: 0 !important; 
+                text-align: right !important;
+                cursor: pointer;
+            }
+
+            /* 2. Menú desplegable estilo Bunbury (compacto y limpio) */
+            nav ul {
+                display: none;
+                position: absolute; 
+                top: 100%;
+                left: 0; 
+                transform: none;
+                width: 100%; 
+                max-width: none;
+                background: rgba(15, 15, 15, 0.98); 
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                flex-direction: column;
+                align-items: center;
+                padding: 0 !important;
+                gap: 0 !important; /* Elimina cualquier separación o espacio negro */
+                border-radius: 0; 
+                box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+                z-index: 2000;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            nav ul.mobile-active {
+                display: flex !important;
+            }
+
+            /* Línea divisoria blanca suave bajo cada sección */
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+                margin-bottom: 0 !important; 
+                padding: 0 !important;
+            }
+
+            nav ul li a {
+                display: block;
+                width: 100%;
+                padding: 1.5rem 0 !important; /* Toque cómodo */
+                font-size: 1.3rem !important;
+                line-height: 1.2;
+                font-family: var(--font-serif);
+                letter-spacing: 0.08em; 
+                color: rgba(255,255,255,0.85);
+                text-transform: uppercase;
+                transition: all 0.3s ease;
+            }
+            
+            nav a::after {
+                display: none !important; /* Desactivar línea flotante antigua */
+            }
+
+            /* Elemento Activo: Fondo blanco y texto negro sólido */
+            nav a.active {
+                background: #FFFFFF !important; 
+                color: #000000 !important;
+                font-weight: 600 !important;
+            }
+
+            /* Caja de redes sociales al final del menú móvil */
+            .nav-social {
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                gap: 25px !important; 
+                width: 100%;
+                padding: 1.8rem 0 !important; 
+                margin: 0;
+                border: none !important;
+                background: rgba(10, 10, 10, 0.98) !important; /* Tono sutilmente diferenciado */
+            }
+
+            .nav-social a {
+                width: auto !important;
+                padding: 0 !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent !important;
+            }
+
+            .nav-social img {
+                width: 24px !important; 
+                height: 24px !important;
+                opacity: 0.8;
+                filter: brightness(0) invert(1) !important;
+            }
+
+            /* Ajustes complementarios de secciones móviles */
+            .hero-title {
+                font-size: 3rem;
+                line-height: 1.1;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.7;
+                padding: 0 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 5rem;
+            }
+
+            .song-detail-layout {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .song-detail-right {
+                align-items: center;
+            }
+
+            .song-detail-right .song-title-large {
+                text-align: center;
+                font-size: 2.6rem;
+            }
+
+            .song-detail-right .song-story {
+                text-align: center;
+                border-left: none;
+                padding-left: 0;
+            }
+
+            .song-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .note-category-label {
+                position: static;
+                text-align: left;
+                margin-bottom: 1rem;
+                width: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -989,13 +984,7 @@
         ↑
     </button>
 
-    <!-- BOTONES ATRÁS / ADELANTE -->
-    <div id="historyNav">
-        <button onclick="app.back()">←</button>
-        <button onclick="app.forward()">→</button>
-    </div>
-
-    <!-- Notificación flotante para la copia del enlace -->
+    <!-- Notificación flotante Toast -->
     <div id="toast-notification" class="custom-toast">Enlace copiado</div>
 
     <header id="main-header">
@@ -1003,55 +992,43 @@
             Alex Arcano
         </div>
         <div class="menu-toggle" id="menuBtn" onclick="toggleMenu()">
-    MENÚ
-</div>
+            MENÚ
+        </div>
         <nav>
-    <ul id="nav-menu">
-
-        <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li>
-
-<li><a onclick="app.navigate('notas')" id="nav-notas">Notas</a></li>
-
-<li><a onclick="app.navigate('sobre-mi')" id="nav-sobre-mi">Sobre Mí</a></li>
-
-<li class="nav-social">
-            <a href="https://www.instagram.com/alex.arcano/" target="_blank">
-                <img src="images/instagram.webp" alt="Instagram">
-            </a>
-
-            <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank">
-                <img src="images/facebook.webp" alt="Facebook">
-            </a>
-
-            <a href="https://www.tiktok.com/@alex.arcano" target="_blank">
-                <img src="images/tiktok.webp" alt="TikTok">
-            </a>
-
-            <a href="https://x.com/AlexArcano_" target="_blank">
-                <img src="images/x.webp" alt="X">
-            </a>
-
-            <a href="https://www.threads.com/@alex.arcano" target="_blank">
-                <img src="images/threads.webp" alt="Threads">
-            </a>
-        </li>
-
-    </ul>
-</nav>
+            <ul id="nav-menu">
+                <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li>
+                <li><a onclick="app.navigate('notas')" id="nav-notas">Notas</a></li>
+                <li><a onclick="app.navigate('sobre-mi')" id="nav-sobre-mi">Sobre Mí</a></li>
+                
+                <!-- Redes sociales integradas como último elemento para Móviles -->
+                <li class="nav-social">
+                    <a href="https://www.instagram.com/alex.arcano/" target="_blank">
+                        <img src="images/instagram.webp" alt="Instagram" onerror="this.src='https://placehold.co/32x32/transparent/white?text=IG'">
+                    </a>
+                    <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank">
+                        <img src="images/facebook.webp" alt="Facebook" onerror="this.src='https://placehold.co/32x32/transparent/white?text=FB'">
+                    </a>
+                    <a href="https://www.tiktok.com/@alex.arcano" target="_blank">
+                        <img src="images/tiktok.webp" alt="TikTok" onerror="this.src='https://placehold.co/32x32/transparent/white?text=TT'">
+                    </a>
+                    <a href="https://x.com/AlexArcano_" target="_blank">
+                        <img src="images/x.webp" alt="X" onerror="this.src='https://placehold.co/32x32/transparent/white?text=X'">
+                    </a>
+                    <a href="https://www.threads.com/@alex.arcano" target="_blank">
+                        <img src="images/threads.webp" alt="Threads" onerror="this.src='https://placehold.co/32x32/transparent/white?text=Th'">
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <!-- SECCIÓN DE INICIO -->
         <section id="inicio" class="view active">
-           <div class="reveal">
-   <h1 class="hero-title serif">
-    Fragmentos de memoria convertidos en música.
-</h1>
-
-<p class="hero-subtitle">
-    Abre una canción. Encuentra una historia.
-</p>
-</div>
+            <div class="reveal">
+                <h1 class="hero-title serif">Fragmentos de memoria convertidos en música.</h1>
+                <p class="hero-subtitle">Abre una canción. Encuentra una historia.</p>
+            </div>
             
             <div class="hero-featured reveal">
                 <span class="featured-label">Próximo capítulo</span>
@@ -1085,29 +1062,23 @@
                 </div>
             </div>
 
-           <div class="social-icons reveal">
-
-    <a href="https://www.instagram.com/alex.arcano/" target="_blank" rel="noopener noreferrer">
-        <img src="images/instagram.webp" alt="Instagram">
-    </a>
-
-    <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank" rel="noopener noreferrer">
-        <img src="images/facebook.webp" alt="Facebook">
-    </a>
-
-    <a href="https://www.tiktok.com/@alex.arcano" target="_blank" rel="noopener noreferrer">
-        <img src="images/tiktok.webp" alt="TikTok">
-    </a>
-
-    <a href="https://x.com/AlexArcano_" target="_blank" rel="noopener noreferrer">
-        <img src="images/x.webp" alt="X">
-    </a>
-
-    <a href="https://www.threads.com/@alex.arcano" target="_blank" rel="noopener noreferrer">
-        <img src="images/threads.webp" alt="Threads">
-    </a>
-
-</div>
+            <div class="social-icons reveal">
+                <a href="https://www.instagram.com/alex.arcano/" target="_blank" rel="noopener noreferrer">
+                    <img src="images/instagram.webp" alt="Instagram" onerror="this.src='https://placehold.co/32x32/transparent/white?text=IG'">
+                </a>
+                <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank" rel="noopener noreferrer">
+                    <img src="images/facebook.webp" alt="Facebook" onerror="this.src='https://placehold.co/32x32/transparent/white?text=FB'">
+                </a>
+                <a href="https://www.tiktok.com/@alex.arcano" target="_blank" rel="noopener noreferrer">
+                    <img src="images/tiktok.webp" alt="TikTok" onerror="this.src='https://placehold.co/32x32/transparent/white?text=TT'">
+                </a>
+                <a href="https://x.com/AlexArcano_" target="_blank" rel="noopener noreferrer">
+                    <img src="images/x.webp" alt="X" onerror="this.src='https://placehold.co/32x32/transparent/white?text=X'">
+                </a>
+                <a href="https://www.threads.com/@alex.arcano" target="_blank" rel="noopener noreferrer">
+                    <img src="images/threads.webp" alt="Threads" onerror="this.src='https://placehold.co/32x32/transparent/white?text=Th'">
+                </a>
+            </div>
         </section>
 
         <!-- SECCIÓN DE MÚSICA -->
@@ -1117,23 +1088,20 @@
             </div>
         </section>
 
-        <!-- SECCIÓN DETALLE DE CANCIÓN (ASIMÉTRICA REDISEÑADA) -->
+        <!-- SECCIÓN DETALLE DE CANCIÓN -->
         <section id="cancion-detalle" class="view">
             <div class="song-template-wrapper">
                 <div class="back-link reveal" onclick="app.navigate('musica')">
                     ← Volver a la colección
                 </div>
                 
-                <!-- CONTENEDOR FLEX PRINCIPAL -->
                 <div class="song-detail-layout reveal">
-                    <!-- COLUMNA IZQUIERDA: IMAGEN PEQUEÑA -->
                     <div class="song-detail-left">
                         <div class="cover-placeholder" id="detail-cover-container" style="cursor: default;">
-                            <!-- Portada inyectada aquí -->
+                            <!-- Portada inyectada -->
                         </div>
                     </div>
                     
-                    <!-- COLUMNA DERECHA: TEXTOS Y VIDEO -->
                     <div class="song-detail-right">
                         <div>
                             <h1 class="song-title-large serif" id="detail-title">Título</h1>
@@ -1142,14 +1110,12 @@
                         
                         <p class="song-story" id="detail-story">Historia de la canción disponible próximamente.</p>
                         
-                        <!-- CONTENEDOR PARA EL VIDEO DE YOUTUBE -->
                         <div id="detail-video-container">
-                            <!-- Aquí se inyectará el video automáticamente -->
+                            <!-- Video inyectado -->
                         </div>
                     </div>
                 </div>
 
-                <!-- SECCIÓN DE LA LETRA (DESPLIEGUE SUAVE AUTOMATIZADO) -->
                 <div id="detail-lyrics-wrapper" class="lyrics-wrapper reveal" style="display: none;">
                     <button id="btn-toggle-lyrics" class="lyrics-toggle-btn" onclick="app.toggleLyrics()">Leer Letra</button>
                     <div id="lyrics-content-container" class="lyrics-content">
@@ -1157,9 +1123,8 @@
                     </div>
                 </div>
 
-                <!-- ENLACES DE REDES Y ACCIONES -->
                 <div class="song-actions reveal">
-                    <!-- Enlaces dinámicos Spotify/YouTube se inyectan dinámicamente -->
+                    <!-- Enlaces dinámicos Spotify/YouTube -->
                 </div>
             </div>
         </section>
@@ -1198,7 +1163,7 @@
                     <p>A través de letras introspectivas, atmósferas melancólicas y una identidad visual coherente, Alex Arcano construye una experiencia artística centrada en la nostalgia, la memoria y las emociones humanas.</p>
                 </div>
                 
-                <div class="social-nav" style="margin-top: 4rem; border-top: none;">
+                <div class="social-nav" style="margin-top: 4rem; border-top: none; display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;">
                     <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano" class="btn-link"><i class="fa-solid fa-envelope"></i> Email</a>
                     <a href="https://wa.me/573183557890" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
                 </div>
@@ -1220,76 +1185,7 @@
                 status: 'released',
                 year: '2024',
                 story: 'La primera parte de una historia marcada por las preguntas que nunca encontraron respuesta. Un viaje al pasado a través de la melancolía cotidiana.',
-                lyrics: `No se van
-Los recuerdos han quedado y el amor
-Se inunda con cerveza
-Y yo estoy aquí
-Perdido en el alcohol una vez más
-Ya nada importa
-
-Hoy tengo el presentimiento
-Que estoy solo otra vez
-Que el destino se ha empeñado en ahogarme
-Y no sé por qué
-Hoy tengo el presentimiento
-Que no puedo estar sin ti
-Que será este sentimiento
-Que no te deja morir
-
-Cuéntame
-Dime cómo seguir
-Olvidando lo vivido
-Aunque sé que se ha perdido
-Cuéntame
-Dime cómo seguir
-Me enseñaste a estar vivo
-Pero no lo puedo estar
-Sin ti
-
-No se van
-Los recuerdos han quedado y el dolor
-Se inunda con cerveza
-Y yo estoy aquí
-Muriendo de amor una vez más
-Ya nada importa
-
-Hoy tengo el presentimiento
-Que estoy solo otra vez
-Que el destino se ha empeñado en ahogarme
-Y no sé por qué
-Hoy tengo el presentimiento
-Que no puedo estar sin ti
-Que será este sentimiento
-Que no te deja morir
-
-Cuéntame
-Dime cómo seguir
-Olvidando lo vivido
-Aunque sé que se ha perdido
-Cuéntame
-Dime cómo seguir
-Me enseñaste a estar vivo
-Pero no lo puedo estar
-Sin ti
-
-Cuéntame
-Dime cómo mentir
-Si ya no estás aquí conmigo
-Nada tiene algún sentido
-Cuéntame
-Que no puedo huir
-De todo lo que hemos pasado
-De no sentirte aquí a mi lado
-
-Cuéntame
-Dime cómo escapar
-Decir que el miedo ya se ha ido
-Y ahora solo está contigo
-Cuéntame
-Dime cómo seguir
-Me enseñaste a estar vivo
-Pero no lo puedo estar
-Sin ti`
+                lyrics: `No se van\nLos recuerdos han quedado y el amor\nSe inunda con cerveza\nY yo estoy aquí\nPerdido en el alcohol una vez más\nYa nada importa\n\nHoy tengo el presentimiento\nQue estoy solo otra vez\nQue el destino se ha empeñado en ahogarme\nY no sé por qué\nHoy tengo el presentimiento\nQue no puedo estar sin ti\nQue será este sentimiento\nQue no te deja morir\n\nCuéntame\nDime cómo seguir\nOlvidando lo vivido\nAunque sé que se ha perdido\nCuéntame\nDime cómo seguir\nMe enseñaste a estar vivo\nPero no lo puedo estar\nSin ti\n\nNo se van\nLos recuerdos han quedado y el dolor\nSe inunda con cerveza\nY yo estoy aquí\nMuriendo de amor una vez más\nYa nada importa\n\nHoy tengo el presentimiento\nQue estoy solo otra vez\nQue el destino se ha empeñado en ahogarme\nY no sé por qué\nHoy tengo el presentimiento\nQue no puedo estar sin ti\nQue será este sentimiento\nQue no te deja morir\n\nCuéntame\nDime cómo seguir\nOlvidando lo vivido\nAunque sé que se ha perdido\nCuéntame\nDime cómo seguir\nMe enseñaste a estar vivo\nPero no lo puedo estar\nSin ti\n\nCuéntame\nDime cómo mentir\nSi ya no estás aquí conmigo\nNada tiene algún sentido\nCuéntame\nQue no puedo huir\nDe todo lo que hemos pasado\nDe no sentirte aquí a mi lado\n\nCuéntame\nDime cómo escapar\nDecir que el miedo ya se ha ido\nY ahora solo está contigo\nCuéntame\nDime cómo seguir\nMe enseñaste a estar vivo\nPero no lo puedo estar\nSin ti`
             },
             {
                 id: 'cuentame-b',
@@ -1300,55 +1196,7 @@ Sin ti`
                 status: 'released',
                 year: '2025',
                 story: 'El cierre emocional de una conversación pendiente. Cuando la nostalgia deja de doler y se convierte en aceptación.',
-                lyrics: `¿Dónde está el amor?
-¿Por qué estás muriendo mi corazón?
-Si aún después de tanto tiempo lejos
-Aún te extraño y siento que vendrás
-Tengo miedo hoy
-De aceptar que todo terminó
-Tú te vas marchando de este lugar
-Y yo aquí sin nada más
-
-Que este frío
-Que es tan tuyo y tan mío
-¡Cuéntame, cuéntame, cuéntame!
-
-¿Por qué?
-No tengo palabras para describir
-Lo que en poco tiempo me hiciste sentir
-Rompiste las olas
-Cortaste el calor
-Que estaban tan dentro de mi corazón
-Y hoy que no estás
-Solo me queda decir
-Que nunca me olvides como yo a ti
-Aunque tenga que dejarte marchar
-Mejor despedida que esta no hay
-
-Sé que soy solo yo
-El que está sufriendo por los dos
-Y aunque todo se derrumbe en este lugar
-Yo aún sigo aquí
-Sin nada más
-
-Que este frío
-Que es tan tuyo y tan mío
-¡Cuéntame, cuéntame, cuéntame!
-
-¿Por qué?
-No tengo palabras para describir
-Lo que en poco tiempo me hiciste sentir
-Rompiste las olas
-Cortaste el calor
-Que estaban tan dentro de mi corazón
-Y hoy que no estás
-Solo me queda decir
-Que nunca me olvides como yo a ti
-Aunque tenga que dejarte marchar
-Mejor despedida que esta no hay
-
-Hoooo
-Que esta no hay`
+                lyrics: `¿Dónde está el amor?\n¿Por qué estás muriendo mi corazón?\nSi aún después de tanto tiempo lejos\nAún te extraño y siento que vendrás\nTengo miedo hoy\nDe aceptar que todo terminó\nTú te vas marchando de este lugar\nY yo aquí sin nada más\n\nQue este frío\nQue es tan tuyo y tan mío\n¡Cuéntame, cuéntame, cuéntame!\n\n¿Por qué?\nNo tengo palabras para describir\nLo que en poco tiempo me hiciste sentir\nRompiste las olas\nCortaste el calor\nQue estaban tan dentro de mi corazón\nY hoy que no estás\nSolo me queda decir\nQue nunca me olvides como yo a ti\nAunque tenga que dejarte marchar\nMejor despedida que esta no hay\n\nSé que soy solo yo\nEl que está sufriendo por los dos\nY aunque todo se derrumbe en este lugar\nY yo sigo aquí\nSin nada más\n\nQue este frío\nQue es tan tuyo y tan mío\n¡Cuéntame, cuéntame, cuéntame!\n\n¿Por qué?\nNo tengo palabras para describir\nLo que en poco tiempo me hiciste sentir\nRompiste las olas\nCortaste el calor\nQue estaban tan dentro de mi corazón\nY hoy que no estás\nSolo me queda decir\nQue nunca me olvides como yo a ti\nAunque tenga que dejarte marchar\nMejor despedida que esta no hay\n\nHoooo\nQue esta no hay`
             },
             {
                 id: 'tan-solo',
@@ -1359,38 +1207,7 @@ Que esta no hay`
                 status: 'released',
                 year: '2024',
                 story: 'Nostalgia y distancia emocional en noches largas. Un reflejo acústico de la soledad elegida.',
-                lyrics: `Sueña el mundo
-Y el silencio
-Me acompaña en la calle al caminar
-Pasa el tiempo
-Por mi lado
-Oigo el eco de sus pasos al andar
-
-Y aparecen recuerdos que pesan
-Vienen y se van
-Y es que a veces no entiendo
-Que todo tiene un final
-
-Llego a casa
-Y en mi cuarto
-Duerme el miedo y no lo quiero despertar
-Y le recuerdo al pasado
-El trato que sellamos para no recordar
-
-Y le susurro a la muerte
-Que nunca me deje de esperar
-Mientras busco a la suerte
-Y como siempre no está
-
-Me descubro en la ventana para ver si siento
-El amor pasar
-Mientras charlo de mil cosas en silencio
-Con la soledad
-
-Siento el viento en mi rostro
-La gente ya empieza a despertar
-Y en la puerta de mi casa
-El sueño se limpia los pies al entrar`
+                lyrics: `Sueña el mundo\nY el silencio\nMe acompaña en la calle al caminar\nPasa el tiempo\nPor mi lado\nOigo el eco de sus pasos al andar\n\nY aparecen recuerdos que pesan\nVienen y se van\nY es que a veces no entiendo\nQue todo tiene un final\n\nLlego a casa\nY en mi cuarto\nDuerme el miedo y no lo quiero despertar\nY le recuerdo al pasado\nEl trato que sellamos para no recordar\n\nY le susurro a la muerte\nQue nunca me deje de esperar\nMientras busco a la suerte\nY como siempre no está\n\nMe descubro en la ventana para ver si siento\nEl amor pasar\nMientras charlo de mil cosas en silencio\nCon la soledad\n\nSiento el viento en mi rostro\nLa gente ya empieza a despertar\nY en la puerta de mi casa\nEl sueño se limpia los pies al entrar`
             },
             {
                 id: 'reflejos',
@@ -1401,75 +1218,7 @@ El sueño se limpia los pies al entrar`
                 status: 'released',
                 year: '2024',
                 story: 'Identidad, cambios y huellas emocionales en el espejo del tiempo.',
-                lyrics: `Despacio
-Y sin tocar el tema te miro
-Mis labios
-Son el reflejo de lo que voy a decir
-Mis manos
-Temblando sin saber por qué
-Ellas no tienen excusas
-Pero tengo que decirte
-
-Que ya no puedo seguir
-Eso lo puedes ver
-Que ya no voy a ceder
-Está muriendo en mi ser
-Me estás haciendo daño
-Me estás haciendo daño
-Y esto nos va a doler
-Tú ya lo debes saber
-Pero después pasarás
-Y tan solo serás
-Un recuerdo de ayer
-Que quizás, quizás amé
-
-Y cantaré esta canción
-Que es solo para los dos
-Como un último adiós
-Reflejo de un corazón
-Sé que te da igual
-Sé que te da igual
-Que siga, que pare
-Que te ate o que escape
-
-Y cantaré esta canción
-Que es solo para los dos
-Como un último adiós
-Reflejo de un corazón
-Sé que te da igual
-Sé que te da igual
-Que siga, que pare
-Que te ate o que escape
-
-Despierto
-Ya no es hora de mirar atrás
-No quiero
-Saber si está bien o mal
-
-Porque yo creo en todo lo que digas
-Y hoy
-Con solo escuchar el sonido de tu voz
-Sé que me voy a arrepentir
-Por eso
-No quiero seguir
-
-Y cantaré esta canción
-Que es solo para los dos
-Como un último adiós
-Reflejo de un corazón
-Sé que te da igual
-Sé que te da igual
-Que siga, que pare
-Que te ate o que escape
-
-Y cantaré esta canción
-Que es solo para los dos
-Como un último adiós
-Reflejo de un corazón
-Sé que te da igual
-Sé que te da igual
-Que siga, que pare
-Que te ate o que escape`
+                lyrics: `Despacio\nY sin tocar el tema te miro\nMis labios\nSon el reflejo de lo que voy a decir\nMis manos\nTemblando sin saber por qué\nEllas no tienen excusas\nPero tengo que decirte\n\nQue ya no puedo seguir\nEso lo puedes ver\nQue ya no voy a ceder\nEstá muriendo en mi ser\nMe estás haciendo daño\nMe estás haciendo daño\nY esto nos va a doler\nTú ya lo debes saber\nPero después pasarás\nY tan solo serás\nUn recuerdo de ayer\nQue quizás, quizás amé\n\nY cantaré esta canción\nQue es solo para los dos\nComo un último adiós\nReflejo de un corazón\nSé que te da igual\nSé que te da igual\nQue siga, que pare\nQue te ate o que escape\n\nDespierto\nYa no es hora de mirar atrás\nNo quiero\nSaber si está bien o mal\n\nPorque yo creo en todo lo que digas\nY hoy\nCon solo escuchar el sonido de tu voz\nSé que me voy a arrepentir\nPor eso\nNo quiero seguir\n\nY cantaré esta canción\nQue es solo para los dos\nComo un último adiós\nReflejo de un corazón\nSé que te da igual\nSé que te da igual\nQue siga, que pare\nQue te ate o que escape`
             },
             {
                 id: 'donde',
@@ -1480,67 +1229,7 @@ Que te ate o que escape`
                 status: 'released',
                 year: '2025',
                 story: 'Una búsqueda constante entre recuerdos, calles lluviosas y promesas que se llevó el viento.',
-                lyrics: `Tú
-Estás lejos de aquí
-La mañana está tan cerca y tus labios
-Son un recuerdo de ayer
-
-Y yo
-Estoy perdido, sin saber qué hacer
-Sin querer vivir, sin poder volver
-A ser el mismo al que todo le daba igual
-
-¿Dónde quedan los recuerdos de aquel amor?
-¿Dónde se esconde la mentira y la ironía
-De cada día, sin poder volverte a ver?
-
-¿Dónde quedan los sueños sin cumplir?
-Las promesas que se dicen por decir
-Y la esperanza de encontrarte una vez más
-Para volver a empezar
-
-¿Dónde quedas tú?
-¿Dónde quedo yo?
-¿Dónde queda todo, todo mi amor?
-Todo
-
-Tú
-Estás lejos de aquí
-Y aunque ya no es lo mismo
-No sé por qué diablos sigo pensando en ti
-
-Y yo
-Me prometo no volverlo a hacer
-Y me pregunto solo por saber
-Solo por saber
-
-¿Dónde quedan los recuerdos de aquel amor?
-¿Dónde se esconde la mentira y la ironía
-De cada día, sin poder volverte a ver?
-
-¿Dónde quedan los sueños sin cumplir?
-Las promesas que se dicen por decir
-Y la esperanza de encontrarte una vez más
-Para volver a empezar
-
-¿Dónde quedas tú?
-¿Dónde quedo yo?
-¿Dónde queda todo, todo mi amor?
-Todo
-
-¿Dónde quedan los recuerdos de aquel amor?
-¿Dónde se esconde la mentira y la ironía
-De cada día, sin poder volverte a ver?
-
-¿Dónde quedan los sueños sin cumplir?
-Las promesas que se dicen por decir
-Y la esperanza de encontrarte una vez más
-Para volver a empezar
-
-¿Dónde quedas tú?
-¿Dónde quedo yo?
-¿Dónde queda todo, todo mi amor?
-Todo mi amor`
+                lyrics: `Tú\nEstás lejos de aquí\nLa mañana está tan cerca y tus labios\nSon un recuerdo de ayer\n\nY yo\nEstoy perdido, sin saber qué hacer\nSin querer vivir, sin poder volver\nA ser el mismo al que todo le daba igual\n\n¿Dónde quedan los recuerdos de aquel amor?\n¿Dónde se esconde la mentira y la ironía\nDe cada día, sin poder volverte a ver?\n\n¿Dónde quedan los sueños sin cumplir?\nLas promesas que se dicen por decir\nY la esperanza de encontrarte una vez más\nPara volver a empezar\n\n¿Dónde quedas tú?\n¿Dónde quedo yo?\n¿Dónde queda todo, todo mi amor?\nTodo`
             },
             {
                 id: 'juegos-perdidos',
@@ -1551,42 +1240,7 @@ Todo mi amor`
                 status: 'released',
                 year: '2025',
                 story: 'Errores comunes, decisiones impulsivas y el costo emocional de las oportunidades que dejamos pasar.',
-                lyrics: `Aún escribo canciones
-Guardo mis emociones
-Tengo el alma quebrada de tanto aguantar
-El dolor de mis fracasos
-Quedan mil sensaciones
-Y estos viejos lugares
-En los que te empeñaste en romper mi corazón en mil pedazos
-
-Y aunque hoy no queda más que olvidar
-No te dejo de pensar
-Y es que prefiero extrañar
-A vivir en soledad
-Y aunque solo yo te quiera para mí
-Eso bastará
-
-Aún te miro y tiemblo
-Y tengo miedo de hacerlo
-De caer en el juego que siempre he dado por perdido
-Pero tú no te has ido
-Sigues aquí conmigo
-Merodeando en mis sueños
-Llenando mis noches de guerras furtivas
-
-Y aunque hoy no queda más que olvidar
-No te dejo de pensar
-Y es que prefiero extrañar
-A vivir en soledad
-Y aunque solo yo te quiera para mí
-Eso bastará
-
-Y aunque hoy no queda más que olvidar
-No te dejo de pensar
-Y es que prefiero extrañar
-A vivir en soledad
-Y aunque solo yo te quiera para mí
-Eso bastará`
+                lyrics: `Aún escribo canciones\nGuardo mis emociones\nTengo el alma quebrada de tanto aguantar\nEl dolor de mis fracasos\nQuedan mil sensaciones\nY estos viejos lugares\nEn los que te empeñaste en romper mi corazón en mil pedazos\n\nY aunque hoy no queda más que olvidar\nNo te dejo de pensar\nY es que prefiero extrañar\nA vivir en soledad\nY aunque solo yo te quiera para mí\nEso bastará`
             },
             {
                 id: 'llevame',
@@ -1597,32 +1251,7 @@ Eso bastará`
                 status: 'upcoming',
                 year: '2026',
                 story: 'Un nuevo comienzo cuando todo parece detenido. La reconstrucción de un corazón que empieza a sanar.',
-                lyrics: `He sentido el temor de saber qué puedo hacer
-Si no estás aquí
-He buscado mil pasiones y el calor
-Que te lleva hacia mí, y ya no sé
-En qué pensar, si nunca estoy donde quiero estar
-
-Pero sé que nunca más volveré a sentir
-La pasión de este amor
-Que nos rompe el corazón y las cadenas
-
-Y llévame, quiero estar contigo
-Quiero ser tu abrigo y la luz de tus noches
-Llévame, quiero tenerte
-Quiero buscarte, enloquecerte de amor
-Nunca te dejaré hasta morir
-
-Y llorando puedo decirte que tú y yo
-Estamos bien, siempre juntos recordando
-En las paredes de un bar
-No puedo sentirme bien, no puedo sentirme mal
-
-Y llévame, quiero estar contigo
-Quiero ser tu abrigo y la luz de tus noches
-Llévame, quiero tenerte
-Quiero buscarte, enloquecerte de amor
-Nunca te dejaré hasta morir`
+                lyrics: `He sentido el temor de saber qué puedo hacer\nSi no estás aquí\nHe buscado mil pasiones y el calor\nQue te lleva hacia mí, y ya no sé\nEn qué pensar, si nunca estoy donde quiero estar\n\nPero sé que nunca más volveré a sentir\nLa pasión de este amor\nQue nos rompe el corazón y las cadenas\n\nY llévame, quiero estar contigo\nQuiero ser tu abrigo y la luz de tus noches\nY llévame`
             },
             {
                 id: 'hoy-tiene-tu-nombre',
@@ -1633,40 +1262,7 @@ Nunca te dejaré hasta morir`
                 status: 'upcoming',
                 year: '2026',
                 story: 'Esos días extraños donde cualquier detalle fortuito, un aroma o una melodía, vuelve a traer su recuerdo.',
-                lyrics: `Solo un par de palabras, solo un par de canciones
-Son restos de equivocaciones que no dicen nada
-Una sola mirada, un solo “te quiero”
-Un solo abrazo y aquí vamos de nuevo
-Cayendo en picada
-
-Te regalo esta canción
-No tengo nada más para darte amor
-
-No te miento si te digo que solo pienso en ti
-Y no entiendo, no hay explicación
-Tengo miedo de romper mi pobre corazón
-Que solo calla… y aquí vamos otra vez
-
-Al caer cada día, al llegar la mañana
-Al abrir mis ojos junto a la ventana
-Solo pienso en ti
-Te dejo mis sueños y un chocolate
-Las horas que tengo para enamorarte
-Para enamorarte
-
-Te regalo esta canción
-No tengo nada más para darte amor
-
-No te miento si te digo que solo pienso en ti
-Y no entiendo, no hay explicación
-Tengo miedo de romper mi pobre corazón
-Que solo calla… y aquí vamos otra vez
-
-Solo un par de palabras, solo un par de canciones
-Son restos de equivocaciones que no dicen nada
-Una sola mirada, un solo “te quiero”
-Un solo abrazo y aquí vamos de nuevo
-Cayendo en los brazos de…`
+                lyrics: `Solo un par de palabras, solo un par de canciones\nSon restos de equivocaciones que no dicen nada\nUna sola mirada, un solo "te quiero"\nUn solo abrazo y aquí vamos de nuevo\nCayendo en picada\n\nTe regalo esta canción\nNo tengo nada más para darte amor`
             },
             {
                 id: 'lo-que-el-tiempo',
@@ -1677,61 +1273,19 @@ Cayendo en los brazos de…`
                 status: 'upcoming',
                 year: '2026',
                 story: 'Un homenaje a aquello que permanece completamente intacto, a pesar de los años, la distancia y el silencio.',
-                lyrics: `Mi destino se ha perdido
-Entre tantos sueños grises que hoy
-Ya no llevan a ningún camino
-Los recuerdos de esta habitación
-
-Y ya no quiero estar conmigo
-Solo quiero escribirte esta canción
-Es que no puedo vivir tranquilo
-En lo que el tiempo nunca se llevó
-
-Cuántas noches he perdido
-Esperando solo oír tu voz
-Tú sabes que eres mi destino
-Y te vas buscando otra ilusión
-
-Y ya no quiero estar conmigo
-Solo quiero escribirte esta canción
-Es que no puedo vivir tranquilo
-En lo que el tiempo nunca se llevó
-
-Pareciera mentira que tú me dejarías
-Y sé que hoy estoy aquí, perdido, sin razón
-
-Y ya no quiero estar conmigo
-Solo quiero escribirte esta canción
-Es que no puedo vivir tranquilo
-En lo que el tiempo nunca se llevó
-
-Mi destino se ha perdido
-Entre tantos sueños que se han ido hoy`
+                lyrics: `Mi destino se ha perdido\nEntre tantos sueños grises que hoy\nYa no llevan a ningún camino\nLos recuerdos de esta habitación\n\nY ya no quiero estar conmigo\nSolo quiero escribirte esta canción\nEs que no puedo vivir tranquilo\nEn lo que el tiempo nunca se llevó`
             }
         ];
 
         /* ==========================================
-           FORMATO AUTOMÁTICO DE LÍRICAS
+           FORMATO DE LÍRICAS
            ========================================== */
         function formatLyrics(rawLyrics) {
             if (!rawLyrics) return '';
-            return rawLyrics
-                .split('\n')
-                .map(line => {
-                    const trimmed = line.trim();
-                    const isTag = /^(pre-chorus|chorus|verse|intro|bridge|outro|solo)$/i.test(trimmed) || 
-                                  /^\[(pre-chorus|chorus|verse|intro|bridge|outro|solo)\]$/i.test(trimmed) ||
-                                  /^(chorus \(final\)|pre-chorus \/ chorus|outro \/ final)$/i.test(trimmed);
-                    if (isTag) {
-                        const cleanTag = trimmed.replace(/[\[\]]/g, '');
-                        return `<span class="etiqueta">${cleanTag}</span>`;
-                    }
-                    return line;
-                })
-                .join('\n');
+            return rawLyrics;
         }
 
-        /* Extrae el ID de YouTube para armar la URL de inserción (embed) */
+        /* Parser robusto de YouTube */
         function getYoutubeEmbedUrl(url) {
             if (!url) return '';
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -1740,7 +1294,7 @@ Entre tantos sueños que se han ido hoy`
         }
 
         /* ==========================================
-           SISTEMA SPA COMPLETO (SPA ENGINE)
+           SISTEMA SPA ENGINE
            ========================================== */
         const app = {
             historyStack: [],
@@ -1795,6 +1349,7 @@ Entre tantos sueños que se han ido hoy`
                 }
 
                 document.getElementById('nav-menu').classList.remove('mobile-active');
+                document.getElementById('menuBtn').innerHTML = 'MENÚ';
 
                 document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
                 document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
@@ -1873,7 +1428,7 @@ Entre tantos sueños que se han ido hoy`
                 window.currentSong = song;
                 sessionStorage.setItem('currentSongId', songId);
 
-                // Inyectar datos en la estructura del Detail de la derecha
+                // Inyectar datos en la estructura del Detail
                 document.getElementById('detail-title').textContent = song.title;
                 document.getElementById('detail-date').textContent = song.year;
                 document.getElementById('detail-story').textContent = song.story;
@@ -1882,7 +1437,7 @@ Entre tantos sueños que se han ido hoy`
                 document.getElementById('detail-cover-container').innerHTML =
                     `<img src="${song.image}" class="cover-image" alt="${song.title}" onerror="this.src='https://placehold.co/500x500/121212/888888?text=${encodeURIComponent(song.title)}'">`;
 
-                // Inyección de video de YouTube si está disponible
+                // Inyección de video de YouTube
                 const videoContainer = document.getElementById('detail-video-container');
                 const embedId = getYoutubeEmbedUrl(song.youtube);
                 if (embedId) {
@@ -1900,13 +1455,12 @@ Entre tantos sueños que se han ido hoy`
                     videoContainer.style.display = 'none';
                 }
 
-                // Configurar contenedor de líricas con Slide + Fade
+                // Configurar contenedor de líricas
                 const lyricsWrapper = document.getElementById('detail-lyrics-wrapper');
                 const lyricsText = document.getElementById('lyrics-text');
                 const lyricsContent = document.getElementById('lyrics-content-container');
                 const toggleBtn = document.getElementById('btn-toggle-lyrics');
 
-                // Reiniciar acordeón colapsable al cambiar canción
                 lyricsContent.classList.remove('abierto');
                 if (toggleBtn) toggleBtn.innerText = "Leer Letra";
 
@@ -1948,13 +1502,11 @@ Entre tantos sueños que se han ido hoy`
             copyShareLink() {
                 const dummy = document.createElement('input');
                 document.body.appendChild(dummy);
-                // Genera link que apunta a la canción abierta
                 dummy.value = window.location.origin + window.location.pathname + "#cancion-detalle";
                 dummy.select();
                 document.execCommand('copy');
                 document.body.removeChild(dummy);
 
-                // Mostrar notificación Toast Premium sin alerts invasivos
                 const toast = document.getElementById('toast-notification');
                 if (toast) {
                     toast.classList.add('show');
@@ -1965,12 +1517,9 @@ Entre tantos sueños que se han ido hoy`
             },
 
             goHome() {
-                if (
-                    document.querySelector('.view.active')?.id === 'inicio'
-                ){
+                if (document.querySelector('.view.active')?.id === 'inicio'){
                     return;
                 }
-
                 this.navigate('inicio');
             },
 
@@ -2003,29 +1552,24 @@ Entre tantos sueños que se han ido hoy`
             app.init();
         }
 
-        /* =========================
-           MANEJO DE NAVEGACIÓN RETROCOMPATIBLE
-           ========================= */
         window.addEventListener("popstate", (e) => {
-    if (e.state?.view) {
-        app.navigate(e.state.view, false);
-    }
-});
+            if (e.state?.view) {
+                app.navigate(e.state.view, false);
+            }
+        });
 
-function toggleMenu(){
+        function toggleMenu(){
+            const menu = document.getElementById('nav-menu');
+            const btn = document.getElementById('menuBtn');
 
-    const menu = document.getElementById('nav-menu');
-    const btn = document.getElementById('menuBtn');
+            menu.classList.toggle('mobile-active');
 
-    menu.classList.toggle('mobile-active');
-
-    if(menu.classList.contains('mobile-active')){
-        btn.innerHTML = '✕';
-    }else{
-        btn.innerHTML = 'MENÚ';
-    }
-}
-
-</script>
+            if(menu.classList.contains('mobile-active')){
+                btn.innerHTML = '✕';
+            } else {
+                btn.innerHTML = 'MENÚ';
+            }
+        }
+    </script>
 </body>
 </html>
