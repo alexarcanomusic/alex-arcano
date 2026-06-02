@@ -1325,28 +1325,42 @@ header nav .nav-social img:hover{
             observer: null,
 
             init() {
-                this.historyStack = ['inicio'];
-                this.historyIndex = 0;
+    this.historyStack = ['inicio'];
+    this.historyIndex = 0;
 
-                const hash = window.location.hash.substring(1);
+    const hash = window.location.hash.substring(1);
 
-                if (hash === 'cancion-detalle') {
-                    const savedSongId = sessionStorage.getItem('currentSongId');
-                    if (savedSongId) {
-                        this.openSong(savedSongId);
-                    } else {
-                        this.navigate('inicio', false);
-                    }
-                } else if (hash && document.getElementById(hash)) {
-                    this.navigate(hash, false);
-                }
+    const song = songs.find(s => s.id === hash);
 
-                this.renderGallery();
-                this.initScrollReveal();
-                this.initHeaderScroll();
+    if (song) {
+        this.renderGallery();
+        this.initScrollReveal();
+        this.initHeaderScroll();
 
-                setTimeout(() => this.triggerReveal(), 100);
-            },
+        setTimeout(() => {
+            this.openSong(hash);
+        }, 100);
+
+        return;
+    }
+
+    if (hash === 'cancion-detalle') {
+        const savedSongId = sessionStorage.getItem('currentSongId');
+        if (savedSongId) {
+            this.openSong(savedSongId);
+        } else {
+            this.navigate('inicio', false);
+        }
+    } else if (hash && document.getElementById(hash)) {
+        this.navigate(hash, false);
+    }
+
+    this.renderGallery();
+    this.initScrollReveal();
+    this.initHeaderScroll();
+
+    setTimeout(() => this.triggerReveal(), 100);
+},
 
             navigate(viewId, push = true) {
                 const currentView = document.querySelector('.view.active');
@@ -1523,21 +1537,27 @@ header nav .nav-social img:hover{
             },
 
             copyShareLink() {
-                const dummy = document.createElement('input');
-                document.body.appendChild(dummy);
-                dummy.value = window.location.origin + window.location.pathname + "#cancion-detalle";
-                dummy.select();
-                document.execCommand('copy');
-                document.body.removeChild(dummy);
+    const dummy = document.createElement('input');
+    document.body.appendChild(dummy);
 
-                const toast = document.getElementById('toast-notification');
-                if (toast) {
-                    toast.classList.add('show');
-                    setTimeout(() => {
-                        toast.classList.remove('show');
-                    }, 2500);
-                }
-            },
+    dummy.value =
+        window.location.origin +
+        window.location.pathname +
+        "#" +
+        window.currentSong.id;
+
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+
+    const toast = document.getElementById('toast-notification');
+    if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2500);
+    }
+}
 
             goHome() {
                 if (document.querySelector('.view.active')?.id === 'inicio'){
