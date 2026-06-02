@@ -255,13 +255,13 @@
         }
 
         .hero-title {
-            color: #FFFFFF;
-            text-shadow: 0 10px 40px rgba(0,0,0,0.60);
-            font-size: 4.8rem;
-            margin-bottom: 1.8rem;
-            letter-spacing: -0.03em;
-            line-height: 1.15;
-        }
+    color: #FFFFFF;
+    text-shadow: 0 10px 40px rgba(0,0,0,0.60);
+    font-size: 4.8rem;
+    margin-bottom: 0.8rem; /* antes 1.8rem */
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
         
         .hero-title,
         .hero-subtitle,
@@ -272,12 +272,16 @@
         }
 
         .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--color-muted);
-            letter-spacing: 0.08em;
-            margin-bottom: 4rem;
-            font-weight: 300;
-        }
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.04em; /* antes 0.08em */
+    margin-bottom: 2.5rem; /* antes 4rem */
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
         .hero-featured {
             max-width: 800px;
@@ -759,10 +763,20 @@
             .about-text { text-align: left; text-align-last: left; }
         }
 
-       @media (max-width: 768px) {
+      @media (max-width: 768px) {
 
     .hero-title{
         margin-top: -40px;
+        font-size: 3rem;
+        line-height: 1.1;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle{
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
     }
 
     .lyrics-text {
@@ -1000,10 +1014,15 @@
     <main>
         <!-- SECCIÓN DE INICIO -->
         <section id="inicio" class="view active">
-            <div class="reveal">
-                <h1 class="hero-title serif">Fragmentos de memoria convertidos en música.</h1>
-                <h2 class="hero-subtitle">Abre una canción. Encuentra una historia.</h2>
-            </div>
+           <div class="reveal">
+    <h1 class="hero-title serif">
+        Fragmentos de memoria convertidos en música.
+    </h1>
+
+    <p class="hero-subtitle">
+        Abre una canción. Encuentra una historia.
+    </p>
+</div>
             
             <div class="hero-featured reveal">
                 <span class="featured-label">Próximo Lanzamiento</span>
