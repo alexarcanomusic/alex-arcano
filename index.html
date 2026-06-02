@@ -756,114 +756,133 @@
             .about-text { text-align: left; text-align-last: left; }
         }
 
-      @media (max-width: 768px) {
+     @media (max-width:768px){
+
+    .menu-toggle{
+        display:block;
+        font-size:1.1rem;
+        letter-spacing:.08em;
+        font-weight:600;
+        z-index:2001;
+        color:#fff;
+    }
+
+    nav ul{
+        display:none;
+        position:fixed;
+
+        top:85px;
+        left:50%;
+        transform:translateX(-50%);
+
+        width:85%;
+        max-width:420px;
+
+        background:rgba(10,10,10,.96);
+        backdrop-filter:blur(12px);
+        -webkit-backdrop-filter:blur(12px);
+
+        flex-direction:column;
+        align-items:center;
+
+        padding:1.5rem 0;
+
+        border-radius:8px;
+
+        box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+        z-index:2000;
+    }
+
+    nav ul.mobile-active{
+        display:flex;
+    }
+
+    nav ul li{
+        width:100%;
+        text-align:center;
+        border-bottom:1px solid rgba(255,255,255,.12);
+    }
+
+    nav ul li:last-child{
+        border-bottom:none;
+    }
+
+    nav ul li a{
+        display:block;
+        width:100%;
+
+        padding:1.2rem 0;
+
+        font-size:1.6rem;
+        font-family:var(--font-serif);
+
+        letter-spacing:.02em;
+        color:#fff;
+    }
+
+    nav a.active{
+        background:rgba(255,255,255,.12);
+    }
+
+    .nav-social{
+        display:flex;
+        justify-content:center;
+        gap:22px;
+
+        padding:1.4rem 0;
+
+        margin-top:10px;
+
+        border-bottom:none !important;
+    }
+
+    .nav-social img{
+        width:24px;
+        height:24px;
+    }
 
     .hero-title{
-        margin-top: -40px;
-        font-size: 3rem;
-        line-height: 1.1;
-        margin-bottom: 0.8rem;
+        font-size:3rem;
+        line-height:1.1;
     }
 
     .hero-subtitle{
-        font-size: 1rem;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-        padding: 0 1rem;
+        font-size:1rem;
+        line-height:1.7;
+        padding:0 1rem;
     }
 
-    .lyrics-text {
-        font-size: 1.1rem;
-        line-height: 2.2;
-        padding: 0.03rem;
+    .gallery-grid{
+        grid-template-columns:1fr;
+        gap:5rem;
     }
 
-    header {
-        padding: 1.5rem 2rem;
+    .song-detail-layout{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
     }
 
-    header.scrolled {
-        padding: 1.2rem 2rem;
+    .song-detail-right{
+        align-items:center;
     }
 
-    nav ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(0,0,0,0.95);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        align-items: center;
-        padding: 3rem 0;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+    .song-detail-right .song-title-large{
+        text-align:center;
+        font-size:2.6rem;
     }
 
-    nav ul.mobile-active {
-        display: flex;
+    .song-detail-right .song-story{
+        text-align:center;
+        border-left:none;
+        padding-left:0;
     }
 
-    .menu-toggle {
-        display: block;
-        color: #FFFFFF !important;
-        font-weight: 600;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-    }
-
-    .song-detail-layout {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 2rem;
-    }
-
-    .song-detail-left {
-        flex: 0 0 200px;
-        width: 200px;
-    }
-
-    .song-detail-right {
-        align-items: center;
-    }
-
-    .song-detail-right .song-title-large {
-        font-size: 2.8rem;
-        text-align: center;
-    }
-
-    .song-detail-right .song-meta {
-        text-align: center;
-    }
-
-    .song-detail-right .song-story {
-        text-align: center;
-        border-left: none;
-        padding-left: 0;
-    }
-
-    .song-detail-right #detail-video-container {
-        margin-top: 1.5rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 5rem;
-    }
-
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .about-title {
-        font-size: 3rem;
-    }
-
-    .song-actions {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+    .song-actions{
+        flex-direction:column;
+        align-items:center;
+        gap:2rem;
     }
 }
 
@@ -971,7 +990,9 @@
         <div class="logo" onclick="app.goHome()">
             Alex Arcano
         </div>
-        <div class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('mobile-active')">Menú</div>
+        <div class="menu-toggle" id="menuBtn" onclick="toggleMenu()">
+    MENÚ
+</div>
         <nav>
     <ul id="nav-menu">
         <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li>
@@ -1971,10 +1992,25 @@ Entre tantos sueños que se han ido hoy`
            MANEJO DE NAVEGACIÓN RETROCOMPATIBLE
            ========================= */
         window.addEventListener("popstate", (e) => {
-            if (e.state?.view) {
-                app.navigate(e.state.view, false);
-            }
-        });
-    </script>
+    if (e.state?.view) {
+        app.navigate(e.state.view, false);
+    }
+});
+
+function toggleMenu(){
+
+    const menu = document.getElementById('nav-menu');
+    const btn = document.getElementById('menuBtn');
+
+    menu.classList.toggle('mobile-active');
+
+    if(menu.classList.contains('mobile-active')){
+        btn.innerHTML = '✕';
+    }else{
+        btn.innerHTML = 'MENÚ';
+    }
+}
+
+</script>
 </body>
 </html>
