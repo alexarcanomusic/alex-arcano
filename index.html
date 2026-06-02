@@ -169,7 +169,7 @@
         }
 
         header.scrolled {
-    height: 75px;
+    height: 70px;
     padding: 0 4rem;
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
@@ -232,7 +232,7 @@
            ESTRUCTURA SPA
            ========================================== */
         main {
-            padding-top: 20vh;
+            padding-top: 120vh;
             min-height: 100vh;
             max-width: 1700px;
             margin: 0 auto;
@@ -801,9 +801,25 @@
     border-radius: 12px;
 }
 
-/* OCULTAR REDES DEL MENÚ EN PC */
+/* REDES EN PC */
 header nav .nav-social{
-    display:none !important;
+    display:flex !important;
+    align-items:center;
+    gap:18px;
+    border:none !important;
+}
+
+header nav .nav-social img{
+    width:18px;
+    height:18px;
+    opacity:.8;
+    filter:brightness(0) invert(1);
+    transition:.3s;
+}
+
+header nav .nav-social img:hover{
+    opacity:1;
+    transform:scale(1.15);
 }
 
 /* ==========================================
