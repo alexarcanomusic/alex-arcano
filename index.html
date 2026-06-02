@@ -758,46 +758,48 @@
 
     @media (max-width:768px){
 
-    header{
-        padding:1.5rem 1.2rem;
+    header {
+        padding: 1.2rem 2rem; /* Padding consistente en móvil */
+        justify-content: space-between; /* Asegura que logo y menú estén a los extremos */
+    }
+
+    header.scrolled {
+        padding: 1rem 2rem; /* Ajuste al hacer scroll */
+    }
+
+    .logo {
+        margin: 0; /* Aseguramos que no tenga márgenes que lo desplacen */
     }
 
     .menu-toggle{
-        display:block;
-        font-size:1.1rem;
-        letter-spacing:.08em;
-        font-weight:600;
-        z-index:2001;
-        color:#fff;
-
-        margin-right:-35px;
+        display: block;
+        font-size: 1.1rem;
+        letter-spacing: .08em;
+        font-weight: 600;
+        z-index: 2001;
+        color: #fff;
+        margin-right: 0; /* Eliminado el margen negativo que lo desplazaba */
+        text-align: right;
     }
 
     nav ul{
-        display:none;
-        position:fixed;
-
-        top:85px;
-        left:55%;
-        transform:translateX(-50%);
-
-        width:85%;
-        max-width:280px;
-
-        background:rgba(10,10,10,.96);
-        backdrop-filter:blur(12px);
-        -webkit-backdrop-filter:blur(12px);
-
-        flex-direction:column;
-        align-items:center;
-
-        padding:.5rem 0;
-
-        border-radius:8px;
-
-        box-shadow:0 20px 60px rgba(0,0,0,.45);
-
-        z-index:2000;
+        display: none;
+        position: fixed;
+        top: 70px; /* Ajustado ligeramente hacia arriba */
+        left: 50%; /* Centrado absoluto */
+        transform: translateX(-50%);
+        width: 90%; /* Un poco más ancho */
+        max-width: 320px;
+        background: rgba(10, 10, 10, 0.98); /* Fondo un poco más sólido */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0; /* Padding general del menú */
+        border-radius: 12px; /* Bordes más redondeados */
+        box-shadow: 0 20px 60px rgba(0,0,0,.6);
+        z-index: 2000;
+        border: 1px solid rgba(255,255,255,0.05); /* Borde sutil general */
     }
 
     nav ul.mobile-active{
@@ -805,56 +807,66 @@
     }
 
     nav ul li{
-        width:100%;
-        text-align:center;
-        border-bottom:1px solid rgba(255,255,255,.55);
+        width: 100%;
+        text-align: center;
+        border-bottom: none; /* Quitamos los bordes individuales que causaban el efecto raro */
+        margin-bottom: 0.5rem; /* Separación sutil entre items */
     }
 
     nav ul li:last-child{
-        border-bottom:none;
+        margin-bottom: 0;
+        padding-top: 1rem; /* Espacio antes de las redes */
+        border-top: 1px solid rgba(255,255,255,0.1); /* Línea sutil separadora para las redes */
     }
 
     nav ul li a{
-    display:block;
-    width:100%;
-
-    padding:.35rem 0;
-    font-size:1.2rem;
-    line-height:1.2;
-
-    font-family:var(--font-serif);
-
-    letter-spacing:.02em;
-    color:#fff;
-}
-
-    nav a.active{
-        background:rgba(255,255,255,.12);
+        display: block;
+        width: 100%;
+        padding: 0.8rem 0; /* Área clickeable más grande */
+        font-size: 1.1rem; /* Tamaño ligeramente ajustado */
+        line-height: 1.2;
+        font-family: var(--font-serif);
+        letter-spacing: .05em; /* Un poco más de espacio entre letras */
+        color: #fff;
+        text-transform: uppercase;
+        position: relative; /* Para el efecto de la línea activa */
+    }
+    
+    /* Quitamos el borde inferior que hereda del estilo de escritorio */
+    nav a::after {
+        display: none; 
     }
 
-   .nav-social{
-    display:flex !important;
-    justify-content:center;
-    align-items:center;
+    nav a.active{
+        background: transparent; /* Quitamos el fondo grisáceo */
+        color: var(--color-accent);
+        font-weight: bold;
+    }
 
-    gap:18px;
+    .nav-social{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* Espacio uniforme entre iconos */
+        width: 100%;
+        padding: 1rem 0 0 0 !important; /* Padding solo arriba */
+        margin: 0;
+        border: none !important;
+    }
 
-    width:100%;
-    padding:14px 0;
+    .nav-social a{
+        width: auto !important;
+        padding: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-    margin:0;
-
-    border:none !important;
-}
-        .nav-social a{
-    width:auto !important;
-    padding:0 !important;
-}
-
-.nav-social img{
-    width:24px;
-    height:24px;
-}
+    .nav-social img{
+        width: 22px; /* Tamaño consistente de iconos */
+        height: 22px;
+        opacity: 0.8;
+    }
 
     .hero-title{
         font-size:3rem;
