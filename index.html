@@ -772,12 +772,12 @@
     box-shadow:0 20px 50px rgba(0,0,0,.45);
 }     
         .about-text {
-            font-size: 1.25rem;
-            color: rgba(255,255,255,0.92);
-            line-height: 2;
-            text-align: justify;
-            text-align-last: center;
-        }
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.92);
+    line-height: 2;
+    text-align: justify;
+    text-align-last: center;
+}
         
         .about-text p {
             margin-bottom: 2.5rem;
@@ -839,17 +839,22 @@ header nav .nav-social img:hover{
 /* ==========================================
    MÓVIL / CELULAR (ESTRICTAMENTE FILTRADO)
    ========================================== */
-        @media (max-width: 768px) {
+       @media (max-width: 768px) {
             
-            /* 1. Cabecera móvil balanceada */
-            header {
-                padding: 1.2rem 2rem !important; 
-                justify-content: space-between !important; 
-            }
+    /* 1. Cabecera móvil balanceada */
+    header {
+        padding: 1.2rem 2rem !important; 
+        justify-content: space-between !important; 
+    }
 
-            header.scrolled {
-                padding: 1rem 2rem !important; 
-            }
+    header.scrolled {
+        padding: 1rem 2rem !important; 
+    }
+
+    .about-text {
+        text-align: left !important;
+        text-align-last: left !important;
+    }
 
             /* Logotipo movido un poco hacia adentro (centrado sutil) */
             .logo {
@@ -1227,11 +1232,11 @@ header nav .nav-social img:hover{
         
     <div class="about-text">
     <p>Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones.</p>
-```
+
 <p>Su música nace de aquello que permanece cuando todo cambia: las palabras que no se dijeron, los lugares que conservan historias y los momentos que el tiempo no logró borrar.</p>
 
 <p>A través de letras introspectivas, atmósferas melancólicas y una propuesta visual minimalista, construye un universo donde cada canción se convierte en un fragmento de memoria; una historia suspendida entre la nostalgia, el paso del tiempo y las emociones que permanecen.</p>
-```
+
 </div>
 
 
