@@ -752,11 +752,25 @@
         }
         
         .about-title {
-            font-size: 4rem;
-            margin-bottom: 4rem;
-            color: #FFFFFF !important;
-        }
-        
+    font-size: 4rem;
+    margin-bottom: 4rem;
+    color: #FFFFFF !important;
+}
+
+.about-photo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:4rem;
+}
+
+.about-photo img{
+    width:100%;
+    max-width:450px;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    border-radius:8px;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}     
         .about-text {
             font-size: 1.25rem;
             color: rgba(255,255,255,0.92);
@@ -1203,9 +1217,15 @@ header nav .nav-social img:hover{
 
         <!-- SECCIÓN SOBRE MÍ -->
         <section id="sobre-mi" class="view">
-            <div class="about-container reveal">
-                <h2 class="about-title serif">Sobre el Artista</h2>
-                <div class="about-text">
+    <div class="about-container reveal">
+
+        <h2 class="about-title serif">Sobre el Artista</h2>
+
+        <div class="about-photo">
+            <img src="images/alex-arcano.webp" alt="Alex Arcano">
+        </div>
+
+        <div class="about-text">
                     <p>Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop, balada pop y pop alternativo.</p>
                     <p>Su propuesta mezcla minimalismo visual y honestidad emocional, creando un universo donde cada canción funciona como una fotografía de momentos que el tiempo no logró borrar.</p>
                     <p>A través de letras introspectivas, atmósferas melancólicas y una identidad visual coherente, Alex Arcano construye una experiencia artística centrada en la nostalgia, la memoria y las emociones humanas.</p>
