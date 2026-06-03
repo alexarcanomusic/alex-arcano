@@ -2016,13 +2016,13 @@ Entre tantos sueños que se han ido hoy`
                     actionsContainer.innerHTML = `
                         <span class="btn-link" style="cursor: default; border-color: rgba(255,255,255,0.15); opacity: 0.6;">Próximamente en Spotify</span>
                         <a href="${song.youtube}" target="_blank" rel="noopener noreferrer" class="btn-link">Ver Estreno en YouTube</a>
-                        <a href="#" class="btn-link" onclick="event.preventDefault(); app.copyShareLink();">Compartir</a>
+                        <a href="#" class="btn-link" onclick="event.preventDefault(); app.shareSong();">Compartir</a>
                     `;
                 } else {
                     actionsContainer.innerHTML = `
                         <a href="${song.spotify}" target="_blank" rel="noopener noreferrer" class="btn-link">Spotify</a>
                         <a href="${song.youtube}" target="_blank" rel="noopener noreferrer" class="btn-link">YouTube</a>
-                        <a href="#" class="btn-link" onclick="event.preventDefault(); app.copyShareLink();">Compartir</a>
+                        <a href="#" class="btn-link" onclick="event.preventDefault(); app.shareSong();">Compartir</a>
                     `;
                 }
 
@@ -2037,7 +2037,26 @@ Entre tantos sueños que se han ido hoy`
                 btn.innerText = isOpen ? "Ocultar Letra" : "Leer Letra";
             },
 
-            copyShareLink() {
+            shareSong() {
+    const song = window.currentSong;
+    if (!song) return;
+
+    const shareData = {
+        title: song.title,
+        text: `Escucha "${song.title}" de Alex Arcano 🎧`,
+        url: window.location.origin + window.location.pathname + "#" + song.id
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData)
+            .catch(err => console.log("Error al compartir:", err));
+    } else {
+        // fallback para navegadores viejos
+        this.fallbackCopyLink();
+    }
+},
+
+fallbackCopyLink() {
     const dummy = document.createElement('input');
     document.body.appendChild(dummy);
 
