@@ -1056,18 +1056,27 @@ header nav .nav-social img:hover{
     font-size:1.8rem;
     opacity:.85;
     transition:.3s;
-}
-
-.footer-social img{
-    width:26px;
-    height:26px;
-    object-fit:contain;
-    filter:brightness(0) invert(1);
+    text-decoration:none;
 }
 
 .footer-social a:hover{
     opacity:1;
     transform:scale(1.15);
+}
+
+.share-site-btn{
+    display:block;
+    margin:10px auto;
+    color:#fff;
+    font-size:0.95rem;
+    opacity:0.9;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.share-site-btn:hover{
+    opacity:1;
+    transform:scale(1.05);
 }
 
 .site-footer p{
@@ -1265,8 +1274,16 @@ header nav .nav-social img:hover{
         </section>
     </main>
 
-    <footer class="site-footer">
+   <footer class="site-footer">
 
+    <!-- BOTÓN COMPARTIR GLOBAL -->
+    <div style="text-align:center; margin-bottom:18px;">
+        <a href="#" class="btn-link" onclick="event.preventDefault(); app.shareSite();">
+            Compartir
+        </a>
+    </div>
+
+    <!-- REDES SOCIALES -->
     <div class="footer-social">
 
         <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank">
@@ -1274,8 +1291,8 @@ header nav .nav-social img:hover{
         </a>
 
         <a href="https://x.com/AlexArcano_" target="_blank">
-    <i class="fa-brands fa-x"></i>
-</a>
+            <i class="fa-brands fa-x"></i>
+        </a>
 
         <a href="https://www.instagram.com/alex.arcano/" target="_blank">
             <i class="fab fa-instagram"></i>
@@ -2076,6 +2093,33 @@ fallbackCopyLink() {
         setTimeout(() => {
             toast.classList.remove('show');
         }, 2500);
+    }
+},
+            shareSite() {
+    const shareData = {
+        title: "Alex Arcano",
+        text: "Fragmentos de memoria convertidos en música 🎧",
+        url: window.location.origin + window.location.pathname
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData)
+            .catch(err => console.log("Error al compartir:", err));
+    } else {
+        const dummy = document.createElement('input');
+        document.body.appendChild(dummy);
+
+        dummy.value = window.location.origin + window.location.pathname;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+
+        const toast = document.getElementById('toast-notification');
+        if (toast) {
+            toast.textContent = "Enlace copiado";
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
     }
 },
             goHome() {
