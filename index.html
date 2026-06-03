@@ -174,16 +174,17 @@
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-        .logo {
-            font-family: var(--font-sans);
-            font-size: 1.1rem;
-            font-weight: 400;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            cursor: pointer;
-            color: #FFFFFF;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.5);
-        }
+        logo{
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+}
+
+.logo img{
+    height:40px;
+    width:auto;
+    display:block;
+}
 
         nav ul {
             display: flex;
@@ -1088,8 +1089,8 @@ header nav .nav-social img:hover{
 
     <header id="main-header">
         <div class="logo" onclick="app.goHome()">
-            Alex Arcano
-        </div>
+    <img src="images/logo.webp" alt="Alex Arcano">
+</div>
         <div class="menu-toggle" id="menuBtn" onclick="toggleMenu()">
             MENÚ
         </div>
