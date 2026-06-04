@@ -1346,8 +1346,6 @@ header nav .nav-social img:hover{
 
     <div class="notes-categories">
 
-    <div class="notes-categories">
-
     <span class="category-tag" onclick="filtrarNotas('historias')">
         <i class="fa-solid fa-feather"></i>
         Historias
@@ -1421,6 +1419,11 @@ header nav .nav-social img:hover{
 
 </article>
                 <article class="note-entry reveal historia" style="display:none;">
+
+<div class="back-link"
+     onclick="mostrarPrologo()">
+
+</div>
 
     <div class="note-content">
 
@@ -2585,6 +2588,26 @@ fallbackCopyLink() {
     }
 
 }
+        /* PEGAR AQUÍ */
+
+function mostrarPrologo(){
+
+    document
+        .querySelectorAll('.note-entry')
+        .forEach(
+            n => n.style.display='none'
+        );
+
+    document
+        .querySelectorAll('.prologo')
+        .forEach(
+            n => n.style.display='block'
+        );
+
+}
+
+/* FIN */
+
         function toggleHistoria(id){
 
     const bloque =
