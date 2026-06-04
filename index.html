@@ -3,23 +3,1235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Arcano</title>
-    </head>
+    
+    <meta name="description" content="Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop y balada pop.">
+    <meta name="keywords" content="Alex Arcano, Indie Pop, Balada Pop, Pop Alternativo, Minimalismo Emocional, Música Colombiana, Bucaramanga">
+    <meta name="author" content="Alex Arcano">
+    <meta name="theme-color" content="#000000"> 
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alexarcanomusic.github.io/alex-arcano/">
+    <meta property="og:title" content="Alex Arcano | Fragmentos de Memoria">
+    <meta property="og:description" content="Canciones sobre recuerdos, despedidas y emociones cotidianas. Descubre la música de Alex Arcano.">
+    <meta property="og:image" content="https://alexarcanomusic.github.io/alex-arcano/images/og-image.jpg">
+
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alex Arcano | Fragmentos de Memoria">
+    <meta name="twitter:description" content="Fragmentos de memoria convertidos en música. Escucha las canciones de Alex Arcano.">
+    <meta name="twitter:image" content="https://alexarcanomusic.github.io/alex-arcano/images/og-image.jpg">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> 
+
+    <title>Alex Arcano | Fragmentos de Memoria</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================
+           VARIABLES Y CONFIGURACIÓN BASE
+           ========================================== */
+        :root {
+            --color-bg: #FCFCFC;
+            --color-text: #FFFFFF;
+            --color-muted: rgba(255,255,255,0.78);
+            --color-accent: rgba(255,255,255,0.92);    
+            
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+            
+            --spacing-section: 15vh;
+            --spacing-element: 2rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: #000000; 
+        }
+
+        body {
+            background-color: transparent; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body::before {
+            color: #FFFFFF;
+            font-family: var(--font-sans);
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.65),
+                    rgba(0,0,0,0.65)
+                ),
+                url('images/fondo.webp') center center / cover no-repeat;
+
+            opacity: 1;
+            z-index: -1;
+        }
+        
+        /* ==========================================
+           TIPOGRAFÍA Y EDITORIAL (PC)
+           ========================================== */ 
+        h1, h2, h3, h4, .serif {
+            font-family: var(--font-serif);
+            font-weight: 500;
+        }
+
+        .hero-title, .song-title-large, .note-title, .about-title {
+            color: #FFFFFF !important; /* Forzar legibilidad blanca */
+            text-shadow: 0 8px 30px rgba(0,0,0,0.65);
+        }
+
+        a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        .btn-link {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.25);
+            padding-bottom: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-link:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        /* ==========================================
+           ANIMACIONES DE SCROLL (REVEAL)
+           ========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================
+           NAVEGACIÓN (PC)
+           ========================================== */
+        header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.65) 0%,
+                rgba(0,0,0,0.35) 70%,
+                rgba(0,0,0,0) 100%
+            );
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            transition: padding 0.5s ease;
+        }
+
+        header.scrolled {
+    height: 55px;
+    padding: 0 4rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+      .logo{
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    margin-left: -20px;
+}
+
+.logo img{
+    height:22px;
+    width:auto;
+    display:block;
+}
+
+        nav ul {
+            display: flex;
+            gap: 3.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-text);
+            transition: width 0.3s ease;
+        }
+
+        nav a.active { color: #FFFFFF; }
+        nav a.active::after { width: 100%; }
+        nav a:hover {
+            color: #FFFFFF;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #FFFFFF !important;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
+
+        /* ==========================================
+           ESTRUCTURA SPA
+           ========================================== */
+        main {
+            padding-top: 22vh;
+            min-height: 100vh;
+            max-width: 1700px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .view {
+            display: none;
+            opacity: 0;
+            animation: fadeInView 1.2s forwards ease-out;
+        }
+
+        .view.active { display: block; }
+
+        @keyframes fadeInView {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==========================================
+           INICIO (PC)
+           ========================================== */
+        #inicio {
+            text-align: center;
+            padding-bottom: var(--spacing-section);
+        }
+
+        .hero-title {
+            color: #FFFFFF;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.60);
+            font-size: 4.8rem;
+            margin-top: -30px; 
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.04em; 
+            margin-bottom: 1.8rem; 
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-featured {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .featured-label {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.85);
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        }
+
+        .cover-placeholder {
+            width: 100%;
+            background-color: #121212;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A0A0A0;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-featured .cover-placeholder {
+            max-width: 500px;
+            aspect-ratio: 1/1;
+            margin-bottom: 3rem;
+            cursor: pointer;
+        }
+
+        .hero-featured .cover-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .featured-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #FFFFFF;
+            text-shadow: 0 8px 30px rgba(0,0,0,0.5);
+        }
+
+        .media-embeds {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 3rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Redes Sociales del Inicio */
+        .social-icons {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.10);
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icons a img {
+            width: 30px;
+            height: 30px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.25);
+            opacity: 1;
+        }
+
+        /* ==========================================
+           MÚSICA (GALERÍA)
+           ========================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 240px);
+            justify-content: center;
+            gap: 4rem 3rem;
+            padding-bottom: var(--spacing-section);
+        }
+
+        .song-card {
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+        }
+
+        .song-card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            aspect-ratio: 1 / 1;
+            border-radius: 4px;
+            background-color: #121212;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .badge-upcoming {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #000000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.4rem 1.2rem;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            font-weight: 500;
+            border-radius: 2px;
+        }
+
+        .song-card .cover-image { 
+            height: 100%; 
+            transition: transform 0.6s ease; 
+        }
+        
+        .song-card:hover .cover-image {
+            transform: scale(1.03);
+        }
+
+        /* OVERLAY SOBRE IMAGEN */
+        .song-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.35),
+                rgba(0,0,0,0.75)
+            );
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .song-card:hover .song-overlay {
+            opacity: 1;
+        }
+
+        .song-card-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 0.3rem;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.6);
+        }
+
+        .song-card-year {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: rgba(255,255,255,0.75);
+        }
+
+        /* ==========================================
+           PLANTILLA DE CANCIÓN INDIVIDUAL
+           ========================================== */
+        .song-template-wrapper {
+            max-width: 950px;
+            margin: 0 auto;
+            padding-bottom: var(--spacing-section);
+        }
+
+        .back-link{
+    display:block;
+    width:fit-content;
+
+    margin:0 auto 50px;
+
+    font-size:.8rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.75);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.back-link:hover{
+    color:#fff;
+}
+
+        /* Estructura asimétrica de dos columnas para detalles */
+        .song-detail-layout {
+            display: flex;
+            gap: 3.5rem;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            text-align: left;
+        }
+
+        .song-detail-left {
+            flex: 0 0 240px;
+        }
+
+        .song-detail-left .cover-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+        .song-detail-left .cover-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .song-detail-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .song-detail-right .song-title-large {
+            color: #FFFFFF !important;
+            text-shadow: 0 8px 30px rgba(0,0,0,0.50);
+            font-size: 3.2rem;
+            margin-bottom: 0.2rem;
+            line-height: 1.1;
+            text-align: left;
+            letter-spacing: -0.02em;
+        }
+
+        .song-detail-right .song-story {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.92);
+            text-align: left;
+            font-style: italic;
+            margin: 0;
+            border-left: 2px solid rgba(255,255,255,0.15);
+            padding-left: 1.5rem;
+        }
+
+        /* Contenedor del video integrado en la derecha */
+        .song-detail-right #detail-video-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 1rem 0 0 0;
+        }
+
+        .song-actions {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 2.5rem 0;
+        }
+
+        /* ==========================================
+           SECCIÓN DE LETRA (SLIDE + FADE EMOCIONAL)
+           ========================================== */
+        .lyrics-wrapper {
+            margin: 4rem auto;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .lyrics-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--color-muted);
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 10px 0;
+            position: relative;
+            transition: color 0.4s ease;
+        }
+
+        .lyrics-toggle-btn:hover {
+            color: var(--color-text);
+        }
+
+        /* Línea sutil bajo el botón */
+        .lyrics-toggle-btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--color-text);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(-50%);
+        }
+
+        .lyrics-toggle-btn:hover::after {
+            width: 100%;
+        }
+
+        /* Contenedor colapsable de líricas */
+        .lyrics-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.9s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lyrics-content.abierto {
+            max-height: 3500px;
+            opacity: 1;
+            margin-top: 4rem;
+            background: rgba(0,0,0,0.35);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .lyrics-text {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            white-space: pre-line;
+            text-align: center;
+            letter-spacing: 0.02em;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* NOTIFICACIÓN TOAST PREMIUM */
+        .custom-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            opacity: 0;
+            transition: all .4s ease;
+            background: rgba(0,0,0,0.85);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: #fff;
+            z-index: 9999;
+            pointer-events: none;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .custom-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* ==========================================
+           NOTAS (Notas al Margen)
+           ========================================== */
+        .notes-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.notes-subtitle{
+    max-width: 650px;
+    margin: 1.5rem auto 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+}
+        
+        .notes-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom:5rem;
+        }
+        
+        .category-tag{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+
+    color:var(--color-muted);
+
+    border:1px solid rgba(255,255,255,.15);
+    padding:.5rem 1.5rem;
+    border-radius:50px;
+
+    cursor:pointer;
+    transition:.3s ease;
+}
+        
+        .category-tag:hover {
+            border-color: var(--color-text);
+            color: var(--color-text);
+        }
+
+        .notes-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding-bottom: var(--spacing-section);
+        }
+
+        .note-entry {
+    background: rgba(0,0,0,0.50);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    padding: 3rem;
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+}
+        .note-layout{
+    display:flex;
+    gap:50px;
+    align-items:flex-start;
+}
+
+.note-content{
+    flex:1;
+}
+
+.note-image{
+    width:300px;
+    flex-shrink:0;
+}
+
+.note-image img{
+    width:100%;
+    aspect-ratio:1/1;
+object-fit:cover;
+    border-radius:8px;
+    display:block;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.note-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+
+    margin-bottom:35px;
+    position:relative;
+}
+
+.note-meta::after{
+    content:"";
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:80px;
+    height:1px;
+
+    background:rgba(255,255,255,.25);
+}
+
+.note-tag{
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.85);
+    font-weight:500;
+}
+
+.note-separator{
+    color:rgba(255,255,255,.35);
+}
+
+.note-date{
+    margin:0;
+    font-size:.75rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.55);
+}
+
+/* PEGAR AQUÍ */
+.note-meta i{
+    margin-right:8px;
+    opacity:.8;
+    font-size:.8rem;
+}
+
+.note-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.note-body {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.92);
+}
+        /* ==========================================
+           SOBRE ALEX ARCANO
+           ========================================== */
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: var(--spacing-section);
+            text-align: center;
+        }
+        
+        .about-title {
+    font-size: 4rem;
+    margin-bottom: 4rem;
+    color: #FFFFFF !important;
+}
+
+.about-photo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:4rem;
+}
+
+.about-photo img{
+    width:100%;
+    max-width:450px;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    border-radius:8px;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}     
+        .about-text{
+    font-size:1.25rem;
+    color:rgba(255,255,255,0.92);
+    line-height:2;
+    text-align:justify;
+    text-align-last:center;
+
+    background:rgba(0,0,0,0.35);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    padding:2rem;
+    border-radius:12px;
+}
+        
+        .about-text p {
+            margin-bottom: 2.5rem;
+        }
+
+        /* BOTÓN SUBIR */
+        #scrollTopBtn{
+            position:fixed;
+            bottom:30px;
+            right:30px;
+            width:50px;
+            height:50px;
+            border:none;
+            border-radius:50%;
+            background:rgba(255,255,255,0.15);
+            color:white;
+            cursor:pointer;
+            font-size:22px;
+            z-index:9999;
+            box-shadow:0 5px 20px rgba(0,0,0,.2);
+            transition: background 0.3s ease;
+        }
+        #scrollTopBtn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* ATRÁS / ADELANTE (PC) */
+        #historyNav{
+            display: none !important; /* Desactivado por defecto, manejado por botones nativos */
+        }
+
+       .video-responsive {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+}
+
+/* REDES EN PC */
+header nav .nav-social{
+    display:flex !important;
+    align-items:center;
+    gap:18px;
+    border:none !important;
+}
+
+header nav .nav-social img{
+    width:22px;
+    height:22px;
+    opacity:.8;
+    filter:brightness(0) invert(1);
+    transition:.3s;
+}
+
+header nav .nav-social img:hover{
+    opacity:1;
+    transform:scale(1.15);
+}
+
+/* ==========================================
+   MÓVIL / CELULAR (ESTRICTAMENTE FILTRADO)
+   ========================================== */
+            
+    @media (max-width: 768px) {
+            
+    /* 1. Cabecera móvil balanceada */
+    header {
+        padding: 1.2rem 2rem !important; 
+        justify-content: space-between !important; 
+    }
+        
+
+    header.scrolled {
+        padding: 1rem 2rem !important; 
+    }
+       .note-layout{
+    flex-direction:column;
+}
+
+.note-image{
+    order:-1;
+    width:100%;
+    max-width:320px;
+    margin:0 auto 25px;
+}
+
+.note-image img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:8px;
+    display:block;
+}
+
+.notes-header{
+    margin-top:-20px;
+}
+
+.hero-title{
+    font-size:3rem;
+    line-height:1.1;
+}
+
+.notes-categories{
+    margin-bottom:2rem;
+}
+        
+    /* SOBRE EL ARTISTA - AJUSTES MÓVIL */
+    #sobre-mi .about-container{
+        margin-top: -50px;
+    }
+
+    #sobre-mi .about-title{
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    #sobre-mi .about-text{
+        text-align: left !important;
+        text-align-last: left !important;
+        font-size: 1.08rem;
+        line-height: 1.9;
+    }
+
+           /* Logo más hacia la izquierda */
+.logo {
+    margin: 0;
+    margin-left: -8px !important;
+    letter-spacing: 0.18em !important;
+}
+
+/* MENÚ más hacia la derecha */
+.menu-toggle {
+    display: block !important;
+    font-family: var(--font-sans) !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 0.07em !important;
+    font-weight: 500 !important;
+    z-index: 2001 !important;
+    color: #FFFFFF !important;
+    margin-right: -15px !important;
+    text-align: right !important;
+    cursor: pointer;
+}
+
+            /* 2. Menú desplegable estilo Bunbury (compacto y limpio) */
+            nav ul {
+                display: none;
+                position: absolute; 
+                top: 100%;
+                left: 0; 
+                transform: none;
+                width: 100%; 
+                max-width: none;
+                background: rgba(15, 15, 15, 0.98); 
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                flex-direction: column;
+                align-items: center;
+                padding: 0 !important;
+                gap: 0 !important; /* Elimina cualquier separación o espacio negro */
+                border-radius: 0; 
+                box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+                z-index: 2000;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            nav ul.mobile-active {
+                display: flex !important;
+            }
+
+            /* Línea divisoria blanca suave bajo cada sección */
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+                margin-bottom: 0 !important; 
+                padding: 0 !important;
+            }
+
+            nav ul li a {
+                display: block;
+                width: 100%;
+                padding: 1.5rem 0 !important; /* Toque cómodo */
+                font-size: 1.3rem !important;
+                line-height: 1.2;
+                font-family: var(--font-serif);
+                letter-spacing: 0.08em; 
+                color: rgba(255,255,255,0.85);
+                text-transform: uppercase;
+                transition: all 0.3s ease;
+            }
+            
+            nav a::after {
+                display: none !important; /* Desactivar línea flotante antigua */
+            }
+
+            /* Elemento Activo: Fondo blanco y texto negro sólido */
+            nav a.active {
+                background: #FFFFFF !important; 
+                color: #000000 !important;
+                font-weight: 600 !important;
+            }
+
+            /* Caja de redes sociales al final del menú móvil */
+            .nav-social {
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                gap: 25px !important; 
+                width: 100%;
+                padding: 1.8rem 0 !important; 
+                margin: 0;
+                border: none !important;
+                background: rgba(10, 10, 10, 0.98) !important; /* Tono sutilmente diferenciado */
+            }
+
+            .nav-social a {
+                width: auto !important;
+                padding: 0 !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent !important;
+            }
+
+            .nav-social img {
+                width: 28px !important; 
+                height: 28px !important;
+                opacity: 0.8;
+                filter: brightness(0) invert(1) !important;
+            }
+
+            /* Ajustes complementarios de secciones móviles */
+            .hero-title {
+                font-size: 3rem;
+                line-height: 1.1;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.7;
+                padding: 0 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 5rem;
+            }
+
+            .song-detail-layout {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .song-detail-right {
+                align-items: center;
+            }
+
+            .song-detail-right .song-title-large {
+                text-align: center;
+                font-size: 2.6rem;
+            }
+
+            .song-detail-right .song-story {
+                text-align: center;
+                border-left: none;
+                padding-left: 0;
+            }
+
+            .song-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .note-category-label {
+    position: static;
+    text-align: left;
+    margin-bottom: 1rem;
+    width: auto;
+}
+
+} /* ← cierra el @media */
+
+.site-footer{
+    text-align:center;
+    padding:35px 20px 30px;
+    margin-top:0px;
+}
+
+.footer-social{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    margin-bottom:12px;
+}
+
+.footer-social a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#ffffff;
+    font-size:1.8rem;
+    opacity:.85;
+    transition:.3s;
+    text-decoration:none;
+}
+
+.footer-social a:hover{
+    opacity:1;
+    transform:scale(1.15);
+}
+
+.share-site-btn{
+    display:block;
+    margin:10px auto;
+    color:#fff;
+    font-size:0.95rem;
+    opacity:0.9;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.share-site-btn:hover{
+    opacity:1;
+    transform:scale(1.05);
+}
+
+.site-footer p{
+    margin:0;
+    font-family:var(--font-sans);
+    font-size:.9rem;
+    color:rgba(255,255,255,.9);
+}
+    </style>
+</head>
 <body>
+
+    <!-- BOTÓN SUBIR -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        ↑
+    </button>
+
+    <!-- Notificación flotante Toast -->
+    <div id="toast-notification" class="custom-toast">Enlace copiado</div>
 
     <header id="main-header">
         <div class="logo" onclick="app.goHome()">
-            <img src="images/logo.webp" alt="Alex Arcano">
-        </div>
+    <img src="images/logo.webp" alt="Alex Arcano">
+</div>
         <div class="menu-toggle" id="menuBtn" onclick="toggleMenu()">
             MENÚ
         </div>
         <nav>
             <ul id="nav-menu">
                 <li><a onclick="app.navigate('musica')" id="nav-musica">Música</a></li>
-                <li><a onclick="app.navigate('notes')" id="nav-notas">Notas</a></li>
+                <li><a onclick="app.navigate('notas')" id="nav-notas">Notas</a></li>
                 <li><a onclick="app.navigate('sobre-mi')" id="nav-sobre-mi">Sobre Mí</a></li>
                 
+                <!-- Redes sociales integradas como último elemento para Móviles -->
                 <li class="nav-social">
                     <a href="https://www.instagram.com/alex.arcano/" target="_blank">
                         <img src="images/instagram.webp" alt="Instagram" onerror="this.src='https://placehold.co/32x32/transparent/white?text=IG'">
@@ -42,6 +1254,7 @@
     </header>
 
     <main>
+        <!-- SECCIÓN DE INICIO -->
         <section id="inicio" class="view active">
             <div class="reveal">
                 <h1 class="hero-title serif">Fragmentos de memoria convertidos en música.</h1>
@@ -56,6 +1269,7 @@
                 <h3 class="featured-title serif">Escúchame en Spotify</h3>
                 
                 <div class="media-embeds">
+                    <!-- Spotify Embed -->
                     <iframe
                         style="border-radius:12px"
                         src="https://open.spotify.com/embed/artist/59XvVC5GQwHQfEWHPTzqnq?utm_source=generator"
@@ -67,6 +1281,7 @@
                         loading="lazy">
                     </iframe>
 
+                    <!-- Video Oficial -->
                     <iframe
                         class="video-responsive"
                         src="https://www.youtube.com/embed/cZwz0fXnt6E"
@@ -76,14 +1291,17 @@
                         allowfullscreen>
                     </iframe>
                 </div>
+
+        </section>
+
+        <!-- SECCIÓN DE MÚSICA -->
+        <section id="musica" class="view">
+            <div class="gallery-grid" id="gallery-container">
+                <!-- Se inyecta dinámicamente -->
             </div>
         </section>
 
-        <section id="musica" class="view">
-            <div class="gallery-grid" id="gallery-container">
-                </div>
-        </section>
-
+        <!-- SECCIÓN DETALLE DE CANCIÓN -->
         <section id="cancion-detalle" class="view">
             <div class="song-template-wrapper">
                 <div class="back-link reveal" onclick="app.navigate('musica')">
@@ -93,7 +1311,8 @@
                 <div class="song-detail-layout reveal">
                     <div class="song-detail-left">
                         <div class="cover-placeholder" id="detail-cover-container" style="cursor: default;">
-                            </div>
+                            <!-- Portada inyectada -->
+                        </div>
                     </div>
                     
                     <div class="song-detail-right">
@@ -105,7 +1324,8 @@
                         <p class="song-story" id="detail-story">Historia de la canción disponible próximamente.</p>
                         
                         <div id="detail-video-container">
-                            </div>
+                            <!-- Video inyectado -->
+                        </div>
                     </div>
                 </div>
 
@@ -117,119 +1337,333 @@
                 </div>
 
                 <div class="song-actions reveal">
-                    </div>
+                    <!-- Enlaces dinámicos Spotify/YouTube -->
+                </div>
             </div>
         </section>
 
+        <!-- SECCIÓN DE NOTAS -->
         <section id="notas" class="view">
             <div class="notes-header reveal">
-                <h1 class="hero-title serif">Notas al Margen</h1>
-                <p class="notes-subtitle">Lo que no se convirtió en música encontró espacio en estas páginas.</p>
-                <div class="notes-categories">
-                    <span class="category-tag" onclick="filtrarNotas('historias')">
-                        <i class="fa-solid fa-feather"></i> Historias
-                    </span>
-                    <span class="category-tag" onclick="filtrarNotas('fragmentos')">
-                        <i class="fa-regular fa-star"></i> Fragmentos
-                    </span>
-                    <span class="category-tag" onclick="filtrarNotas('proceso')">
-                        <i class="fa-solid fa-pencil"></i> Proceso Creativo
-                    </span>
-                </div>
-            </div>
+    <h1 class="hero-title serif">Notas al Margen</h1>
 
-            <div id="volver-prologo" class="back-link reveal" onclick="mostrarPrologo()" style="display:none; cursor: pointer;">
-                ← Volver al Prólogo
-            </div>
+    <p class="notes-subtitle">
+        Lo que no se convirtió en música encontró espacio en estas páginas.
+    </p>
+
+    <div class="notes-categories">
+
+    <span class="category-tag" onclick="filtrarNotas('historias')">
+        <i class="fa-solid fa-feather"></i>
+        Historias
+    </span>
+
+    <span class="category-tag" onclick="filtrarNotas('fragmentos')">
+        <i class="fa-regular fa-star"></i>
+        Fragmentos
+    </span>
+
+    <span class="category-tag" onclick="filtrarNotas('proceso')">
+        <i class="fa-solid fa-pencil"></i>
+        Proceso Creativo
+    </span>
+
+</div>
+</div>
 
             <div class="notes-container">
-                <article class="note-entry reveal prologo">
-                    <div class="note-layout">
-                        <div class="note-content">
-                            <div class="note-meta">
-                                <span class="note-tag"><i class="fa-solid fa-feather"></i> Prólogo</span>
-                                <span class="note-separator">•</span>
-                                <span class="note-date"><i class="fa-regular fa-clock"></i> 3 de junio, 2026</span>
-                            </div>
-                            <h2 class="note-title serif">El origen de estas páginas</h2>
-                            <div class="note-body">
-                                <p>Durante mucho tiempo pensé que todas las palabras tenían que convertirse en canciones.</p>
-                                <p>Guardaba frases en notas del teléfono, escribía ideas en hojas sueltas y llenaba cuadernos con pensamientos que nunca encontraba cómo terminar.</p>
-                                <p>Algunas de esas palabras terminaron convertidas en melodías. Otras simplemente se quedaron esperando.</p>
-                                <p>Con los años entendí que no todo necesita una canción para existir.</p>
-                            </div>
-                        </div>
-                        <div class="note-image">
-                            <img src="images/origen-paginas.webp" alt="El origen de estas páginas">
-                        </div>
-                    </div>
-                </article>
+               <article class="note-entry reveal prologo">
 
-                <article class="note-entry reveal historias" style="display:none;">
-                    <div class="note-layout">
-                        <div class="note-content">
-                            <div class="note-meta">
-                                <span class="note-tag"><i class="fa-solid fa-feather"></i> Historia</span>
-                            </div>
-                            <h2 class="note-title serif">Relato de un Alma</h2>
-                            <div class="note-body">
-                                <p>Una reflexión narrada desde el limbo sobre la muerte, los arrepentimientos y las palabras que nunca se dijeron. Un alma observa su propia vida cuando ya es demasiado tarde para volver atrás.</p>
-                                
-                                <button id="btn-alma-completa" class="lyrics-toggle-btn" onclick="toggleHistoria('alma-completa','btn-alma-completa')">
-                                    Leer Texto
-                                </button>
+    <div class="note-layout">
 
-                                <div id="alma-completa" style="display:none; margin-top:30px;">
-                                    <p><strong>Epílogo</strong></p>
-                                    <p>Tras la penumbra de la soledad, la sangre pura se mezcla con el calor, y el silencio es solo el aperitivo de la eternidad.</p>
-                                    <p><strong>Mi Muerte...</strong></p>
-                                    <p>Heme aquí. Al fin me alcanzó mi destino y, postrado en un lecho de dolor, me arrepiento de haber sido yo.</p>
-                                    <p>La muerte no anuncia su llegada; es incierta. Tantas cosas por decir que nunca pude decir.</p>
-                                    <p>Si pudiera volver atrás y despedirme de mi madre...</p>
-                                    <p>Y es extraño. Entre todos los recuerdos que se niegan a morir, es ella quien vuelve primero.</p>
-                                    <p>Mi madre. Nunca le dije una palabra de amor. Nunca le dije cuánto la quería.</p>
-                                    <p>Pasé la vida creyendo que siempre habría tiempo. Que las despedidas pertenecían a otros.</p>
-                                    <p>Y ahora, postrado en la calle, mientras la muerte viene por mí y el corazón se me hace un nudo, solo puedo pensar una cosa: Si pudiera volver atrás...</p>
-                                    <p>¿Qué se siente al llegar la muerte?</p>
-                                    <p>La misma sensación que se tiene al correr con los ojos cerrados por una calle: miedo.</p>
-                                    <p>Nota: Deberías intentarlo.</p>
-                                    <p>Pero después el miedo se va, y solo queda el vacío que nunca llenaste en tus veintidós años de vida.</p>
-                                    <p>Olvídate de todo. Yo te diré la verdad, si es que quieres escucharla.</p>
-                                    <p>Claro que los vivos poco saben de la muerte. Pero ¿qué sabrá la muerte de estar vivo?</p>
-                                    <p>Yo te diré algo: el cielo sí existe, pero no hablaremos de eso.</p>
-                                    <p>El infierno también existe, pero tampoco hablaremos de eso.</p>
-                                    <p>¿Dónde estoy?</p>
-                                    <p>Aquí, detrás de ti, en el limbo.</p>
-                                    <p>¿Conoces el limbo? Pues vives en él; en el punto medio entre el cielo y la tierra, donde ambos mundos se rozan y subsisten.</p>
-                                    <p>¿Por qué estoy aquí?</p>
-                                    <p>La respuesta está en tu vida: en lo que hiciste, en lo que no hiciste, en lo que tuviste y en lo que dejaste de tener.</p>
-                                    <p>Quiero volver a casa.</p>
-                                    <p>A mi única casa. La que nunca debí dejar, aunque, al final, nunca tuve.</p>
-                                    <p>¿Quién soy? ¿Por qué fui?</p>
-                                    <p>Ahora soy solo un recuerdo; un sueño de una vida tan efímera que pasó sin que me diera cuenta.</p>
-                                    <p>Y lo realmente importante... nunca lo valoré.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="note-image">
-                            <img src="images/relato-alma.webp" alt="Relato de un Alma">
-                        </div>
-                    </div>
-                </article>
+        <div class="note-content">
+
+            <div class="note-meta">
+
+    <span class="note-tag">
+        <i class="fa-solid fa-feather"></i>
+        Prólogo
+    </span>
+
+    <span class="note-separator">•</span>
+
+    <span class="note-date">
+        <i class="fa-regular fa-clock"></i>
+        3 de junio, 2026
+    </span>
+
+</div>
+
+            <h2 class="note-title serif">
+                El origen de estas páginas
+            </h2>
+
+            <div class="note-body">
+                <p>
+                    Durante mucho tiempo pensé que todas las palabras tenían que convertirse en canciones.
+                </p>
+
+                <p>
+                    Guardaba frases en notas del teléfono, escribía ideas en hojas sueltas y llenaba cuadernos con pensamientos que nunca encontraba cómo terminar.
+                </p>
+
+                <p>
+                    Algunas de esas palabras terminaron convertidas en melodías. Otras simplemente se quedaron esperando.
+                </p>
+
+                <p>
+                    Con los años entendí que no todo necesita una canción para existir.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="note-image">
+            <img src="images/origen-paginas.webp" alt="El origen de estas páginas">
+        </div>
+
+    </div>
+
+</article>
+
+<article class="note-entry reveal historia" style="display:none;">
+
+    <div id="volver-prologo"
+         class="back-link"
+         onclick="mostrarPrologo()"
+         style="display:none;">
+
+        ← Volver al Prólogo
+
+    </div>
+
+    <div class="note-layout">
+
+        <div class="note-content">
+
+            <div class="note-meta">
+
+                <span class="note-tag">
+                    <i class="fa-solid fa-feather"></i>
+                    Historia
+                </span>
+
+            </div>
+
+            <h2 class="note-title serif">
+                Relato de un Alma
+            </h2>
+
+            <div class="note-body">
+
+                <p>
+                    Una reflexión narrada desde el limbo sobre la muerte,
+                    los arrepentimientos y las palabras que nunca se dijeron.
+                    Un alma observa su propia vida cuando ya es demasiado tarde para volver atrás.
+                </p>
+
+                <button
+    id="btn-alma-completa"
+    class="lyrics-toggle-btn"
+    onclick="toggleHistoria('alma-completa','btn-alma-completa')">
+
+    Leer Texto
+
+</button>
+
+                <div id="alma-completa"
+                     style="display:none;margin-top:30px;">
+
+                    <!-- AQUÍ SIGUE TODO TU TEXTO COMPLETO -->
+                    <p><strong>Epílogo</strong></p>
+
+
+<p>
+Tras la penumbra de la soledad, la sangre pura se mezcla con el calor,
+y el silencio es solo el aperitivo de la eternidad.
+</p>
+
+<p><strong>Mi Muerte...</strong></p>
+
+<p>
+Heme aquí.
+Al fin me alcanzó mi destino y, postrado en un lecho de dolor,
+me arrepiento de haber sido yo.
+</p>
+
+<p>
+La muerte no anuncia su llegada; es incierta.
+Tantas cosas por decir que nunca pude decir.
+</p>
+
+<p>
+Si pudiera volver atrás y despedirme de mi madre...
+</p>
+
+<p>
+Y es extraño.
+Entre todos los recuerdos que se niegan a morir,
+es ella quien vuelve primero.
+</p>
+
+<p>
+Mi madre.
+Nunca le dije una palabra de amor.
+Nunca le dije cuánto la quería.
+</p>
+
+<p>
+Pasé la vida creyendo que siempre habría tiempo.
+Que las despedidas pertenecían a otros.
+</p>
+
+<p>
+Y ahora, postrado en la calle,
+mientras la muerte viene por mí
+y el corazón se me hace un nudo,
+solo puedo pensar una cosa:
+</p>
+
+<p>
+Si pudiera volver atrás...
+</p>
+
+<p>
+¿Qué se siente al llegar la muerte?
+</p>
+
+<p>
+La misma sensación que se tiene al correr con los ojos cerrados por una calle:
+miedo.
+</p>
+
+<p>
+Nota:
+Deberías intentarlo.
+</p>
+
+<p>
+Pero después el miedo se va,
+y solo queda el vacío que nunca llenaste
+en tus veintidós años de vida.
+</p>
+
+<p>
+Olvídate de todo.
+Yo te diré la verdad,
+si es que quieres escucharla.
+</p>
+
+<p>
+Claro que los vivos poco saben de la muerte.
+Pero ¿qué sabrá la muerte de estar vivo?
+</p>
+
+<p>
+Yo te diré algo:
+el cielo sí existe,
+pero no hablaremos de eso.
+</p>
+
+<p>
+El infierno también existe,
+pero tampoco hablaremos de eso.
+</p>
+
+<p>
+¿Dónde estoy?
+</p>
+
+<p>
+Aquí, detrás de ti, en el limbo.
+</p>
+
+<p>
+¿Conoces el limbo?
+Pues vives en él;
+en el punto medio entre el cielo y la tierra,
+donde ambos mundos se rozan y subsisten.
+</p>
+
+<p>
+¿Por qué estoy aquí?
+</p>
+
+<p>
+La respuesta está en tu vida:
+en lo que hiciste,
+en lo que no hiciste,
+en lo que tuviste
+y en lo que dejaste de tener.
+</p>
+
+<p>
+Quiero volver a casa.
+</p>
+
+<p>
+A mi única casa.
+La que nunca debí dejar,
+aunque, al final,
+nunca tuve.
+</p>
+
+<p>
+¿Quién soy?
+¿Por qué fui?
+</p>
+
+<p>
+Ahora soy solo un recuerdo;
+un sueño de una vida tan efímera
+que pasó sin que me diera cuenta.
+</p>
+
+<p>
+Y lo realmente importante...
+nunca lo valoré.
+</p>
+
+        </div>
+
+    </div>
+
+        </div>
+
+        <div class="note-image">
+
+            <img src="images/relato-alma.webp"
+                 alt="Relato de un Alma">
+
+        </div>
+
+    </div>
+
+</article>
             </div>
         </section>
 
+        <!-- SECCIÓN SOBRE MÍ -->
         <section id="sobre-mi" class="view">
-            <div class="about-container reveal">
-                <h2 class="about-title serif">Sobre el Artista</h2>
-                <div class="about-photo">
-                    <img src="images/alex-arcano.webp" alt="Alex Arcano">
-                </div>
-                <div class="about-text">
-                    <p>Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones.</p>
-                    <p>Su música nace de aquello que permanece cuando todo cambia: las palabras que no se dijeron, los lugares que conservan historias y los momentos que el tiempo no logró borrar.</p>
-                    <p>A través de letras introspectivas, atmósferas melancólicas y una propuesta visual minimalista, construye un universo donde cada canción se convierte en un fragmento de memoria; una historia suspendida entre la nostalgia, el paso del tiempo y las emociones que permanecen.</p>
-                </div>
+    <div class="about-container reveal">
+
+        <h2 class="about-title serif">Sobre el Artista</h2>
+
+        <div class="about-photo">
+            <img src="images/alex-arcano.webp" alt="Alex Arcano">
+        </div>
+        
+    <div class="about-text">
+    <p>Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones.</p>
+
+<p>Su música nace de aquello que permanece cuando todo cambia: las palabras que no se dijeron, los lugares que conservan historias y los momentos que el tiempo no logró borrar.</p>
+
+<p>A través de letras introspectivas, atmósferas melancólicas y una propuesta visual minimalista, construye un universo donde cada canción se convierte en un fragmento de memoria; una historia suspendida entre la nostalgia, el paso del tiempo y las emociones que permanecen.</p>
+
+</div>
+
+
+                
                 <div class="social-nav" style="margin-top: 4rem; border-top: none; display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;">
                     <a href="mailto:alexarcano.musica@gmail.com?subject=Contacto%20desde%20la%20web%20Alex%20Arcano" class="btn-link"><i class="fa-solid fa-envelope"></i> Email</a>
                     <a href="https://wa.me/573183557890" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
@@ -238,21 +1672,45 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div style="text-align:center; margin-bottom:18px;">
-            <a href="#" class="btn-link" onclick="event.preventDefault(); app.shareSite();">Compartir</a>
-        </div>
-        <div class="footer-social">
-            <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://x.com/AlexArcano_" target="_blank"><i class="fa-brands fa-x"></i></a>
-            <a href="https://www.instagram.com/alex.arcano/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@alex.arcano" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/@AlexArcano" target="_blank"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p>© ALEX ARCANO – Todos los derechos reservados</p>
-    </footer>
+   <footer class="site-footer">
 
-    <div id="toast-notification" style="display:none;">Enlace copiado</div>
+    <!-- BOTÓN COMPARTIR GLOBAL -->
+    <div style="text-align:center; margin-bottom:18px;">
+        <a href="#" class="btn-link" onclick="event.preventDefault(); app.shareSite();">
+            Compartir
+        </a>
+    </div>
+
+    <!-- REDES SOCIALES -->
+    <div class="footer-social">
+
+        <a href="https://www.facebook.com/alex.arcano.oficial/" target="_blank">
+            <i class="fab fa-facebook"></i>
+        </a>
+
+        <a href="https://x.com/AlexArcano_" target="_blank">
+            <i class="fa-brands fa-x"></i>
+        </a>
+
+        <a href="https://www.instagram.com/alex.arcano/" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@alex.arcano" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+
+        <a href="https://www.youtube.com/@AlexArcano" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+    </div>
+
+    <p>
+        © ALEX ARCANO – Todos los derechos reservados
+    </p>
+
+</footer>
 
     <script>
         /* ==========================================
@@ -268,7 +1726,76 @@
                 status: 'released',
                 year: '2024',
                 story: 'Algunas ausencias se quedan viviendo en los lugares que compartimos con ellas. Entre el eco de los recuerdos y el peso de lo que ya no está, "Cuéntame A" nace de la necesidad de encontrar una respuesta cuando el corazón ya no sabe cómo seguir sin aquello que alguna vez lo hizo sentir vivo.',
-                lyrics: `No se van\nLos recuerdos han quedado y el amor\nSe inunda con cerveza...` // (Letra reducida aquí por espacio en el script, mantén tus strings largos completos)
+                lyrics: `No se van
+Los recuerdos han quedado y el amor
+Se inunda con cerveza
+Y yo estoy aquí
+Perdido en el alcohol una vez más
+Ya nada importa
+
+Hoy tengo el presentimiento
+Que estoy solo otra vez
+Que el destino se ha empeñado en ahogarme
+Y no sé por qué
+Hoy tengo el presentimiento
+Que no puedo estar sin ti
+Que será este sentimiento
+Que no te deja morir
+
+Cuéntame
+Dime cómo seguir
+Olvidando lo vivido
+Aunque sé que se ha perdido
+Cuéntame
+Dime cómo seguir
+Me enseñaste a estar vivo
+Pero no lo puedo estar
+Sin ti
+
+No se van
+Los recuerdos han quedado y el dolor
+Se inunda con cerveza
+Y yo estoy aquí
+Muriendo de amor una vez más
+Ya nada importa
+
+Hoy tengo el presentimiento
+Que estoy solo otra vez
+Que el destino se ha empeñado en ahogarme
+Y no sé por qué
+Hoy tengo el presentimiento
+Que no puedo estar sin ti
+Que será este sentimiento
+Que no te deja morir
+
+Cuéntame
+Dime cómo seguir
+Olvidando lo vivido
+Aunque sé que se ha perdido
+Cuéntame
+Dime cómo seguir
+Me enseñaste a estar vivo
+Pero no lo puedo estar
+Sin ti
+
+Cuéntame
+Dime cómo mentir
+Si ya no estás aquí conmigo
+Nada tiene algún sentido
+Cuéntame
+Que no puedo huir
+De todo lo que hemos pasado
+De no sentirte aquí a mi lado
+
+Cuéntame
+Dime cómo escapar
+Decir que el miedo ya se ha ido
+Y ahora solo está contigo
+Cuéntame
+Dime cómo seguir
+Me enseñaste a estar vivo
+Pero no lo puedo estar
+Sin ti`
             },
             {
                 id: 'cuentame-b',
@@ -279,7 +1806,55 @@
                 status: 'released',
                 year: '2025',
                 story: 'No todas las historias terminan cuando llega la despedida. Entre la calma que deja el tiempo y los sentimientos que se niegan a desaparecer, "Cuéntame B" habita ese lugar donde el amor deja de ser una herida para convertirse en un recuerdo que nos acompaña.',
-                lyrics: `¿Dónde está el amor?...`
+                lyrics: `¿Dónde está el amor?
+¿Por qué estás muriendo mi corazón?
+Si aún después de tanto tiempo lejos
+Aún te extraño y siento que vendrás
+Tengo miedo hoy
+De aceptar que todo terminó
+Tú te vas marchando de este lugar
+Y yo aquí sin nada más
+
+Que este frío
+Que es tan tuyo y tan mío
+¡Cuéntame, cuéntame, cuéntame!
+
+¿Por qué?
+No tengo palabras para describir
+Lo que en poco tiempo me hiciste sentir
+Rompiste las olas
+Cortaste el calor
+Que estaban tan dentro de mi corazón
+Y hoy que no estás
+Solo me queda decir
+Que nunca me olvides como yo a ti
+Aunque tenga que dejarte marchar
+Mejor despedida que esta no hay
+
+Sé que soy solo yo
+El que está sufriendo por los dos
+Y aunque todo se derrumbe en este lugar
+Yo aún sigo aquí
+Sin nada más
+
+Que este frío
+Que es tan tuyo y tan mío
+¡Cuéntame, cuéntame, cuéntame!
+
+¿Por qué?
+No tengo palabras para describir
+Lo que en poco tiempo me hiciste sentir
+Rompiste las olas
+Cortaste el calor
+Que estaban tan dentro de mi corazón
+Y hoy que no estás
+Solo me queda decir
+Que nunca me olvides como yo a ti
+Aunque tenga que dejarte marchar
+Mejor despedida que esta no hay
+
+Hoooo
+Que esta no hay`
             },
             {
                 id: 'tan-solo',
@@ -290,7 +1865,38 @@
                 status: 'released',
                 year: '2024',
                 story: 'Cuando el mundo guarda silencio, los pensamientos encuentran la forma de hacerse escuchar. Entre ventanas abiertas, calles vacías y amaneceres interminables, "Tan Solo" es una conversación íntima con la nostalgia, la memoria y todo aquello que aprendimos a callar.',
-                lyrics: `Sueña el mundo...`
+                lyrics: `Sueña el mundo
+Y el silencio
+Me acompaña en la calle al caminar
+Pasa el tiempo
+Por mi lado
+Oigo el eco de sus pasos al andar
+
+Y aparecen recuerdos que pesan
+Vienen y se van
+Y es que a veces no entiendo
+Que todo tiene un final
+
+Llego a casa
+Y en mi cuarto
+Duerme el miedo y no lo quiero despertar
+Y le recuerdo al pasado
+El trato que sellamos para no recordar
+
+Y le susurro a la muerte
+Que nunca me deje de esperar
+Mientras busco a la suerte
+Y como siempre no está
+
+Me descubro en la ventana para ver si siento
+El amor pasar
+Mientras charlo de mil cosas en silencio
+Con la soledad
+
+Siento el viento en mi rostro
+La gente ya empieza a despertar
+Y en la puerta de mi casa
+El sueño se limpia los pies al entrar`
             },
             {
                 id: 'reflejos',
@@ -301,7 +1907,75 @@
                 status: 'released',
                 year: '2024',
                 story: 'Algunas canciones no buscan recuperar lo perdido, sino encontrar el valor para dejarlo partir. Entre recuerdos que todavía duelen y verdades que ya no pueden esconderse, "Reflejos" habla del instante en que el amor y la despedida aprenden a compartir el mismo espacio.',
-                lyrics: `Despacio...`
+                lyrics: `Despacio
+Y sin tocar el tema te miro
+Mis labios
+Son el reflejo de lo que voy a decir
+Mis manos
+Temblando sin saber por qué
+Ellas no tienen excusas
+Pero tengo que decirte
+
+Que ya no puedo seguir
+Eso lo puedes ver
+Que ya no voy a ceder
+Está muriendo en mi ser
+Me estás haciendo daño
+Me estás haciendo daño
+Y esto nos va a doler
+Tú ya lo debes saber
+Pero después pasarás
+Y tan solo serás
+Un recuerdo de ayer
+Que quizás, quizás amé
+
+Y cantaré esta canción
+Que es solo para los dos
+Como un último adiós
+Reflejo de un corazón
+Sé que te da igual
+Sé que te da igual
+Que siga, que pare
+Que te ate o que escape
+
+Y cantaré esta canción
+Que es solo para los dos
+Como un último adiós
+Reflejo de un corazón
+Sé que te da igual
+Sé que te da igual
+Que siga, que pare
+Que te ate o que escape
+
+Despierto
+Ya no es hora de mirar atrás
+No quiero
+Saber si está bien o mal
+
+Porque yo creo en todo lo que digas
+Y hoy
+Con solo escuchar el sonido de tu voz
+Sé que me voy a arrepentir
+Por eso
+No quiero seguir
+
+Y cantaré esta canción
+Que es solo para los dos
+Como un último adiós
+Reflejo de un corazón
+Sé que te da igual
+Sé que te da igual
+Que siga, que pare
+Que te ate o que escape
+
+Y cantaré esta canción
+Que es solo para los dos
+Como un último adiós
+Reflejo de un corazón
+Sé que te da igual
+Sé que te da igual
+Que siga, que pare
+Que te ate o que escape`
             },
             {
                 id: 'donde',
@@ -312,7 +1986,67 @@
                 status: 'released',
                 year: '2025',
                 story: 'Algunas personas se marchan llevándose más que su presencia. Entre promesas suspendidas en el tiempo y caminos que dejaron de encontrarse, "Dónde" busca aquello que quedó atrás cuando una historia terminó sin avisar que sería la última vez.',
-                lyrics: `Tú...`
+               lyrics: `Tú
+Estás lejos de aquí
+La mañana está tan cerca y tus labios
+Son un recuerdo de ayer
+
+Y yo
+Estoy perdido, sin saber qué hacer
+Sin querer vivir, sin poder volver
+A ser el mismo al que todo le daba igual
+
+¿Dónde quedan los recuerdos de aquel amor?
+¿Dónde se esconde la mentira y la ironía
+De cada día, sin poder volverte a ver?
+
+¿Dónde quedan los sueños sin cumplir?
+Las promesas que se dicen por decir
+Y la esperanza de encontrarte una vez más
+Para volver a empezar
+
+¿Dónde quedas tú?
+¿Dónde quedo yo?
+¿Dónde queda todo, todo mi amor?
+Todo
+
+Tú
+Estás lejos de aquí
+Y aunque ya no es lo mismo
+No sé por qué diablos sigo pensando en ti
+
+Y yo
+Me prometo no volverlo a hacer
+Y me pregunto solo por saber
+Solo por saber
+
+¿Dónde quedan los recuerdos de aquel amor?
+¿Dónde se esconde la mentira y la ironía
+De cada día, sin poder volverte a ver?
+
+¿Dónde quedan los sueños sin cumplir?
+Las promesas que se dicen por decir
+Y la esperanza de encontrarte una vez más
+Para volver a empezar
+
+¿Dónde quedas tú?
+¿Dónde quedo yo?
+¿Dónde queda todo, todo mi amor?
+Todo
+
+¿Dónde quedan los recuerdos de aquel amor?
+¿Dónde se esconde la mentira y la ironía
+De cada día, sin poder volverte a ver?
+
+¿Dónde quedan los sueños sin cumplir?
+Las promesas que se dicen por decir
+Y la esperanza de encontrarte una vez más
+Para volver a empezar
+
+¿Dónde quedas tú?
+¿Dónde quedo yo?
+¿Dónde queda todo, todo mi amor?
+Todo mi amor`
             },
             {
                 id: 'juegos-perdidos',
@@ -323,7 +2057,42 @@
                 status: 'released',
                 year: '2025',
                 story: 'Ciertos recuerdos regresan justo cuando creemos haber aprendido a vivir sin ellos. Entre sueños que insisten en volver y emociones que se niegan a desaparecer, "Juegos Perdidos" habla de esas batallas silenciosas donde el corazón sigue apostando por lo imposible.',
-                lyrics: `Aún escribo canciones...`
+                lyrics: `Aún escribo canciones
+Guardo mis emociones
+Tengo el alma quebrada de tanto aguantar
+El dolor de mis fracasos
+Quedan mil sensaciones
+Y estos viejos lugares
+En los que te empeñaste en romper mi corazón en mil pedazos
+
+Y aunque hoy no queda más que olvidar
+No te dejo de pensar
+Y es que prefiero extrañar
+A vivir en soledad
+Y aunque solo yo te quiera para mí
+Eso bastará
+
+Aún te miro y tiemblo
+Y tengo miedo de hacerlo
+De caer en el juego que siempre he dado por perdido
+Pero tú no te has ido
+Sigues aquí conmigo
+Merodeando en mis sueños
+Llenando mis noches de guerras furtivas
+
+Y aunque hoy no queda más que olvidar
+No te dejo de pensar
+Y es que prefiero extrañar
+A vivir en soledad
+Y aunque solo yo te quiera para mí
+Eso bastará
+
+Y aunque hoy no queda más que olvidar
+No te dejo de pensar
+Y es que prefiero extrañar
+A vivir en soledad
+Y aunque solo yo te quiera para mí
+Eso bastará`
             },
             {
                 id: 'llevame',
@@ -334,7 +2103,32 @@
                 status: 'upcoming',
                 year: '2026',
                 story: 'Algunos recuerdos se convierten en lugares a los que el corazón intenta regresar una y otra vez. Entre la nostalgia de lo vivido y el deseo de volver a sentir aquello que parecía eterno, "Llévame" es una súplica dirigida a un amor que ya no está, pero que nunca terminó de irse.',
-                lyrics: `He sentido el temor...`
+                lyrics: `He sentido el temor de saber qué puedo hacer
+Si no estás aquí
+He buscado mil pasiones y el calor
+Que te lleva hacia mí, y ya no sé
+En qué pensar, si nunca estoy donde quiero estar
+
+Pero sé que nunca más volveré a sentir
+La pasión de este amor
+Que nos rompe el corazón y las cadenas
+
+Y llévame, quiero estar contigo
+Quiero ser tu abrigo y la luz de tus noches
+Llévame, quiero tenerte
+Quiero buscarte, enloquecerte de amor
+Nunca te dejaré hasta morir
+
+Y llorando puedo decirte que tú y yo
+Estamos bien, siempre juntos recordando
+En las paredes de un bar
+No puedo sentirme bien, no puedo sentirme mal
+
+Y llévame, quiero estar contigo
+Quiero ser tu abrigo y la luz de tus noches
+Llévame, quiero tenerte
+Quiero buscarte, enloquecerte de amor
+Nunca te dejaré hasta morir`
             },
             {
                 id: 'hoy-tiene-tu-nombre',
@@ -345,7 +2139,40 @@
                 status: 'upcoming',
                 year: '2026',
                 story: 'Hay canciones que pertenecen a una sola persona. "Hoy Tiene Tu Nombre" es una dedicatoria a quienes inspiran nuestros pensamientos, nuestros sueños y nuestras emociones más sinceras. Porque cada historia de amor es diferente, pero hoy esta canción lleva su nombre.',
-                lyrics: `Solo un par de palabras...`
+                lyrics: `Solo un par de palabras, solo un par de canciones
+Son restos de equivocaciones que no dicen nada
+Una sola mirada, un solo “te quiero”
+Un solo abrazo y aquí vamos de nuevo
+Cayendo en picada
+
+Te regalo esta canción
+No tengo nada más para darte amor
+
+No te miento si te digo que solo pienso en ti
+Y no entiendo, no hay explicación
+Tengo miedo de romper mi pobre corazón
+Que solo calla… y aquí vamos otra vez
+
+Al caer cada día, al llegar la mañana
+Al abrir mis ojos junto a la ventana
+Solo pienso en ti
+Te dejo mis sueños y un chocolate
+Las horas que tengo para enamorarte
+Para enamorarte
+
+Te regalo esta canción
+No tengo nada más para darte amor
+
+No te miento si te digo que solo pienso en ti
+Y no entiendo, no hay explicación
+Tengo miedo de romper mi pobre corazón
+Que solo calla… y aquí vamos otra vez
+
+Solo un par de palabras, solo un par de canciones
+Son restos de equivocaciones que no dicen nada
+Una sola mirada, un solo “te quiero”
+Un solo abrazo y aquí vamos de nuevo
+Cayendo en los brazos de…`
             },
             {
                 id: 'lo-que-el-tiempo',
@@ -356,15 +2183,48 @@
                 status: 'upcoming',
                 year: '2026',
                 story: 'El tiempo cambia los paisajes, las ciudades y las versiones de quienes fuimos. Pero entre los años, la distancia y el silencio, "Lo Que El Tiempo Nunca Se Llevó" recuerda que existen sentimientos capaces de permanecer intactos cuando todo lo demás ha aprendido a desaparecer.',
-                lyrics: `Mi destino se ha perdido...`
+              lyrics: `Mi destino se ha perdido
+Entre tantos sueños grises que hoy
+Ya no llevan a ningún camino
+Los recuerdos de esta habitación
+
+Y ya no quiero estar conmigo
+Solo quiero escribirte esta canción
+Es que no puedo vivir tranquilo
+En lo que el tiempo nunca se llevó
+
+Cuántas noches he perdido
+Esperando solo oír tu voz
+Tú sabes que eres mi destino
+Y te vas buscando otra ilusión
+
+Y ya no quiero estar conmigo
+Solo quiero escribirte esta canción
+Es que no puedo vivir tranquilo
+En lo que el tiempo nunca se llevó
+
+Pareciera mentira que tú me dejarías
+Y sé que hoy estoy aquí, perdido, sin razón
+
+Y ya no quiero estar conmigo
+Solo quiero escribirte esta canción
+Es que no puedo vivir tranquilo
+En lo que el tiempo nunca se llevó
+
+Mi destino se ha perdido
+Entre tantos sueños que se han ido hoy`
             }
         ];
 
+        /* ==========================================
+           FORMATO DE LÍRICAS
+           ========================================== */
         function formatLyrics(rawLyrics) {
             if (!rawLyrics) return '';
-            return rawLyrics.replace(/\n/g, '<br>');
+            return rawLyrics;
         }
 
+        /* Parser robusto de YouTube */
         function getYoutubeEmbedUrl(url) {
             if (!url) return '';
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -381,47 +2241,64 @@
             observer: null,
 
             init() {
-                this.historyStack = ['inicio'];
-                this.historyIndex = 0;
+    this.historyStack = ['inicio'];
+    this.historyIndex = 0;
 
-                const hash = window.location.hash.substring(1);
-                const song = songs.find(s => s.id === hash);
+    const hash = window.location.hash.substring(1);
 
-                if (song) {
-                    this.renderGallery();
-                    this.initScrollReveal();
-                    this.initHeaderScroll();
-                    setTimeout(() => { this.openSong(hash); }, 100);
-                    return;
-                }
+    const song = songs.find(s => s.id === hash);
 
-                if (hash === 'cancion-detalle') {
-                    const savedSongId = sessionStorage.getItem('currentSongId');
-                    if (savedSongId) {
-                        this.openSong(savedSongId);
-                    } else {
-                        this.navigate('inicio', false);
-                    }
-                } else if (hash && document.getElementById(hash)) {
-                    this.navigate(hash, false);
-                }
+    if (song) {
+        this.renderGallery();
+        this.initScrollReveal();
+        this.initHeaderScroll();
 
-                this.renderGallery();
-                this.initScrollReveal();
-                this.initHeaderScroll();
-                setTimeout(() => this.triggerReveal(), 100);
-            },
+        setTimeout(() => {
+            this.openSong(hash);
+        }, 100);
+
+        return;
+    }
+
+    if (hash === 'cancion-detalle') {
+        const savedSongId = sessionStorage.getItem('currentSongId');
+        if (savedSongId) {
+            this.openSong(savedSongId);
+        } else {
+            this.navigate('inicio', false);
+        }
+    } else if (hash && document.getElementById(hash)) {
+        this.navigate(hash, false);
+    }
+
+    this.renderGallery();
+    this.initScrollReveal();
+    this.initHeaderScroll();
+
+    setTimeout(() => this.triggerReveal(), 100);
+},
 
             navigate(viewId, push = true) {
                 const currentView = document.querySelector('.view.active');
-                if (currentView && currentView.id === viewId) return;
-                if (!document.getElementById(viewId)) return;
+
+                if (currentView && currentView.id === viewId) {
+                    return;
+                }
+
+                if (!document.getElementById(viewId)) {
+                    return;
+                }
 
                 if (push) {
                     this.historyStack = this.historyStack.slice(0, this.historyIndex + 1);
                     this.historyStack.push(viewId);
                     this.historyIndex++;
-                    history.pushState({ view: viewId }, "", "#" + viewId);
+
+                    history.pushState(
+                        { view: viewId },
+                        "",
+                        "#" + viewId
+                    );
                 }
 
                 document.getElementById('nav-menu').classList.remove('mobile-active');
@@ -431,13 +2308,22 @@
                 document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
 
                 const view = document.getElementById(viewId);
-                if (view) view.classList.add('active');
+                if (view) {
+                    view.classList.add('active');
+                }
 
                 const nav = document.getElementById('nav-' + viewId);
-                if (nav) nav.classList.add('active');
+                if (nav) {
+                    nav.classList.add('active');
+                }
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
                 document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
+
                 setTimeout(() => this.triggerReveal(), 150);
             },
 
@@ -458,12 +2344,14 @@
             renderGallery() {
                 const container = document.getElementById('gallery-container');
                 if (!container) return;
+
                 container.innerHTML = '';
 
                 songs.forEach(song => {
                     const card = document.createElement('div');
                     card.className = 'song-card reveal';
                     card.onclick = () => this.openSong(song.id);
+
                     card.innerHTML = `
                         <div class="song-card-img-wrapper">
                             ${song.status === 'upcoming' ? '<span class="badge-upcoming">Próximamente</span>' : ''}
@@ -474,12 +2362,17 @@
                             </div>
                         </div>
                     `;
+
                     container.appendChild(card);
                 });
             },
 
             openSong(songId) {
-                if (document.getElementById('cancion-detalle').classList.contains('active') && window.currentSong?.id === songId) {
+                if (
+                    document.getElementById('cancion-detalle').classList.contains('active')
+                    &&
+                    window.currentSong?.id === songId
+                ){
                     return;
                 }
                 const song = songs.find(s => s.id === songId);
@@ -488,21 +2381,34 @@
                 window.currentSong = song;
                 sessionStorage.setItem('currentSongId', songId);
 
+                // Inyectar datos en la estructura del Detail
                 document.getElementById('detail-title').textContent = song.title;
                 document.getElementById('detail-date').textContent = song.year;
                 document.getElementById('detail-story').textContent = song.story;
-                document.getElementById('detail-cover-container').innerHTML = `<img src="${song.image}" class="cover-image" alt="${song.title}" onerror="this.src='https://placehold.co/500x500/121212/888888?text=${encodeURIComponent(song.title)}'">`;
 
+                // Inyectar Portada Compacta a la izquierda
+                document.getElementById('detail-cover-container').innerHTML =
+                    `<img src="${song.image}" class="cover-image" alt="${song.title}" onerror="this.src='https://placehold.co/500x500/121212/888888?text=${encodeURIComponent(song.title)}'">`;
+
+                // Inyección de video de YouTube
                 const videoContainer = document.getElementById('detail-video-container');
                 const embedId = getYoutubeEmbedUrl(song.youtube);
                 if (embedId) {
-                    videoContainer.innerHTML = `<iframe class="video-responsive" src="https://www.youtube.com/embed/${embedId}" title="${song.title} - Video Oficial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    videoContainer.innerHTML = `
+                        <iframe class="video-responsive" 
+                            src="https://www.youtube.com/embed/${embedId}" 
+                            title="${song.title} - Video Oficial" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>`;
                     videoContainer.style.display = 'block';
                 } else {
                     videoContainer.innerHTML = '';
                     videoContainer.style.display = 'none';
                 }
 
+                // Configurar contenedor de líricas
                 const lyricsWrapper = document.getElementById('detail-lyrics-wrapper');
                 const lyricsText = document.getElementById('lyrics-text');
                 const lyricsContent = document.getElementById('lyrics-content-container');
@@ -519,6 +2425,7 @@
                     lyricsWrapper.style.display = 'none';
                 }
 
+                // Generar Enlaces de Redes y Compartir
                 const actionsContainer = document.querySelector('.song-actions');
                 if (song.status === 'upcoming') {
                     actionsContainer.innerHTML = `
@@ -533,6 +2440,7 @@
                         <a href="#" class="btn-link" onclick="event.preventDefault(); app.shareSong();">Compartir</a>
                     `;
                 }
+
                 this.navigate('cancion-detalle');
             },
 
@@ -540,66 +2448,82 @@
                 const container = document.getElementById('lyrics-content-container');
                 const btn = document.getElementById('btn-toggle-lyrics');
                 const isOpen = container.classList.toggle('abierto');
+                
                 btn.innerText = isOpen ? "Ocultar Letra" : "Leer Letra";
             },
 
             shareSong() {
-                const song = window.currentSong;
-                if (!song) return;
-                const shareData = {
-                    title: song.title,
-                    text: `Escucha "${song.title}" de Alex Arcano 🎧`,
-                    url: window.location.origin + window.location.pathname + "#" + song.id
-                };
-                if (navigator.share) {
-                    navigator.share(shareData).catch(err => console.log("Error al compartir:", err));
-                } else {
-                    this.fallbackCopyLink();
-                }
-            },
+    const song = window.currentSong;
+    if (!song) return;
 
-            fallbackCopyLink() {
-                const dummy = document.createElement('input');
-                document.body.appendChild(dummy);
-                dummy.value = window.location.origin + window.location.pathname + "#" + window.currentSong.id;
-                dummy.select();
-                document.execCommand('copy');
-                document.body.removeChild(dummy);
+    const shareData = {
+        title: song.title,
+        text: `Escucha "${song.title}" de Alex Arcano 🎧`,
+        url: window.location.origin + window.location.pathname + "#" + song.id
+    };
 
-                const toast = document.getElementById('toast-notification');
-                if (toast) {
-                    toast.style.display = 'block';
-                    setTimeout(() => { toast.style.display = 'none'; }, 2500);
-                }
-            },
+    if (navigator.share) {
+        navigator.share(shareData)
+            .catch(err => console.log("Error al compartir:", err));
+    } else {
+        // fallback para navegadores viejos
+        this.fallbackCopyLink();
+    }
+},
 
+fallbackCopyLink() {
+    const dummy = document.createElement('input');
+    document.body.appendChild(dummy);
+
+    dummy.value =
+        window.location.origin +
+        window.location.pathname +
+        "#" +
+        window.currentSong.id;
+
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+
+    const toast = document.getElementById('toast-notification');
+    if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2500);
+    }
+},
             shareSite() {
-                const shareData = {
-                    title: "Alex Arcano",
-                    text: "Fragmentos de memoria convertidos en música 🎧",
-                    url: window.location.origin + window.location.pathname
-                };
-                if (navigator.share) {
-                    navigator.share(shareData).catch(err => console.log("Error al compartir:", err));
-                } else {
-                    const dummy = document.createElement('input');
-                    document.body.appendChild(dummy);
-                    dummy.value = window.location.origin + window.location.pathname;
-                    dummy.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(dummy);
+    const shareData = {
+        title: "Alex Arcano",
+        text: "Fragmentos de memoria convertidos en música 🎧",
+        url: window.location.origin + window.location.pathname
+    };
 
-                    const toast = document.getElementById('toast-notification');
-                    if (toast) {
-                        toast.textContent = "Enlace copiado";
-                        toast.style.display = 'block';
-                        setTimeout(() => { toast.style.display = 'none'; }, 2500);
-                    }
-                }
-            },
+    if (navigator.share) {
+        navigator.share(shareData)
+            .catch(err => console.log("Error al compartir:", err));
+    } else {
+        const dummy = document.createElement('input');
+        document.body.appendChild(dummy);
 
+        dummy.value = window.location.origin + window.location.pathname;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+
+        const toast = document.getElementById('toast-notification');
+        if (toast) {
+            toast.textContent = "Enlace copiado";
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+    }
+},
             goHome() {
-                if (document.querySelector('.view.active')?.id === 'inicio') return;
+                if (document.querySelector('.view.active')?.id === 'inicio'){
+                    return;
+                }
                 this.navigate('inicio');
             },
 
@@ -612,7 +2536,8 @@
             },
 
             triggerReveal() {
-                document.querySelectorAll('.view.active .reveal').forEach(el => this.observer.observe(el));
+                document.querySelectorAll('.view.active .reveal')
+                    .forEach(el => this.observer.observe(el));
             },
 
             initHeaderScroll() {
@@ -624,9 +2549,9 @@
             }
         };
 
-        /* =========================================
-           MANEJO DE INTERFAZ GENERAL Y MENÚS
-           ========================================= */
+        /* =========================
+           INIT
+           ========================= */
         window.onload = function() {
             app.init();
         }
@@ -640,58 +2565,144 @@
         function toggleMenu(){
             const menu = document.getElementById('nav-menu');
             const btn = document.getElementById('menuBtn');
+
             menu.classList.toggle('mobile-active');
-            btn.innerHTML = menu.classList.contains('mobile-active') ? '✕' : 'MENÚ';
-        }
 
-        /* =========================================
-           FUNCIONES DE FILTRADO Y NARRATIVA
-           ========================================= */
-        function filtrarNotas(tipo){
-            // Ocultar de manera estricta el prólogo y las demás tarjetas de categorías
-            document.querySelectorAll('.prologo, .historias, .fragmentos, .procesos').forEach(n => {
-                n.style.display = 'none';
-            });
-
-            // Mostrar el botón de regreso superior
-            const volverBtn = document.getElementById("volver-prologo");
-            if (volverBtn) volverBtn.style.display = "block";
-
-            // Mostrar únicamente las tarjetas correspondientes al filtro activo
-            document.querySelectorAll('.' + tipo).forEach(n => {
-                n.style.display = 'block';
-            });
-        }
-
-        function mostrarPrologo(){
-            // Ocultar de manera estricta todas las tarjetas dinámicas de categorías
-            document.querySelectorAll('.historias, .fragmentos, .procesos').forEach(n => {
-                n.style.display = 'none';
-            });
-
-            // Ocultar el botón superior ya que estamos en la vista raíz de notas
-            const volverBtn = document.getElementById("volver-prologo");
-            if (volverBtn) volverBtn.style.display = "none";
-
-            // Mostrar la introducción/Prólogo del cuaderno
-            document.querySelectorAll('.prologo').forEach(n => {
-                n.style.display = 'block';
-            });
-        }
-
-        function toggleHistoria(id, botonId){
-            const bloque = document.getElementById(id);
-            const boton = document.getElementById(botonId);
-            if (!bloque || !boton) return;
-
-            if (bloque.style.display === "none" || bloque.style.display === "") {
-                bloque.style.display = "block";
-                boton.innerText = "Ocultar Texto";
+            if(menu.classList.contains('mobile-active')){
+                btn.innerHTML = '✕';
             } else {
-                bloque.style.display = "none";
-                boton.innerText = "Leer Texto";
+                btn.innerHTML = 'MENÚ';
             }
         }
+        function filtrarNotas(tipo){
+
+    const prologo =
+        document.querySelectorAll('.prologo');
+
+    const historias =
+        document.querySelectorAll('.historia');
+
+    const fragmentos =
+        document.querySelectorAll('.fragmento');
+
+    const procesos =
+        document.querySelectorAll('.proceso');
+
+    document
+    .querySelectorAll('.prologo')
+    .forEach(
+        n => n.style.display='none'
+    );
+
+    document.getElementById("volver-prologo").style.display = "block";
+
+    if(tipo === 'historias'){
+
+        historias.forEach(
+            n => n.style.display='block'
+        );
+
+    }
+
+    if(tipo === 'fragmentos'){
+
+        fragmentos.forEach(
+            n => n.style.display='block'
+        );
+
+    }
+
+    if(tipo === 'proceso'){
+
+        procesos.forEach(
+            n => n.style.display='block'
+        );
+
+    }
+
+}
+       /* =========================================
+   FUNCIONES DE FILTRADO Y NARRATIVA
+   ========================================= */
+
+function filtrarNotas(tipo) {
+    // Ocultar el prólogo y todas las categorías para limpiar el estado
+    document.querySelectorAll('.prologo, .historia, .fragmento, .proceso').forEach(n => {
+        n.style.style.display = 'none';
+    });
+
+    // Mostrar el botón de retorno al prólogo en la parte superior
+    const volverBtn = document.getElementById("volver-prologo");
+    if (volverBtn) volverBtn.style.display = "block";
+
+    // Mostrar únicamente los elementos de la categoría seleccionada
+    document.querySelectorAll('.' + tipo).forEach(n => {
+        n.style.display = 'block';
+    });
+}
+
+function mostrarPrologo() {
+    // Asegurar que las historias, fragmentos y procesos se oculten por completo
+    document.querySelectorAll('.historia, .fragmento, .proceso').forEach(n => {
+        n.style.display = 'none';
+    });
+
+    // Ocultar el botón de regreso, ya que estamos en el prólogo
+    const volverBtn = document.getElementById("volver-prologo");
+    if (volverBtn) volverBtn.style.display = "none";
+
+    // Mostrar todos los elementos pertenecientes al prólogo
+    document.querySelectorAll('.prologo').forEach(n => {
+        n.style.display = 'block';
+    });
+}
+
+function toggleHistoria(id, botonId) {
+    const bloque = document.getElementById(id);
+    const boton = document.getElementById(botonId);
+    
+    if (!bloque || !boton) return;
+
+    if (bloque.style.display === "none" || bloque.style.display === "") {
+        bloque.style.display = "block";
+        boton.innerText = "Ocultar Texto";
+    } else {
+        bloque.style.display = "none";
+        boton.innerText = "Leer Texto";
+    }
+}
+
+        function toggleHistoria(id, botonId){
+
+    const bloque =
+        document.getElementById(id);
+
+    const boton =
+        document.getElementById(botonId);
+
+    if(
+        bloque.style.display === "none"
+        ||
+        bloque.style.display === ""
+    ){
+
+        bloque.style.display = "block";
+
+        boton.innerText =
+            "Ocultar Texto";
+
+    }
+    else{
+
+        bloque.style.display = "none";
+
+        boton.innerText =
+            "Leer Texto";
+
+    }
+
+}
     </script>
 </body>
 </html>
+
