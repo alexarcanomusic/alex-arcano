@@ -2579,42 +2579,49 @@ fallbackCopyLink() {
    FUNCIONES DE FILTRADO Y NARRATIVA
    ========================================= */
 
-function filtrarNotas(tipo) {
-    // Ocultar el prólogo y todas las categorías para limpiar el estado
-    document.querySelectorAll('.prologo, .historia, .fragmento, .proceso').forEach(n => {
+unction filtrarNotas(tipo) {
+
+    // Ocultar todo
+    document.querySelectorAll('.prologo, .historia, .fragmento, .proceso')
+    .forEach(n => {
         n.style.display = 'none';
     });
 
-    // Mostrar el botón de retorno al prólogo en la parte superior
+    // Mostrar botón volver
     const volverBtn = document.getElementById("volver-prologo");
     if (volverBtn) volverBtn.style.display = "block";
 
-    // Mostrar únicamente los elementos de la categoría seleccionada
-    document.querySelectorAll('.' + tipo).forEach(n => {
+    // Mostrar solo la categoría seleccionada
+    document.querySelectorAll('.' + tipo)
+    .forEach(n => {
         n.style.display = 'block';
     });
 }
 
 function mostrarPrologo() {
-    // Asegurar que las historias, fragmentos y procesos se oculten por completo
-    document.querySelectorAll('.historia, .fragmento, .proceso').forEach(n => {
+
+    // Ocultar todas las secciones internas
+    document.querySelectorAll('.historia, .fragmento, .proceso')
+    .forEach(n => {
         n.style.display = 'none';
     });
 
-    // Ocultar el botón de regreso, ya que estamos en el prólogo
+    // Ocultar botón volver
     const volverBtn = document.getElementById("volver-prologo");
     if (volverBtn) volverBtn.style.display = "none";
 
-    // Mostrar todos los elementos pertenecientes al prólogo
-    document.querySelectorAll('.prologo').forEach(n => {
+    // Mostrar prólogo
+    document.querySelectorAll('.prologo')
+    .forEach(n => {
         n.style.display = 'block';
     });
 }
 
 function toggleHistoria(id, botonId) {
+
     const bloque = document.getElementById(id);
     const boton = document.getElementById(botonId);
-    
+
     if (!bloque || !boton) return;
 
     if (bloque.style.display === "none" || bloque.style.display === "") {
@@ -2625,7 +2632,6 @@ function toggleHistoria(id, botonId) {
         boton.innerText = "Leer Texto";
     }
 }
-
         function toggleHistoria(id, botonId){
 
     const bloque =
