@@ -1199,49 +1199,6 @@ header nav .nav-social img:hover{
     font-size:.9rem;
     color:rgba(255,255,255,.9);
 }
-        /* ==========================================
-   NOTAS EXPANDIBLES
-   ========================================== */
-
-.note-preview{
-    margin-top:15px;
-    font-size:1.05rem;
-    line-height:1.8;
-    color:rgba(255,255,255,.75);
-}
-
-.note-expand-btn{
-    margin-top:25px;
-    background:none;
-    border:none;
-    color:#fff;
-    cursor:pointer;
-    font-size:.85rem;
-    letter-spacing:.15em;
-    text-transform:uppercase;
-    opacity:.8;
-    transition:.3s;
-}
-
-.note-expand-btn:hover{
-    opacity:1;
-}
-
-.note-full{
-    max-height:0;
-    overflow:hidden;
-    opacity:0;
-
-    transition:
-        max-height .8s ease,
-        opacity .5s ease;
-}
-
-.note-full.open{
-    max-height:5000px;
-    opacity:1;
-    margin-top:30px;
-}
     </style>
 </head>
 <body>
@@ -1416,87 +1373,46 @@ header nav .nav-social img:hover{
 
             <div class="note-meta">
 
-                <span class="note-tag">
-                    <i class="fa-solid fa-book-open"></i>
-                    Historias
-                </span>
+    <span class="note-tag">
+        <i class="fa-solid fa-feather"></i>
+        Prólogo
+    </span>
 
-                <span class="note-separator">•</span>
+    <span class="note-separator">•</span>
 
-                <span class="note-date">
-                    <i class="fa-regular fa-clock"></i>
-                    3 de junio, 2026
-                </span>
+    <span class="note-date">
+        <i class="fa-regular fa-clock"></i>
+        3 de junio, 2026
+    </span>
 
-            </div>
+</div>
 
             <h2 class="note-title serif">
-                Relato de un Alma
+                El origen de estas páginas
             </h2>
 
-            <div class="note-preview">
-                Un hombre contempla su muerte mientras repasa aquello
-                que nunca se atrevió a decir en vida.
-            </div>
+            <div class="note-body">
+                <p>
+                    Durante mucho tiempo pensé que todas las palabras tenían que convertirse en canciones.
+                </p>
 
-            <button
-                class="note-expand-btn"
-                onclick="toggleNote(this)">
-                Leer completo
-            </button>
+                <p>
+                    Guardaba frases en notas del teléfono, escribía ideas en hojas sueltas y llenaba cuadernos con pensamientos que nunca encontraba cómo terminar.
+                </p>
 
-            <div class="note-full">
+                <p>
+                    Algunas de esas palabras terminaron convertidas en melodías. Otras simplemente se quedaron esperando.
+                </p>
 
-                <div class="note-body">
-
-                    <p><strong>Epílogo</strong></p>
-
-                    <p>
-                        Tras la penumbra de la soledad, la sangre pura se mezcla con el calor,
-                        y el silencio es solo el aperitivo de la eternidad.
-                    </p>
-
-                    <p>
-                        Mi Muerte...
-                    </p>
-
-                    <p>
-                        Heme aquí. Al fin me alcanzó mi destino y, postrado en un lecho de dolor,
-                        me arrepiento de haber sido yo.
-                    </p>
-
-                    <p>
-                        La muerte no anuncia su llegada; es incierta.
-                        Tantas cosas por decir que nunca pude decir.
-                    </p>
-
-                    <p>
-                        Si pudiera volver atrás y despedirme de mi madre...
-                    </p>
-
-                    <p>
-                        Y es extraño.
-                    </p>
-
-                    <p>
-                        Entre todos los recuerdos que se niegan a morir,
-                        es ella quien vuelve primero.
-                    </p>
-
-                    <p>
-                        Mi madre.
-                    </p>
-
-                </div>
-
+                <p>
+                    Con los años entendí que no todo necesita una canción para existir.
+                </p>
             </div>
 
         </div>
 
         <div class="note-image">
-            <img
-                src="images/origen-paginas.webp"
-                alt="Relato de un Alma">
+            <img src="images/origen-paginas.webp" alt="El origen de estas páginas">
         </div>
 
     </div>
@@ -2436,18 +2352,7 @@ fallbackCopyLink() {
                 btn.innerHTML = 'MENÚ';
             }
         }
-        function toggleNote(btn){
-
-    const content =
-        btn.nextElementSibling;
-
-    content.classList.toggle('open');
-
-    btn.textContent =
-        content.classList.contains('open')
-        ? 'Ocultar'
-        : 'Leer completo';
-}
     </script>
 </body>
 </html>
+
