@@ -688,6 +688,7 @@
             flex-wrap: wrap;
             gap: 2rem;
             margin-top: 2rem;
+            margin-bottom:5rem;
         }
         
         .category-tag {
@@ -717,7 +718,7 @@
     margin-bottom: 8rem;
     position: relative;
 
-    background: rgba(0,0,0,0.32);
+    background: rgba(0,0,0,0.38);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
@@ -754,6 +755,16 @@
     gap:12px;
     margin-bottom:1.5rem;
     flex-wrap:wrap;
+  }
+
+.note-meta::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:60px;
+    height:1px;
+    background:rgba(255,255,255,.15);
 }
 
 .note-tag{
@@ -777,17 +788,16 @@
 }
 
 .note-title {
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
     line-height: 1.1;
     color: #fff;
 }
 
 .note-body {
     font-family: var(--font-sans);
-    font-size: 1.2rem;
-    line-height: 2;
-    max-width: 700px;
+    font-size: 1.15rem;
+    line-height: 1.9;
     color: rgba(255,255,255,0.92);
 }
         /* ==========================================
