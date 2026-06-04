@@ -742,7 +742,7 @@
 }
 
 .note-image{
-    width:260px;
+    width:300px;
     flex-shrink:0;
 }
 
@@ -766,7 +766,7 @@ object-fit:cover;
     padding-bottom:15px;
 }
 
-.note-meta::after{
+note-meta::after{
     content:'';
     position:absolute;
     left:0;
@@ -934,14 +934,23 @@ header nav .nav-social img:hover{
     header.scrolled {
         padding: 1rem 2rem !important; 
     }
-        .note-layout{
+       .note-layout{
     flex-direction:column;
 }
 
 .note-image{
+    order:-1;
     width:100%;
-    max-width:280px;
-    margin:0 auto;
+    max-width:320px;
+    margin:0 auto 25px;
+}
+
+.note-image img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:8px;
+    display:block;
 }
 
     /* SOBRE EL ARTISTA - AJUSTES MÓVIL */
