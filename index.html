@@ -714,44 +714,49 @@
         }
 
         .note-entry {
-            margin-bottom: 8rem;
-            position: relative;
-        }
+    margin-bottom: 8rem;
+    position: relative;
+}
 
-        .note-category-label {
-            position: absolute;
-            left: -150px;
-            top: 10px;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            text-align: right;
-            width: 120px;
-        }
+.note-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:1.5rem;
+    flex-wrap:wrap;
+}
 
-        .note-date {
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            color: var(--color-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
+.note-tag{
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.85);
+    font-weight:500;
+}
 
-        .note-title {
-            font-size: 2.8rem;
-            margin-bottom: 2rem;
-            line-height: 1.1;
-        }
+.note-separator{
+    color:rgba(255,255,255,.35);
+}
 
-        .note-body {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.92);
-            line-height: 1.8;
-        }
+.note-date{
+    margin:0;
+    font-size:.75rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.55);
+}
 
+.note-title {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+}
+
+.note-body {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.8;
+}
         /* ==========================================
            SOBRE ALEX ARCANO
            ========================================== */
@@ -1248,11 +1253,13 @@ header nav .nav-social img:hover{
 </div>
 
             <div class="notes-container">
-               <article class="note-entry reveal">
+               <<article class="note-entry reveal">
 
-    <div class="note-category-label">Historias</div>
-
-    <span class="note-date">12 Junio 2026</span>
+    <div class="note-meta">
+        <span class="note-tag">Historias</span>
+        <span class="note-separator">•</span>
+        <span class="note-date">12 Junio 2026</span>
+    </div>
 
     <h2 class="note-title serif">El origen de estas páginas</h2>
 
