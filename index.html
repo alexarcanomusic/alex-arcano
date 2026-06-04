@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Alex Arcano is un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop y balada pop.">
+    <meta name="description" content="Alex Arcano es un artista independiente de Bucaramanga, Colombia, que transforma recuerdos, despedidas y emociones cotidianas en canciones de indie pop y balada pop.">
     <meta name="keywords" content="Alex Arcano, Indie Pop, Balada Pop, Pop Alternativo, Minimalismo Emocional, Música Colombiana, Bucaramanga">
     <meta name="author" content="Alex Arcano">
     <meta name="theme-color" content="#000000"> 
@@ -1323,7 +1323,7 @@
 
             <div class="notes-container">
                 <div id="volver-prologo" class="back-link reveal" onclick="mostrarPrologo()" style="display:none;">
-                    &larr; Volver al Prólogo
+                    ← Volver al Prólogo
                 </div>
 
                 <article class="note-entry reveal prologo">
@@ -1350,7 +1350,7 @@
                     </div>
                 </article>
 
-                <article class="note-entry reveal historias">
+                <article class="note-entry reveal historias" style="display: none;">
                     <div class="note-layout">
                         <div class="note-content">
                             <div class="note-meta">
@@ -1687,7 +1687,7 @@ Ya no es hora de mirar atrás
 No quiero
 Saber si está bien o mal
 
-Because yo creo en todo lo que digas
+Porque yo creo en todo lo que digas
 Y hoy
 Con solo escuchar el sonido de tu voz
 Sé que me voy a arrepentir
@@ -2047,6 +2047,12 @@ Entre tantos sueños que se han ido hoy`
                 const nav = document.getElementById('nav-' + viewId);
                 if (nav) {
                     nav.classList.add('active');
+                }
+
+                // Corrección de la lógica de visibilidad inicial en SPA:
+                // Fuerza el reset de las notas al entrar en la sección para mostrar solo el Prólogo
+                if (viewId === 'notas') {
+                    mostrarPrologo();
                 }
 
                 window.scrollTo({
