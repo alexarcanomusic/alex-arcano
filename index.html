@@ -2581,17 +2581,14 @@ fallbackCopyLink() {
 
 unction filtrarNotas(tipo) {
 
-    // Ocultar todo
     document.querySelectorAll('.prologo, .historia, .fragmento, .proceso')
     .forEach(n => {
         n.style.display = 'none';
     });
 
-    // Mostrar botón volver
     const volverBtn = document.getElementById("volver-prologo");
     if (volverBtn) volverBtn.style.display = "block";
 
-    // Mostrar solo la categoría seleccionada
     document.querySelectorAll('.' + tipo)
     .forEach(n => {
         n.style.display = 'block';
@@ -2600,17 +2597,14 @@ unction filtrarNotas(tipo) {
 
 function mostrarPrologo() {
 
-    // Ocultar todas las secciones internas
     document.querySelectorAll('.historia, .fragmento, .proceso')
     .forEach(n => {
         n.style.display = 'none';
     });
 
-    // Ocultar botón volver
     const volverBtn = document.getElementById("volver-prologo");
     if (volverBtn) volverBtn.style.display = "none";
 
-    // Mostrar prólogo
     document.querySelectorAll('.prologo')
     .forEach(n => {
         n.style.display = 'block';
@@ -2631,36 +2625,6 @@ function toggleHistoria(id, botonId) {
         bloque.style.display = "none";
         boton.innerText = "Leer Texto";
     }
-}
-        function toggleHistoria(id, botonId){
-
-    const bloque =
-        document.getElementById(id);
-
-    const boton =
-        document.getElementById(botonId);
-
-    if(
-        bloque.style.display === "none"
-        ||
-        bloque.style.display === ""
-    ){
-
-        bloque.style.display = "block";
-
-        boton.innerText =
-            "Ocultar Texto";
-
-    }
-    else{
-
-        bloque.style.display = "none";
-
-        boton.innerText =
-            "Leer Texto";
-
-    }
-
 }
     </script>
 </body>
