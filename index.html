@@ -691,17 +691,24 @@
             margin-bottom:5rem;
         }
         
-        .category-tag {
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-muted);
-            border: 1px solid rgba(255,255,255,0.15);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+        .category-tag{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+
+    color:var(--color-muted);
+
+    border:1px solid rgba(255,255,255,.15);
+    padding:.5rem 1.5rem;
+    border-radius:50px;
+
+    cursor:pointer;
+    transition:.3s ease;
+}
         
         .category-tag:hover {
             border-color: var(--color-text);
@@ -785,6 +792,13 @@
     letter-spacing:.12em;
     text-transform:uppercase;
     color:rgba(255,255,255,.55);
+}
+
+/* PEGAR AQUÍ */
+.note-meta i{
+    margin-right:8px;
+    opacity:.8;
+    font-size:.8rem;
 }
 
 .note-title {
@@ -1298,11 +1312,31 @@ header nav .nav-social img:hover{
     </p>
 
     <div class="notes-categories">
-        <span class="category-tag">Historias</span>
-        <span class="category-tag">Recuerdos</span>
-        <span class="category-tag">Reflexiones</span>
-        <span class="category-tag">Fragmentos</span>
-    </div>
+    <span class="category-tag">
+        <i class="fa-solid fa-feather"></i>
+        Historias
+    </span>
+
+    <span class="category-tag">
+        <i class="fa-regular fa-clock"></i>
+        Recuerdos
+    </span>
+
+    <span class="category-tag">
+        <i class="fa-regular fa-comment"></i>
+        Reflexiones
+    </span>
+
+    <span class="category-tag">
+        <i class="fa-regular fa-star"></i>
+        Fragmentos
+    </span>
+
+    <span class="category-tag">
+        <i class="fa-solid fa-pencil"></i>
+        Proceso Creativo
+    </span>
+</div>
 </div>
 
             <div class="notes-container">
@@ -1313,10 +1347,20 @@ header nav .nav-social img:hover{
         <div class="note-content">
 
             <div class="note-meta">
-                <span class="note-tag">Historias</span>
-                <span class="note-separator">•</span>
-                <span class="note-date">12 Junio 2026</span>
-            </div>
+
+    <span class="note-tag">
+        <i class="fa-solid fa-feather"></i>
+        Fragmentos
+    </span>
+
+    <span class="note-separator">•</span>
+
+    <span class="note-date">
+        <i class="fa-regular fa-clock"></i>
+        3 de junio, 2026
+    </span>
+
+</div>
 
             <h2 class="note-title serif">
                 El origen de estas páginas
