@@ -2588,18 +2588,15 @@ fallbackCopyLink() {
     const procesos =
         document.querySelectorAll('.proceso');
 
-   document
-    .querySelectorAll('.note-entry')
+    document
+    .querySelectorAll('.prologo')
     .forEach(
         n => n.style.display='none'
     );
 
-document.getElementById("volver-prologo").style.display = "block";
+    document.getElementById("volver-prologo").style.display = "block";
 
-if(tipo === 'historias'){
-
-document.getElementById("volver-prologo").style.display = "block";
-
+    if(tipo === 'historias'){
 
         historias.forEach(
             n => n.style.display='block'
@@ -2629,11 +2626,10 @@ document.getElementById("volver-prologo").style.display = "block";
 function mostrarPrologo(){
 
     document
-        .querySelectorAll('.note-entry')
-        .forEach(
-            n => n.style.display='none'
-        );
-
+.querySelectorAll('.prologo')
+.forEach(
+    n => n.style.display='none'
+);
     document.getElementById("volver-prologo").style.display = "none";
 
     document
