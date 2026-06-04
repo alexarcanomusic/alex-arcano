@@ -480,19 +480,26 @@
             padding-bottom: var(--spacing-section);
         }
 
-        .back-link {
-            font-size: 0.8rem;
-            color: var(--color-muted);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 4rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
-        }
-        .back-link:hover { color: var(--color-text); }
+        .back-link{
+    display:block;
+    width:fit-content;
+
+    margin:0 auto 50px;
+
+    font-size:.8rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.75);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.back-link:hover{
+    color:#fff;
+}
 
         /* Estructura asimétrica de dos columnas para detalles */
         .song-detail-layout {
@@ -1420,10 +1427,12 @@ header nav .nav-social img:hover{
 </article>
                 <article class="note-entry reveal historia" style="display:none;">
 
-    <div class="back-link"
-         onclick="mostrarPrologo()">
-        ← Volver al Prólogo
-    </div>
+    <div class="back-link reveal"
+     onclick="mostrarPrologo()">
+
+    ← Volver al Prólogo
+
+</div>
 
     <div class="note-layout">
 
@@ -1450,10 +1459,14 @@ header nav .nav-social img:hover{
                     Un alma observa su propia vida cuando ya es demasiado tarde para volver atrás.
                 </p>
 
-                <button class="btn-link"
-                        onclick="toggleHistoria('alma-completa')">
-                    Leer más
-                </button>
+                <button
+    id="btn-alma-completa"
+    class="lyrics-toggle-btn"
+    onclick="toggleHistoria('alma-completa','btn-alma-completa')">
+
+    Leer Texto
+
+</button>
 
                 <div id="alma-completa"
                      style="display:none;margin-top:30px;">
@@ -2623,20 +2636,33 @@ function mostrarPrologo(){
 
 /* FIN */
 
-        function toggleHistoria(id){
+        function toggleHistoria(id, botonId){
 
     const bloque =
         document.getElementById(id);
+
+    const boton =
+        document.getElementById(botonId);
 
     if(
         bloque.style.display === "none"
         ||
         bloque.style.display === ""
     ){
+
         bloque.style.display = "block";
+
+        boton.innerText =
+            "Ocultar Texto";
+
     }
     else{
+
         bloque.style.display = "none";
+
+        boton.innerText =
+            "Leer Texto";
+
     }
 
 }
