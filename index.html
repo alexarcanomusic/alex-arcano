@@ -748,6 +748,8 @@
 
 .note-image img{
     width:100%;
+    aspect-ratio:1/1;
+object-fit:cover;
     border-radius:8px;
     display:block;
     box-shadow:0 15px 40px rgba(0,0,0,.35);
@@ -759,16 +761,19 @@
     gap:12px;
     margin-bottom:1.5rem;
     flex-wrap:wrap;
-  }
+
+    position:relative;
+    padding-bottom:15px;
+}
 
 .note-meta::after{
     content:'';
     position:absolute;
     left:0;
     bottom:0;
-    width:60px;
+    width:80px;
     height:1px;
-    background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.20);
 }
 
 .note-tag{
