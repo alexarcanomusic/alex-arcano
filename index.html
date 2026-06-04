@@ -2539,7 +2539,42 @@ function filtrarNotas(categoria) {
                 app.navigate(e.state.view, false);
             }
         });
+function filtrarNotas(tipo){
 
+    const prologo =
+        document.querySelectorAll('.nota-prologo');
+
+    const entradas =
+        document.querySelectorAll('.nota-item');
+
+    if(tipo === "todas"){
+
+        prologo.forEach(n=>{
+            n.style.display = "block";
+        });
+
+        entradas.forEach(n=>{
+            n.style.display = "block";
+        });
+
+        return;
+    }
+
+    prologo.forEach(n=>{
+        n.style.display = "none";
+    });
+
+    entradas.forEach(n=>{
+        n.style.display = "none";
+    });
+
+    document
+    .querySelectorAll("." + tipo)
+    .forEach(n=>{
+        n.style.display = "block";
+    });
+
+}
         function toggleMenu(){
             const menu = document.getElementById('nav-menu');
             const btn = document.getElementById('menuBtn');
