@@ -709,6 +709,11 @@
     cursor:pointer;
     transition:.3s ease;
 }
+        .category-tag.active {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.5);
+    color: #fff;
+}
         
         .category-tag:hover {
             border-color: var(--color-text);
@@ -1346,17 +1351,22 @@ header nav .nav-social img:hover{
 
     <div class="notes-categories">
 
-    <span class="category-tag">
+    <span class="category-tag active" onclick="filtrarNotas('todas')">
+        <i class="fa-solid fa-layer-group"></i>
+        Todas
+    </span>
+
+    <span class="category-tag" onclick="filtrarNotas('historias')">
         <i class="fa-solid fa-feather"></i>
         Historias
     </span>
 
-    <span class="category-tag">
+    <span class="category-tag" onclick="filtrarNotas('fragmentos')">
         <i class="fa-regular fa-star"></i>
         Fragmentos
     </span>
 
-    <span class="category-tag">
+    <span class="category-tag" onclick="filtrarNotas('proceso')">
         <i class="fa-solid fa-pencil"></i>
         Proceso Creativo
     </span>
@@ -1365,7 +1375,7 @@ header nav .nav-social img:hover{
 </div>
 
             <div class="notes-container">
-               <article class="note-entry reveal">
+               <article class="note-entry reveal historias">
 
     <div class="note-layout">
 
@@ -2326,7 +2336,29 @@ fallbackCopyLink() {
                 });
             }
         };
+function filtrarNotas(categoria) {
+    const notas = document.querySelectorAll('.note-entry');
+    const botones = document.querySelectorAll('.category-tag');
 
+    // quitar estado activo
+    botones.forEach(btn => btn.classList.remove('active'));
+
+    // marcar botón activo
+    event.target.classList.add('active');
+
+    notas.forEach(nota => {
+        if (categoria === 'todas') {
+            nota.style.display = 'block';
+            return;
+        }
+
+        if (nota.classList.contains(categoria)) {
+            nota.style.display = 'block';
+        } else {
+            nota.style.display = 'none';
+        }
+    });
+}
         /* =========================
            INIT
            ========================= */
