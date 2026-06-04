@@ -1426,7 +1426,7 @@ header nav .nav-social img:hover{
 
 </article>
 
-<article class="note-entry reveal historias" style="display:none;">
+<article class="note-entry reveal historias">
 
     <div id="volver-prologo"
          class="back-link"
@@ -2581,34 +2581,29 @@ fallbackCopyLink() {
 
 function filtrarNotas(tipo) {
 
-    document.querySelectorAll('.prologo, .historias, .fragmentos, .proceso')
-    .forEach(n => {
-        n.style.display = 'none';
-    });
+    // ocultar todo
+    document.querySelectorAll('.note-entry')
+        .forEach(n => n.style.display = 'none');
 
+    // mostrar solo el tipo seleccionado
+    document.querySelectorAll('.' + tipo)
+        .forEach(n => n.style.display = 'block');
+
+    // mostrar botón volver
     const volverBtn = document.getElementById("volver-prologo");
     if (volverBtn) volverBtn.style.display = "block";
-
-    document.querySelectorAll('.' + tipo)
-    .forEach(n => {
-        n.style.display = 'block';
-    });
 }
 
 function mostrarPrologo() {
 
-    document.querySelectorAll('.historias, .fragmentos, .proceso')
-    .forEach(n => {
-        n.style.display = 'none';
-    });
+    document.querySelectorAll('.note-entry')
+        .forEach(n => n.style.display = 'none');
+
+    document.querySelectorAll('.prologo')
+        .forEach(n => n.style.display = 'block');
 
     const volverBtn = document.getElementById("volver-prologo");
     if (volverBtn) volverBtn.style.display = "none";
-
-    document.querySelectorAll('.prologo')
-    .forEach(n => {
-        n.style.display = 'block';
-    });
 }
 
 function toggleHistoria(id, botonId) {
