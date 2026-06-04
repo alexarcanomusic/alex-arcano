@@ -1346,19 +1346,20 @@ header nav .nav-social img:hover{
 
     <div class="notes-categories">
 
-    <span class="category-tag" onclick="filtrarNotas('todas')">
-        Todas
-    </span>
+    <div class="notes-categories">
 
     <span class="category-tag" onclick="filtrarNotas('historias')">
+        <i class="fa-solid fa-feather"></i>
         Historias
     </span>
 
     <span class="category-tag" onclick="filtrarNotas('fragmentos')">
+        <i class="fa-regular fa-star"></i>
         Fragmentos
     </span>
 
     <span class="category-tag" onclick="filtrarNotas('proceso')">
+        <i class="fa-solid fa-pencil"></i>
         Proceso Creativo
     </span>
 
@@ -1366,7 +1367,7 @@ header nav .nav-social img:hover{
 </div>
 
             <div class="notes-container">
-               <article class="note-entry reveal nota-prologo">
+               <article class="note-entry reveal prologo">
 
     <div class="note-layout">
 
@@ -1419,20 +1420,15 @@ header nav .nav-social img:hover{
     </div>
 
 </article>
-                <article class="note-entry reveal historia">
+                article class="note-entry reveal historia" style="display:none;">
 
     <div class="note-content">
 
         <div class="note-meta">
 
             <span class="note-tag">
+                <i class="fa-solid fa-feather"></i>
                 Historia
-            </span>
-
-            <span class="note-separator">•</span>
-
-            <span class="note-date">
-                Relato de un Alma
             </span>
 
         </div>
@@ -1442,6 +1438,20 @@ header nav .nav-social img:hover{
         </h2>
 
         <div class="note-body">
+
+            <p>
+                Una reflexión narrada desde el limbo sobre la muerte,
+                los arrepentimientos y las palabras que nunca se dijeron.
+                Un alma observa su propia vida cuando ya es demasiado tarde para volver atrás.
+            </p>
+
+            <button class="btn-link"
+                    onclick="toggleHistoria('alma-completa')">
+                Leer más
+            </button>
+
+            <div id="alma-completa"
+                 style="display:none;margin-top:30px;">
 
 <p><strong>Epílogo</strong></p>
 
@@ -2546,25 +2556,51 @@ fallbackCopyLink() {
 
     document
         .querySelectorAll('.note-entry')
-        .forEach(n => n.style.display='none');
-
-    if(tipo === 'todas'){
-        document
-            .querySelectorAll('.note-entry')
-            .forEach(n => n.style.display='block');
-    }
+        .forEach(
+            n => n.style.display = 'none'
+        );
 
     if(tipo === 'historias'){
-        historias.forEach(n => n.style.display='block');
+
+        historias.forEach(
+            n => n.style.display='block'
+        );
+
     }
 
     if(tipo === 'fragmentos'){
-        fragmentos.forEach(n => n.style.display='block');
+
+        fragmentos.forEach(
+            n => n.style.display='block'
+        );
+
     }
 
     if(tipo === 'proceso'){
-        procesos.forEach(n => n.style.display='block');
+
+        procesos.forEach(
+            n => n.style.display='block'
+        );
+
     }
+
+}
+        function toggleHistoria(id){
+
+    const bloque =
+        document.getElementById(id);
+
+    if(
+        bloque.style.display === "none"
+        ||
+        bloque.style.display === ""
+    ){
+        bloque.style.display = "block";
+    }
+    else{
+        bloque.style.display = "none";
+    }
+
 }
     </script>
 </body>
