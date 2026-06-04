@@ -726,6 +726,27 @@
 
     border: 1px solid rgba(255,255,255,0.05);
 }
+        .note-layout{
+    display:flex;
+    gap:50px;
+    align-items:flex-start;
+}
+
+.note-content{
+    flex:1;
+}
+
+.note-image{
+    width:260px;
+    flex-shrink:0;
+}
+
+.note-image img{
+    width:100%;
+    border-radius:8px;
+    display:block;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
 
 .note-meta{
     display:flex;
@@ -875,10 +896,20 @@ header nav .nav-social img:hover{
         padding: 1.2rem 2rem !important; 
         justify-content: space-between !important; 
     }
+        
 
     header.scrolled {
         padding: 1rem 2rem !important; 
     }
+        .note-layout{
+    flex-direction:column;
+}
+
+.note-image{
+    width:100%;
+    max-width:280px;
+    margin:0 auto;
+}
 
     /* SOBRE EL ARTISTA - AJUSTES MÓVIL */
     #sobre-mi .about-container{
@@ -1265,35 +1296,45 @@ header nav .nav-social img:hover{
 </div>
 
             <div class="notes-container">
-               <<article class="note-entry reveal">
+               <article class="note-entry reveal">
 
-    <div class="note-meta">
-        <span class="note-tag">Historias</span>
-        <span class="note-separator">•</span>
-        <span class="note-date">12 Junio 2026</span>
-    </div>
+    <div class="note-layout">
 
-    <h2 class="note-title serif">El origen de estas páginas</h2>
+        <div class="note-content">
 
-    <div class="note-body">
+            <div class="note-meta">
+                <span class="note-tag">Historias</span>
+                <span class="note-separator">•</span>
+                <span class="note-date">12 Junio 2026</span>
+            </div>
 
-        <p>Durante mucho tiempo pensé que todas las palabras tenían que convertirse en canciones.</p>
+            <h2 class="note-title serif">
+                El origen de estas páginas
+            </h2>
 
-        <p>Guardaba frases en notas del teléfono, escribía ideas en hojas sueltas y llenaba cuadernos con pensamientos que nunca encontraba cómo terminar. Algunas de esas palabras terminaron convertidas en melodías. Otras simplemente se quedaron esperando.</p>
+            <div class="note-body">
+                <p>
+                    Durante mucho tiempo pensé que todas las palabras tenían que convertirse en canciones.
+                </p>
 
-        <p>Con los años entendí que no todo necesita una canción para existir.</p>
+                <p>
+                    Guardaba frases en notas del teléfono, escribía ideas en hojas sueltas y llenaba cuadernos con pensamientos que nunca encontraba cómo terminar.
+                </p>
 
-        <p>Hay recuerdos que caben mejor en un párrafo. Hay preguntas que prefieren permanecer abiertas. Hay historias demasiado pequeñas para un álbum y demasiado importantes para ser olvidadas.</p>
+                <p>
+                    Algunas de esas palabras terminaron convertidas en melodías. Otras simplemente se quedaron esperando.
+                </p>
 
-        <p>Muchas veces una canción comienza mucho antes del primer acorde. Empieza en una conversación, en una fotografía antigua, en una calle recorrida cientos de veces o en una frase escrita a medianoche que parecía no tener destino.</p>
+                <p>
+                    Con los años entendí que no todo necesita una canción para existir.
+                </p>
+            </div>
 
-        <p>Este espacio nació para guardar esas cosas.</p>
+        </div>
 
-        <p>Aquí no están las canciones terminadas. Están los fragmentos que las rodean: los recuerdos, las ideas, las dudas, los textos y las historias que encontraron su propio lugar para permanecer.</p>
-
-        <p>Quizá algunas de estas páginas algún día terminen convertidas en música.</p>
-
-        <p>Y quizá otras sigan siendo exactamente lo que son ahora: palabras intentando conservar un instante antes de que el tiempo se lo lleve.</p>
+        <div class="note-image">
+            <img src="images/origen-paginas.webp" alt="El origen de estas páginas">
+        </div>
 
     </div>
 
