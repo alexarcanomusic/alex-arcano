@@ -2574,53 +2574,7 @@ fallbackCopyLink() {
                 btn.innerHTML = 'MENÚ';
             }
         }
-        function filtrarNotas(tipo){
-
-    const prologo =
-        document.querySelectorAll('.prologo');
-
-    const historias =
-        document.querySelectorAll('.historia');
-
-    const fragmentos =
-        document.querySelectorAll('.fragmento');
-
-    const procesos =
-        document.querySelectorAll('.proceso');
-
-    document
-    .querySelectorAll('.prologo')
-    .forEach(
-        n => n.style.display='none'
-    );
-
-    document.getElementById("volver-prologo").style.display = "block";
-
-    if(tipo === 'historias'){
-
-        historias.forEach(
-            n => n.style.display='block'
-        );
-
-    }
-
-    if(tipo === 'fragmentos'){
-
-        fragmentos.forEach(
-            n => n.style.display='block'
-        );
-
-    }
-
-    if(tipo === 'proceso'){
-
-        procesos.forEach(
-            n => n.style.display='block'
-        );
-
-    }
-
-}
+        
        /* =========================================
    FUNCIONES DE FILTRADO Y NARRATIVA
    ========================================= */
@@ -2628,7 +2582,7 @@ fallbackCopyLink() {
 function filtrarNotas(tipo) {
     // Ocultar el prólogo y todas las categorías para limpiar el estado
     document.querySelectorAll('.prologo, .historia, .fragmento, .proceso').forEach(n => {
-        n.style.style.display = 'none';
+        n.style.display = 'none';
     });
 
     // Mostrar el botón de retorno al prólogo en la parte superior
