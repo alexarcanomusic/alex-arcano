@@ -1426,7 +1426,7 @@ header nav .nav-social img:hover{
 
 </article>
 
-<article class="note-entry reveal historia" style="display:none;">
+<article class="note-entry reveal historias" style="display:none;">
 
     <div id="volver-prologo"
          class="back-link"
@@ -1445,7 +1445,7 @@ header nav .nav-social img:hover{
 
                 <span class="note-tag">
                     <i class="fa-solid fa-feather"></i>
-                    Historia
+                    Historias
                 </span>
 
             </div>
@@ -1465,7 +1465,7 @@ header nav .nav-social img:hover{
                 <button
     id="btn-alma-completa"
     class="lyrics-toggle-btn"
-    onclick="toggleHistoria('alma-completa','btn-alma-completa')">
+    onclick="toggleHistorias('alma-completa','btn-alma-completa')">
 
     Leer Texto
 
@@ -2581,7 +2581,7 @@ fallbackCopyLink() {
 
 function filtrarNotas(tipo) {
 
-    document.querySelectorAll('.prologo, .historia, .fragmento, .proceso')
+    document.querySelectorAll('.prologo, .historias, .fragmentos, .proceso')
     .forEach(n => {
         n.style.display = 'none';
     });
@@ -2597,7 +2597,7 @@ function filtrarNotas(tipo) {
 
 function mostrarPrologo() {
 
-    document.querySelectorAll('.historia, .fragmento, .proceso')
+    document.querySelectorAll('.historias, .fragmentos, .proceso')
     .forEach(n => {
         n.style.display = 'none';
     });
