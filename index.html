@@ -804,39 +804,44 @@
         }
 
         .note-body {
-    font-family: var(--font-sans);
-    font-size: 1.15rem;
-    line-height: 1.9;
-    color: rgba(255,255,255,0.92);
-}
+            font-family: var(--font-sans);
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.92);
+        }
 
-/* NOTA DEL AUTOR */
-.author-note{
-    margin:1.5rem 0 2rem;
-    padding:1rem 1.2rem;
-    background:rgba(255,255,255,.05);
-    border-left:3px solid rgba(255,255,255,.25);
-    color:rgba(255,255,255,.80) !important;
-    font-size:.95rem;
-    line-height:1.8;
-    border-radius:6px;
-}
+        /* CORRECCIÓN 1: Forzar el color de texto correcto para la historia en cascada */
+        #alma-completa, #alma-completa p, #alma-completa strong {
+            color: rgba(255,255,255,0.92) !important;
+        }
 
-.author-note,
-.author-note p,
-.author-note span{
-    color:rgba(255,255,255,.80) !important;
-}
+        /* NOTA DEL AUTOR */
+        .author-note{
+            margin:1.5rem 0 2rem;
+            padding:1rem 1.2rem;
+            background:rgba(255,255,255,.05);
+            border-left:3px solid rgba(255,255,255,.25);
+            color:rgba(255,255,255,.80) !important;
+            font-size:.95rem;
+            line-height:1.8;
+            border-radius:6px;
+        }
 
-.author-note strong{
-    color:#FFFFFF !important;
-}
+        .author-note,
+        .author-note p,
+        .author-note span{
+            color:rgba(255,255,255,.80) !important;
+        }
 
-.author-note i{
-    color:#FFFFFF !important;
-    margin-right:8px;
-    opacity:.8;
-}
+        .author-note strong{
+            color:#FFFFFF !important;
+        }
+
+        .author-note i{
+            color:#FFFFFF !important;
+            margin-right:8px;
+            opacity:.8;
+        }
         
         /* ==========================================
            SOBRE ALEX ARCANO
@@ -944,10 +949,10 @@
            ========================================== */
                     
         @media (max-width: 768px) {
-            
+                
              #notas{
-        margin-top: -70px;
-    }
+                margin-top: -70px;
+            }
                 
             header {
                 padding: 1.2rem 2rem !important; 
@@ -1259,7 +1264,7 @@
         <section id="inicio" class="view active">
             <div class="reveal">
                 <h1 class="hero-title serif">Fragmentos de memoria convertidos en música.</h1>
-                <p class="hero-subtitle">Abre una canción. Encuentra una historia.</p>
+                <p class="hero-subtitle">Abre una canción. Encuentra una story.</p>
             </div>
             
             <div class="hero-featured reveal">
@@ -1391,51 +1396,50 @@
 
                             <h2 class="note-title serif">Relato de un Alma</h2>
 
-<div class="author-note">
-    <i class="fa-solid fa-pencil"></i>
-    <strong>Nota del autor</strong><br>
-    Este relato fue escrito hace varios años y quedó inconcluso. Con el tiempo, algunas páginas se perdieron y otras nunca llegaron a escribirse. Lo que aparece aquí es el fragmento más completo que sobrevivió.
-</div>
+                            <div class="author-note">
+                                <i class="fa-solid fa-pencil"></i>
+                                <strong>Nota del autor</strong><br>
+                                Este relato fue escrito hace varios años y quedó inconcluso. Con el tiempo, algunas páginas se perdieron y otras nunca llegaron a escribirse. Lo que aparece aquí es el fragmento más completo que sobrevivió.
+                            </div>
                             
-                                <button id="btn-alma-completa" class="lyrics-toggle-btn" onclick="toggleHistoria('alma-completa','btn-alma-completa')">
-                                    Leer Texto
-                                </button>
+                            <button id="btn-alma-completa" class="lyrics-toggle-btn" onclick="toggleHistoria('alma-completa','btn-alma-completa')">
+                                Leer Texto
+                            </button>
 
-                                <div id="alma-completa" style="display:none; margin-top:30px;">
-                                    <p><strong>Epílogo</strong></p>
-                                    <p>Tras la penumbra de la soledad, la sangre pura se mezcla con el calor, y el silencio es solo el aperitivo de la eternidad.</p>
-                                    
-                                    <p><strong>Mi Muerte...</strong></p>
-                                    <p>Heme aquí. Al fin me alcanzó mi destino y, postrado en un lecho de dolor, me arrepiento de haber sido yo.</p>
-                                    <p>La muerte no anuncia su llegada; es incierta. Tantas cosas por decir que nunca pude decir.</p>
-                                    <p>Si pudiera volver atrás y despedirme de mi madre...</p>
-                                    <p>Y es extraño. Entre todos los recuerdos que se niegan a morir, es ella quien vuelve primero.</p>
-                                    <p>Mi madre. Nunca le dije una palabra de amor. Nunca le dije cuánto la quería.</p>
-                                    <p>Pasé la vida creyendo que siempre habría tiempo. Que las despedidas pertenecían a otros.</p>
-                                    <p>Y ahora, postrado en la calle, mientras la muerte viene por mí y el corazón se me hace un nudo, solo puedo pensar una cosa:</p>
-                                    <p>Si pudiera volver atrás...</p>
-                                    
-                                    <p><strong>¿Qué se siente al llegar la muerte?</strong></p>
-                                    <p>La misma sensación que se tiene al correr con los ojos cerrados por una calle: miedo.</p>
-                                    <p>Nota: Deberías intentarlo.</p>
-                                    <p>Pero después el miedo se va, y solo queda el vacío que nunca llenaste en tus veintidós años de vida.</p>
-                                    <p>Olvídate de todo. Yo te diré la verdad, si es que quieres escucharla.</p>
-                                    <p>Claro que los vivos poco saben de la muerte. Pero ¿qué sabrá la muerte de estar vivo?</p>
-                                    <p>Yo te diré algo: el cielo sí existe, pero no hablaremos de eso.</p>
-                                    <p>El infierno también existe, pero tampoco hablaremos de eso.</p>
-                                    
-                                    <p><strong>¿Dónde estoy?</strong></p>
-                                    <p>Aquí, detrás de ti, en el limbo.</p>
-                                    <p>¿Conoces el limbo? Pues vives en él; en el punto medio entre el cielo y la tierra, donde ambos mundos se rozan y subsisten.</p>
-                                    
-                                    <p><strong>¿Por qué estoy aquí?</strong></p>
-                                    <p>La respuesta está en tu vida: en lo que hiciste, en lo que no hiciste, en lo que tuviste y en lo que dejaste de tener.</p>
-                                    <p>Quiero volver a casa. A mi única casa. La que nunca debí dejar, aunque, al final, nunca tuve.</p>
-                                    
-                                    <p><strong>¿Quién soy? ¿Por qué fui?</strong></p>
-                                    <p>Ahora soy solo un recuerdo; un sueño de una vida tan efímera que pasó sin que me diera cuenta.</p>
-                                    <p>Y lo realmente importante... nunca lo valoré.</p>
-                                </div>
+                            <div id="alma-completa" style="display:none; margin-top:30px;">
+                                <p><strong>Epílogo</strong></p>
+                                <p>Tras la penumbra de la soledad, la sangre pura se mezcla con el calor, y el silencio es solo el aperitivo de la eternidad.</p>
+                                
+                                <p><strong>Mi Muerte...</strong></p>
+                                <p>Heme aquí. Al fin me alcanzó mi destino y, postrado en un lecho de dolor, me arrepiento de haber sido yo.</p>
+                                <p>La muerte no anuncia su llegada; es incierta. Tantas cosas por decir que nunca pude decir.</p>
+                                <p>Si pudiera volver atrás y despedirme de mi madre...</p>
+                                <p>Y es extraño. Entre todos los recuerdos que se niegan a morir, es ella quien vuelve primero.</p>
+                                <p>Mi madre. Nunca le dije una palabra de amor. Nunca le dije cuánto la quería.</p>
+                                <p>Pasé la vida creyendo que siempre habría tiempo. Que las despedidas pertenecían a otros.</p>
+                                <p>Y ahora, postrado en la calle, mientras la muerte viene por mí y el corazón se me hace un nudo, solo puedo pensar una cosa:</p>
+                                <p>Si pudiera volver atrás...</p>
+                                
+                                <p><strong>¿Qué se siente al llegar la muerte?</strong></p>
+                                <p>La misma sensación que se tiene al correr con los ojos cerrados por una calle: miedo.</p>
+                                <p>Nota: Deberías intentarlo.</p>
+                                <p>Pero después el miedo se va, y solo queda el vacío que nunca llenaste en tus veintidós años de vida.</p>
+                                <p>Olvídate de todo. Yo te diré la verdad, si es que quieres escucharla.</p>
+                                <p>Claro que los vivos poco saben de la muerte. Pero ¿qué sabrá la muerte de estar vivo?</p>
+                                <p>Yo te diré algo: el cielo sí existe, pero no hablaremos de eso.</p>
+                                <p>El infierno también existe, pero tampoco hablaremos de eso.</p>
+                                
+                                <p><strong>¿Dónde estoy?</strong></p>
+                                <p>Aquí, detrás de ti, en el limbo.</p>
+                                <p>¿Conoces el limbo? Pues vives en él; en el punto medio entre el cielo y la tierra, donde ambos mundos se rozan y subsisten.</p>
+                                
+                                <p><strong>¿Por qué estoy aquí?</strong></p>
+                                <p>La respuesta está en tu vida: en lo que hiciste, en lo que no hiciste, en lo que tuviste y en lo que dejaste de tener.</p>
+                                <p>Quiero volver a casa. A mi única casa. La que nunca debí dejar, aunque, al final, nunca tuve.</p>
+                                
+                                <p><strong>¿Quién soy? ¿Por qué fui?</strong></p>
+                                <p>Ahora soy solo un recuerdo; un sueño de una vida tan efímera que pasó sin que me diera cuenta.</p>
+                                <p>Y lo realmente importante... nunca lo valoré.</p>
                             </div>
                         </div>
                         <div class="note-image">
@@ -2084,10 +2088,14 @@ Entre tantos sueños que se han ido hoy`
                     nav.classList.add('active');
                 }
 
-                // Corrección de la lógica de visibilidad inicial en SPA:
-                // Fuerza el reset de las notas al entrar en la sección para mostrar solo el Prólogo
+                // CORRECCIÓN 2: Evaluar si existe una categoría guardada en localStorage al cargar/navegar a notas
                 if (viewId === 'notas') {
-                    mostrarPrologo();
+                    const savedCategory = localStorage.getItem('active_nota_category');
+                    if (savedCategory && savedCategory !== 'prologo') {
+                        filtrarNotas(savedCategory);
+                    } else {
+                        mostrarPrologo();
+                    }
                 }
 
                 window.scrollTo({
@@ -2348,6 +2356,9 @@ Entre tantos sueños que se han ido hoy`
            FUNCIONES DE FILTRADO Y NARRATIVA
            ========================================= */
         function filtrarNotas(tipo) {
+            // CORRECCIÓN 2: Almacenar de forma persistente la categoría seleccionada
+            localStorage.setItem('active_nota_category', tipo);
+
             document.querySelectorAll('.note-entry')
                 .forEach(n => n.style.display = 'none');
 
@@ -2359,6 +2370,9 @@ Entre tantos sueños que se han ido hoy`
         }
 
         function mostrarPrologo() {
+            // CORRECCIÓN 2: Reiniciar el estado persistente guardando 'prologo'
+            localStorage.setItem('active_nota_category', 'prologo');
+
             document.querySelectorAll('.note-entry')
                 .forEach(n => n.style.display = 'none');
 
