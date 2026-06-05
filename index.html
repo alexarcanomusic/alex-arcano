@@ -810,25 +810,11 @@
             color: rgba(255,255,255,0.92);
         }
 
-       /* RELATO DE UN ALMA */
-#alma-completa{
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: 1.35rem;
-    line-height: 2;
-    color: rgba(255,255,255,0.92) !important;
-    margin-top: 2rem;
-}
-
-#alma-completa p{
-    margin-bottom: 1.2rem;
-    color: rgba(255,255,255,0.92) !important;
-}
-
-#alma-completa strong{
-    color: rgba(255,255,255,0.92) !important;
-    font-weight: 500;
-}
+        /* CAMBIO 2: Forzar el color de texto correcto y recuperar la tipografía original var(--font-sans) */
+        #alma-completa, #alma-completa p, #alma-completa strong {
+            color: rgba(255,255,255,0.92) !important;
+            font-family: var(--font-sans);
+        }
 
         /* NOTA DEL AUTOR */
         .author-note{
@@ -1420,46 +1406,44 @@
                             <button id="btn-alma-completa" class="lyrics-toggle-btn" onclick="toggleHistoria('alma-completa','btn-alma-completa')">
                                 Leer Texto
                             </button>
-
-                            <div id="alma-completa" style="display:none; margin-top:30px;">
-                                <p><strong>Epílogo</strong></p>
-                                <p>Tras la penumbra de la soledad, la sangre pura se mezcla con el calor, y el silencio es solo el aperitivo de la eternidad.</p>
-                                
-                                <p><strong>Mi Muerte...</strong></p>
-                                <p>Heme aquí. Al fin me alcanzó mi destino y, postrado en un lecho de dolor, me arrepiento de haber sido yo.</p>
-                                <p>La muerte no anuncia su llegada; es incierta. Tantas cosas por decir que nunca pude decir.</p>
-                                <p>Si pudiera volver atrás y despedirme de mi madre...</p>
-                                <p>Y es extraño. Entre todos los recuerdos que se niegan a morir, es ella quien vuelve primero.</p>
-                                <p>Mi madre. Nunca le dije una palabra de amor. Nunca le dije cuánto la quería.</p>
-                                <p>Pasé la vida creyendo que siempre habría tiempo. Que las despedidas pertenecían a otros.</p>
-                                <p>Y ahora, postrado en la calle, mientras la muerte viene por mí y el corazón se me hace un nudo, solo puedo pensar una cosa:</p>
-                                <p>Si pudiera volver atrás...</p>
-                                
-                                <p><strong>¿Qué se siente al llegar la muerte?</strong></p>
-                                <p>La misma sensación que se tiene al correr con los ojos cerrados por una calle: miedo.</p>
-                                <p>Nota: Deberías intentarlo.</p>
-                                <p>Pero después el miedo se va, y solo queda el vacío que nunca llenaste en tus veintidós años de vida.</p>
-                                <p>Olvídate de todo. Yo te diré la verdad, si es que quieres escucharla.</p>
-                                <p>Claro que los vivos poco saben de la muerte. Pero ¿qué sabrá la muerte de estar vivo?</p>
-                                <p>Yo te diré algo: el cielo sí existe, pero no hablaremos de eso.</p>
-                                <p>El infierno también existe, pero tampoco hablaremos de eso.</p>
-                                
-                                <p><strong>¿Dónde estoy?</strong></p>
-                                <p>Aquí, detrás de ti, en el limbo.</p>
-                                <p>¿Conoces el limbo? Pues vives en él; en el punto medio entre el cielo y la tierra, donde ambos mundos se rozan y subsisten.</p>
-                                
-                                <p><strong>¿Por qué estoy aquí?</strong></p>
-                                <p>La respuesta está en tu vida: en lo que hiciste, en lo que no hiciste, en lo que tuviste y en lo que dejaste de tener.</p>
-                                <p>Quiero volver a casa. A mi única casa. La que nunca debí dejar, aunque, al final, nunca tuve.</p>
-                                
-                                <p><strong>¿Quién soy? ¿Por qué fui?</strong></p>
-                                <p>Ahora soy solo un recuerdo; un sueño de una vida tan efímera que pasó sin que me diera cuenta.</p>
-                                <p>Y lo realmente importante... nunca lo valoré.</p>
-                            </div>
                         </div>
                         <div class="note-image">
                             <img src="images/relato-alma.webp" alt="Relato de un Alma">
                         </div>
+                    </div> <div id="alma-completa" style="display:none; margin-top:30px;">
+                        <p><strong>Epílogo</strong></p>
+                        <p>Tras la penumbra de la soledad, la sangre pura se mezcla con el calor, y el silencio es solo el aperitivo de la eternidad.</p>
+                        
+                        <p><strong>Mi Muerte...</strong></p>
+                        <p>Heme aquí. Al fin me alcanzó mi destino y, postrado en un lecho de dolor, me arrepiento de haber sido yo.</p>
+                        <p>La muerte no anuncia su llegada; es incierta. Tantas cosas por decir que nunca pude decir.</p>
+                        <p>Si pudiera volver atrás y despedirme de mi madre...</p>
+                        <p>Y es extraño. Entre todos los recuerdos que se niegan a morir, es ella quien vuelve primero.</p>
+                        <p>Mi madre. Nunca le dije una palabra de amor. Nunca le dije cuánto la quería.</p>
+                        <p>Pasé la vida creyendo que siempre habría tiempo. Que las despedidas pertenecían a otros.</p>
+                        <p>Y ahora, postrado en la calle, mientras la muerte viene por mí y el corazón se me hace un nudo, solo puedo pensar una cosa:</p>
+                        <p>Si pudiera volver atrás...</p>
+                        
+                        <p><strong>¿Qué se siente al llegar la muerte?</strong></p>
+                        <p>La misma sensación que se tiene al correr con los ojos cerrados por una calle: miedo.</p>
+                        <p>Nota: Deberías intentarlo.</p>
+                        <p>Pero después el miedo se va, y solo queda el vacío que nunca llenaste en tus veintidós años de vida.</p>
+                        <p>Olvídate de todo. Yo te diré la verdad, si es que quieres escucharla.</p>
+                        <p>Claro que los vivos poco saben de la muerte. Pero ¿qué sabrá la muerte de estar vivo?</p>
+                        <p>Yo te diré algo: el cielo sí existe, pero no hablaremos de eso.</p>
+                        <p>El infierno también existe, pero tampoco hablaremos de eso.</p>
+                        
+                        <p><strong>¿Dónde estoy?</strong></p>
+                        <p>Aquí, detrás de ti, en el limbo.</p>
+                        <p>¿Conoces el limbo? Pues vives en él; en el punto medio entre el cielo y la tierra, donde ambos mundos se rozan y subsisten.</p>
+                        
+                        <p><strong>¿Por qué estoy aquí?</strong></p>
+                        <p>La respuesta está en tu vida: en lo que hiciste, en lo que no hiciste, en lo que tuviste y en lo que dejaste de tener.</p>
+                        <p>Quiero volver a casa. A mi única casa. La que nunca debí dejar, aunque, al final, nunca tuve.</p>
+                        
+                        <p><strong>¿Quién soy? ¿Por qué fui?</strong></p>
+                        <p>Ahora soy solo un recuerdo; un sueño de una vida tan efímera que pasó sin que me diera cuenta.</p>
+                        <p>Y lo realmente importante... nunca lo valoré.</p>
                     </div>
                 </article>
             </div>
@@ -1695,7 +1679,7 @@ El sueño se limpia los pies al entrar`
                 spotify: 'https://open.spotify.com/intl-es/track/6xGWaNRLVJD5kzyFTbg59c',
                 status: 'released',
                 year: '2024',
-                story: 'Algunas canciones no buscan recuperar lo perdido, sino encontrar el valor para dejarlo partir. Entre recuerdos que todavía duelen y verdades que ya no pueden esconderse, "Reflejos" habla del instante en que el amor y la despedida aprenden a compartir el mismo espacio.',
+                story: 'Algunas canciones no buscan recuperar lo perdido, sino find el valor para dejarlo partir. Entre recuerdos que todavía duelen y verdades que ya no pueden esconderse, "Reflejos" habla del instante en que el amor y la despedida aprenden a compartir el mismo espacio.',
                 lyrics: `Despacio
 Y sin tocar el tema te miro
 Mis labios
@@ -1845,7 +1829,7 @@ Todo mi amor`
                 spotify: 'https://open.spotify.com/intl-es/track/13paMRtCN6yRENiETS9UXc',
                 status: 'released',
                 year: '2025',
-                story: 'Ciertos recuerdos regresan justo cuando creemos haber aprendido a vivir sin ellos. Entre sueños que insisten en volver y emociones que se niegan a desaparecer, "Juegos Perdidos" habla de esas batallas silenciosas donde el corazón sigue apostando por lo imposible.',
+                story: 'Ciertos recuerdos regresan justo cuando creemos haber aprendido a vivir sin ellos. Entre sueños que insisten en volver y emociones que se niegan a desaparecer, "Juegos Perdidos" habla de esas batallas silenciosas donde el corazón sigo apostando por lo imposible.',
                 lyrics: `Aún escribo canciones
 Guardo mis emociones
 Tengo el alma quebrada de tanto aguantar
